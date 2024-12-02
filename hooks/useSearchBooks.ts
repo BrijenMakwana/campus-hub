@@ -4,7 +4,7 @@ import axios from 'axios';
 import { IBook } from '~/types';
 
 export const useSearchBooks = (query: string) => {
-  const searchBooks = async (): Promise<IBook> => {
+  const searchBooks = async (): Promise<IBook[]> => {
     const response = await axios.get('https://www.googleapis.com/books/v1/volumes?', {
       params: {
         q: query,

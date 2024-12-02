@@ -11,7 +11,7 @@ const SearchBar = (props: ISearchBar) => {
   const { value, setValue, onSearch } = props;
 
   return (
-    <View className="mt-5 flex w-11/12 flex-row items-center justify-between gap-5 self-center rounded-full border-2 px-5 py-3">
+    <View className="mt-5 flex w-11/12 flex-row items-center justify-between gap-5 self-center rounded-full border-2 px-7 py-3">
       <AntDesign name="search1" size={30} color="black" />
 
       <TextInput
