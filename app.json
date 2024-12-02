@@ -3,7 +3,7 @@
     "name": "campus-hub",
     "slug": "campus-hub",
     "version": "1.0.0",
-
+    "newArchEnabled": true,
     "scheme": "campus-hub",
     "web": {
       "bundler": "metro",
