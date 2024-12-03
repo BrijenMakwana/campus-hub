@@ -14,7 +14,7 @@ const SearchBooksScreen = () => {
   console.log(error);
 
   return (
-    <SafeAreaView className="flex-1 gap-5">
+    <SafeAreaView className="flex-1 gap-5 pt-5">
       <SearchBar value={bookTitle} setValue={setBookTitle} onSearch={refetch} />
 
       <FlatList
