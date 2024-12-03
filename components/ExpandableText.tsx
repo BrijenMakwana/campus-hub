@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { View, Pressable, Text, ViewProps } from 'react-native';
+import { View, Text, ViewProps, TouchableOpacity } from 'react-native';
 
 import { cn } from '~/lib/utils';
 
@@ -14,9 +14,9 @@ const ExpandableText = (props: ViewProps) => {
       </View>
 
       {!isExpanded && (
-        <Pressable onPress={() => setIsExpanded(true)} className="self-start">
+        <TouchableOpacity onPress={() => setIsExpanded(true)} className="self-start">
           <Text>Read more</Text>
-        </Pressable>
+        </TouchableOpacity>
       )}
     </>
   );
