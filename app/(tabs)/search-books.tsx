@@ -21,7 +21,7 @@ const SearchBooksScreen = () => {
         data={books}
         renderItem={({ item }) => <BookItem {...item} />}
         keyExtractor={(item) => item.id}
-        contentContainerClassName="px-5 gap-5"
+        contentContainerClassName="px-5 gap-5 pb-28"
       />
     </SafeAreaView>
   );
