@@ -9,7 +9,9 @@ import { useSearchBooks } from '~/hooks';
 const SearchBooksScreen = () => {
   const [bookTitle, setBookTitle] = useState('');
 
-  const { data: books, refetch } = useSearchBooks(bookTitle);
+  const { data: books, refetch, error } = useSearchBooks(bookTitle);
+
+  console.log(error);
 
   return (
     <SafeAreaView className="flex-1 gap-5">
