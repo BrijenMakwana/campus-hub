@@ -1,21 +1,24 @@
 import { useState } from 'react';
-import { View, Pressable, TextProps, Text } from 'react-native';
+import { View, Text, ViewProps, TouchableOpacity } from 'react-native';
 
-const ExpandableText = (props: TextProps) => {
-  const { numberOfLines, children, ...rest } = props;
-  const [textIsExpanded, setTextIsExpanded] = useState(false);
+import { cn } from '~/lib/utils';
+
+const ExpandableText = (props: ViewProps) => {
+  const { children, ...rest } = props;
+  const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <View>
-      <Text numberOfLines={textIsExpanded ? undefined : numberOfLines} {...rest}>
+    <>
+      <View {...rest} className={cn(!isExpanded && 'max-h-40', 'overflow-hidden')}>
         {children}
-      </Text>
-      {!textIsExpanded && (
-        <Pressable onPress={() => setTextIsExpanded(true)} className="self-start">
+      </View>
+
+      {!isExpanded && (
+        <TouchableOpacity onPress={() => setIsExpanded(true)} className="self-start">
           <Text>Read more</Text>
-        </Pressable>
+        </TouchableOpacity>
       )}
-    </View>
+    </>
   );
 };
 

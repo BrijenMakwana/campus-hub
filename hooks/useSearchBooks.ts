@@ -8,6 +8,7 @@ export const useSearchBooks = (query: string) => {
     const response = await axios.get('https://www.googleapis.com/books/v1/volumes?', {
       params: {
         q: query,
+        key: process.env.EXPO_PUBLIC_GOOGLE_BOOKS_API_KEY,
       },
     });
 

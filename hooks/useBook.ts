@@ -5,7 +5,11 @@ import { IBook } from '~/types';
 
 export const useBook = (bookId: string) => {
   const getBook = async (): Promise<IBook> => {
-    const response = await axios.get(`https://www.googleapis.com/books/v1/volumes/${bookId}`);
+    const response = await axios.get(`https://www.googleapis.com/books/v1/volumes/${bookId}`, {
+      params: {
+        key: process.env.EXPO_PUBLIC_GOOGLE_BOOKS_API_KEY,
+      },
+    });
 
     return response.data;
   };
