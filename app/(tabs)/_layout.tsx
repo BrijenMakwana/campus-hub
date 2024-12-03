@@ -1,3 +1,4 @@
+import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import Fontisto from '@expo/vector-icons/Fontisto';
 import { Tabs } from 'expo-router';
 
@@ -22,6 +23,13 @@ export default function TabLayout() {
         options={{
           title: 'Search',
           tabBarIcon: ({ color }) => <Fontisto name="search" size={24} color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="wishlist"
+        options={{
+          title: 'Wishlist',
+          tabBarIcon: ({ color }) => <FontAwesome6 name="book-bookmark" size={24} color={color} />,
         }}
       />
     </Tabs>
