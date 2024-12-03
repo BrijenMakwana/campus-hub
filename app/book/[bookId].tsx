@@ -97,7 +97,7 @@ const BookScreen = () => {
                 }
                 backgroundColor="#d1d5db"
                 delay={200}>
-                {() => <Text className="text-md font-semibold">{averageRating}/5</Text>}
+                {() => <Text className="text-sm font-semibold">{averageRating}/5</Text>}
               </AnimatedCircularProgress>
             )}
           </View>
