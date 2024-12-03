@@ -29,7 +29,7 @@ const BookScreen = () => {
   } = book.volumeInfo;
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
+    <ScrollView showsVerticalScrollIndicator={false} className="bg-white">
       <View>
         <Image
           source={{
@@ -48,7 +48,7 @@ const BookScreen = () => {
           entering={RollInRight.delay(100).duration(300).easing(Easing.inOut(Easing.quad))}
         />
 
-        <View className="bg-secondary absolute bottom-5 right-0 gap-3 rounded-l-full p-2 pl-5">
+        <View className="absolute bottom-5 right-0 gap-3 rounded-l-full bg-white p-2 pl-5">
           <Text>{pageCount} pages</Text>
         </View>
       </View>
