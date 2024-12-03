@@ -1,7 +1,8 @@
 import { useLocalSearchParams } from 'expo-router';
-import { Image, ScrollView, View } from 'react-native';
+import { Image, View, Dimensions } from 'react-native';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import Animated, { RollInRight, Easing } from 'react-native-reanimated';
+import RenderHtml from 'react-native-render-html';
 
 import ExpandableText from '~/components/ExpandableText';
 import Loader from '~/components/Loader';
@@ -97,8 +98,13 @@ const BookScreen = () => {
             )}
           </View>
 
-          <ExpandableText numberOfLines={5} className="font-light">
-            {description}
+          <ExpandableText>
+            <RenderHtml
+              contentWidth={Dimensions.get('screen').width}
+              source={{
+                html: description,
+              }}
+            />
           </ExpandableText>
 
           <View className="flex flex-row flex-wrap items-center gap-2">
