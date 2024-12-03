@@ -13,12 +13,12 @@ const SearchBar = (props: ISearchBar) => {
   const { value, setValue, onSearch } = props;
 
   return (
-    <View className="border-input mx-5 flex flex-row items-center justify-between gap-3 rounded-md border px-3 py-2">
+    <View className="mx-5 flex flex-row items-center justify-between gap-3 rounded-md border border-input px-3 py-2">
       <Search className="text-foreground" size={23} strokeWidth={1.25} />
 
       <TextInput
         placeholder="Search books here..."
-        className="text-foreground flex-1"
+        className="flex-1 text-foreground"
         value={value}
         onChangeText={setValue}
         onSubmitEditing={onSearch}

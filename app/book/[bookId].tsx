@@ -1,9 +1,10 @@
 import { useLocalSearchParams } from 'expo-router';
-import { ActivityIndicator, Image, ScrollView, View } from 'react-native';
+import { Image, ScrollView, View } from 'react-native';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import Animated, { RollInRight, Easing } from 'react-native-reanimated';
 
 import ExpandableText from '~/components/ExpandableText';
+import Loader from '~/components/Loader';
 import { Badge } from '~/components/ui/badge';
 import { Text } from '~/components/ui/text';
 import { useBook } from '~/hooks';
@@ -13,7 +14,7 @@ const BookScreen = () => {
 
   const { data: book, isPending, error } = useBook(bookId);
 
-  if (isPending) return <ActivityIndicator />;
+  if (isPending) return <Loader varient="loading" />;
 
   if (error) return <Text>error</Text>;
 
