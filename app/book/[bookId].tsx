@@ -54,7 +54,7 @@ const BookScreen = () => {
         <View>
           <Image
             source={{
-              uri: imageLinks.thumbnail,
+              uri: imageLinks?.thumbnail,
             }}
             className="h-80 w-fit"
             blurRadius={5}
@@ -62,7 +62,7 @@ const BookScreen = () => {
 
           <Animated.Image
             source={{
-              uri: imageLinks.thumbnail,
+              uri: imageLinks?.thumbnail || 'https://via.placeholder.com/300x400',
             }}
             className="absolute -bottom-16 left-5 aspect-[3/4] w-36 rounded-md"
             resizeMode="stretch"
