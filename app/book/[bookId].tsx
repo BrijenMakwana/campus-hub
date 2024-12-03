@@ -5,6 +5,7 @@ import Animated, { RollInRight, Easing } from 'react-native-reanimated';
 import RenderHtml from 'react-native-render-html';
 
 import ExpandableText from '~/components/ExpandableText';
+import GoBack from '~/components/GoBack';
 import Loader from '~/components/Loader';
 import { Badge } from '~/components/ui/badge';
 import { Text } from '~/components/ui/text';
@@ -35,9 +36,11 @@ const BookScreen = () => {
   return (
     <>
       <Animated.View
-        className="absolute top-0 z-10 w-full border-b border-b-border bg-background px-5 py-2 pb-5 pt-16"
+        className="absolute top-0 z-10 flex w-full flex-row items-center justify-between gap-2 border-b border-b-border bg-background px-5 py-2 pt-16"
         style={animatedHeaderStyle}>
-        <Text className="text-xl" numberOfLines={2}>
+        <GoBack />
+
+        <Text className="flex-1 text-xl" numberOfLines={2}>
           {title}
         </Text>
       </Animated.View>
