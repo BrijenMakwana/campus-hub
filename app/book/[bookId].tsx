@@ -3,8 +3,8 @@ import { Image, View, Dimensions } from 'react-native';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import Animated, { RollInRight, Easing } from 'react-native-reanimated';
 import RenderHtml from 'react-native-render-html';
-import AddToWishList from '~/components/AddToWishList';
 
+import AddToWishList from '~/components/AddToWishList';
 import ExpandableText from '~/components/ExpandableText';
 import GoBack from '~/components/GoBack';
 import Loader from '~/components/Loader';

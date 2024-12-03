@@ -1,6 +1,9 @@
 import { TextInput, View, TouchableOpacity } from 'react-native';
 
+import BarcodeScanner from './BarcodeScanner';
+
 import { Clear } from '~/lib/icons/Clear';
+import { Scan } from '~/lib/icons/Scan';
 import { Search } from '~/lib/icons/Search';
 
 interface ISearchBar {
@@ -30,6 +33,10 @@ const SearchBar = (props: ISearchBar) => {
           <Clear className="text-foreground" size={23} strokeWidth={1.25} />
         </TouchableOpacity>
       )}
+
+      <BarcodeScanner setValue={setValue}>
+        <Scan className="text-foreground" size={23} strokeWidth={1.25} />
+      </BarcodeScanner>
     </View>
   );
 };
