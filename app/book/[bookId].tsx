@@ -4,7 +4,6 @@ import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import Animated, { FlipInEasyY, Easing } from 'react-native-reanimated';
 import RenderHtml from 'react-native-render-html';
 
-import AddToWishList from '~/components/AddToWishList';
 import ExpandableText from '~/components/ExpandableText';
 import GoBack from '~/components/GoBack';
 import Loader from '~/components/Loader';
@@ -64,7 +63,9 @@ const BookScreen = () => {
           entering={FlipInEasyY.delay(200).duration(300).easing(Easing.inOut(Easing.quad))}
         />
 
-        <View className="mt-10 gap-4 px-5">
+        <Text className="mt-3 text-center font-medium">{pageCount} pages</Text>
+
+        <View className="mt-8 gap-4 px-5">
           <View className="flex flex-row items-start justify-between gap-5">
             <View className="flex-1 gap-2">
               <Text className="text-2xl font-medium">{title}</Text>
@@ -111,8 +112,6 @@ const BookScreen = () => {
           </View>
         </View>
       </Animated.ScrollView>
-
-      <AddToWishList />
     </>
   );
 };
