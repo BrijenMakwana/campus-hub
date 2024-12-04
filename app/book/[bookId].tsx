@@ -1,13 +1,14 @@
 import { useLocalSearchParams } from 'expo-router';
-import { Image, View, Dimensions } from 'react-native';
+import { View, Dimensions } from 'react-native';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
-import Animated, { RollInRight, Easing } from 'react-native-reanimated';
+import Animated, { FlipInEasyY, Easing } from 'react-native-reanimated';
 import RenderHtml from 'react-native-render-html';
 
 import AddToWishList from '~/components/AddToWishList';
 import ExpandableText from '~/components/ExpandableText';
 import GoBack from '~/components/GoBack';
 import Loader from '~/components/Loader';
+import SvgShape from '~/components/SvgShape';
 import { Badge } from '~/components/ui/badge';
 import { Text } from '~/components/ui/text';
 import { useAnimatedHeader, useBook } from '~/hooks';
@@ -53,34 +54,24 @@ const BookScreen = () => {
         onScroll={scrollHandler}
         scrollEventThrottle={16}>
         <View>
-          <Image
-            source={{
-              uri: imageLinks?.thumbnail,
-            }}
-            className="h-80 w-fit"
-            blurRadius={5}
-          />
+          <SvgShape color="#f683a7" secondaryColor="#f39655" />
 
           <Animated.Image
             source={{
               uri: imageLinks?.thumbnail || 'https://via.placeholder.com/300x400',
             }}
-            className="absolute -bottom-16 left-5 aspect-[3/4] w-36 rounded-md"
+            className="absolute top-32 aspect-[3/4] w-48 self-center rounded-md"
             resizeMode="stretch"
-            entering={RollInRight.delay(100).duration(300).easing(Easing.inOut(Easing.quad))}
+            entering={FlipInEasyY.delay(200).duration(300).easing(Easing.inOut(Easing.quad))}
           />
-
-          <View className="absolute bottom-5 right-0 gap-3 rounded-l-full bg-white p-2 pl-5">
-            <Text>{pageCount} pages</Text>
-          </View>
         </View>
 
-        <View className="mt-20 gap-4 px-5">
+        <View className="gap-4 px-5">
           <View className="flex flex-row items-start justify-between gap-5">
             <View className="flex-1 gap-2">
               <Text className="text-2xl font-medium">{title}</Text>
 
-              <Text>by {authors.join(', ')}</Text>
+              <Text className="font-semibold text-accent">by {authors.join(', ')}</Text>
 
               <Badge variant="outline" className="self-start">
                 <Text className="font-semibold">{publishedDate}</Text>
@@ -97,7 +88,7 @@ const BookScreen = () => {
                 }
                 backgroundColor="#d1d5db"
                 delay={200}>
-                {() => <Text className="text-md font-semibold">{averageRating}/5</Text>}
+                {() => <Text className="text-sm font-semibold">{averageRating}/5</Text>}
               </AnimatedCircularProgress>
             )}
           </View>
