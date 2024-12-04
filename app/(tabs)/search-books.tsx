@@ -13,7 +13,7 @@ const SearchBooksScreen = () => {
   const { data: books, isFetching, refetch } = useSearchBooks(bookTitle);
 
   return (
-    <SafeAreaView className="flex-1 gap-5 bg-white pt-5">
+    <SafeAreaView className="flex-1 gap-5 bg-background pt-5">
       <SearchBar value={bookTitle} setValue={setBookTitle} onSearch={refetch} />
 
       {isFetching && <Loader varient="searching" />}
