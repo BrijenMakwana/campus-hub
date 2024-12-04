@@ -49,24 +49,22 @@ const BookScreen = () => {
 
       <Animated.ScrollView
         showsVerticalScrollIndicator={false}
-        className="bg-white"
+        className="bg-background"
         contentContainerClassName="pb-16"
         onScroll={scrollHandler}
         scrollEventThrottle={16}>
-        <View>
-          <SvgShape color="#f683a7" secondaryColor="#f39655" />
+        <SvgShape color="#f683a7" secondaryColor="#f39655" />
 
-          <Animated.Image
-            source={{
-              uri: imageLinks?.thumbnail || 'https://via.placeholder.com/300x400',
-            }}
-            className="absolute top-32 aspect-[3/4] w-48 self-center rounded-md"
-            resizeMode="stretch"
-            entering={FlipInEasyY.delay(200).duration(300).easing(Easing.inOut(Easing.quad))}
-          />
-        </View>
+        <Animated.Image
+          source={{
+            uri: imageLinks?.thumbnail || 'https://via.placeholder.com/300x400',
+          }}
+          className="mt-32 aspect-[3/4] w-48 self-center rounded-md"
+          resizeMode="stretch"
+          entering={FlipInEasyY.delay(200).duration(300).easing(Easing.inOut(Easing.quad))}
+        />
 
-        <View className="gap-4 px-5">
+        <View className="mt-10 gap-4 px-5">
           <View className="flex flex-row items-start justify-between gap-5">
             <View className="flex-1 gap-2">
               <Text className="text-2xl font-medium">{title}</Text>

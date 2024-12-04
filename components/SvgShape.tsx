@@ -12,7 +12,13 @@ const SvgShape = ({ color, secondaryColor, height = 380 }: ISvgShape) => {
   const screenWidth = Dimensions.get('window').width;
 
   return (
-    <Svg width={screenWidth} height={height} viewBox={`0 0 ${screenWidth} 380`}>
+    <Svg
+      width={screenWidth}
+      height={height}
+      viewBox={`0 0 ${screenWidth} 380`}
+      style={{
+        position: 'absolute',
+      }}>
       <Defs>
         <LinearGradient id="grad" x1="0" y1="0" x2="1" y2="0.8">
           <Stop offset="0" stopColor={color} stopOpacity="1" />
