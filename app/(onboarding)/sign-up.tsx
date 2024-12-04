@@ -117,7 +117,7 @@ const SignUpScreen = () => {
       </View>
 
       <View className="mt-auto gap-3">
-        <Button size="lg" onPress={handleSubmit(onSubmit)}>
+        <Button size="lg" onPress={handleSubmit(onSubmit)} className="bg-primary">
           <Text>Sign Up</Text>
         </Button>
 

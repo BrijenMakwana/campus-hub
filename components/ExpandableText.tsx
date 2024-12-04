@@ -15,7 +15,7 @@ const ExpandableText = (props: ViewProps) => {
 
       {!isExpanded && (
         <TouchableOpacity onPress={() => setIsExpanded(true)} className="self-start">
-          <Text>Read more</Text>
+          <Text className="text-primary">Read more</Text>
         </TouchableOpacity>
       )}
     </>
