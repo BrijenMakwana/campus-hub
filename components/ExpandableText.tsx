@@ -16,7 +16,7 @@ const ExpandableText = (props: ViewProps) => {
           <LinearGradient
             colors={['transparent', 'white']}
             locations={[0, 1]}
-            className="absolute bottom-0 h-12 w-full"
+            className="absolute bottom-0 h-20 w-full"
           />
         )}
       </View>
