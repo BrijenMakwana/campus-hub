@@ -7,8 +7,7 @@ import * as React from 'react';
 const queryClient = new QueryClient();
 
 export const unstable_settings = {
-  // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: '(tabs)',
+  initialRouteName: '(onboarding)',
 };
 
 export default function RootLayout() {
@@ -16,7 +15,8 @@ export default function RootLayout() {
     <QueryClientProvider client={queryClient}>
       <StatusBar style="dark" />
 
-      <Stack>
+      <Stack initialRouteName="(onboarding)">
+        <Stack.Screen name="(onboarding)" options={{ headerShown: false }} />
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="book/[bookId]" options={{ headerShown: false }} />
       </Stack>
