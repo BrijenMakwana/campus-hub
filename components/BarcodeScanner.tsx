@@ -1,4 +1,5 @@
 import { CameraView, useCameraPermissions } from 'expo-camera';
+import LottieView from 'lottie-react-native';
 import React, { PropsWithChildren, SetStateAction, useState } from 'react';
 import { TouchableOpacity, Modal, View, Button, StyleSheet } from 'react-native';
 
@@ -56,10 +57,26 @@ const CameraViewer = (props: ICameraViewer) => {
   return (
     <View style={StyleSheet.absoluteFillObject}>
       <CameraView
-        style={StyleSheet.absoluteFillObject}
+        style={[
+          StyleSheet.absoluteFillObject,
+          {
+            alignItems: 'center',
+            justifyContent: 'center',
+          },
+        ]}
         facing="back"
-        onBarcodeScanned={handleBarcodeScanned}
-      />
+        onBarcodeScanned={handleBarcodeScanned}>
+        <LottieView
+          autoPlay
+          loop
+          style={{
+            width: 500,
+            aspectRatio: 1,
+          }}
+          source={require('./../assets/scan.zip')}
+          speed={1}
+        />
+      </CameraView>
     </View>
   );
 };

@@ -6,7 +6,7 @@ import { ChevronLeft } from '~/lib/icons/ChevronLeft';
 const GoBack = () => {
   return (
     <TouchableOpacity className="p-2" onPress={() => router.back()}>
-      <ChevronLeft className="text-foreground" size={23} strokeWidth={1.25} />
+      <ChevronLeft className="text-secondary" size={23} strokeWidth={2} />
     </TouchableOpacity>
   );
 };

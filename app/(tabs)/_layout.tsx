@@ -10,6 +10,7 @@ export default function TabLayout() {
         tabBarIconStyle: {
           marginBottom: 1,
         },
+        tabBarActiveTintColor: 'hsl(199 87% 55%)',
       }}>
       <Tabs.Screen
         name="index"
