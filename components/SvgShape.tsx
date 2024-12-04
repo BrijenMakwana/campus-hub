@@ -5,7 +5,7 @@ import Svg, { Path, Defs, LinearGradient, Stop } from 'react-native-svg';
 interface ISvgShape {
   color: string;
   secondaryColor: string;
-  height: number;
+  height?: number;
 }
 
 const SvgShape = ({ color, secondaryColor, height = 380 }: ISvgShape) => {
