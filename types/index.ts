@@ -14,3 +14,9 @@ export interface IBook {
     publishedDate: string;
   };
 }
+
+export enum BookCondition {
+  GOOD = 'Good',
+  USED = 'Used',
+  WORN = 'Worn',
+}
