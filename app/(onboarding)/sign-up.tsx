@@ -10,6 +10,7 @@ import CustomInput from '~/components/CustomInput';
 import { Button } from '~/components/ui/button';
 import { Text } from '~/components/ui/text';
 import { ArrowLeft } from '~/lib/icons/ArrowLeft';
+import { supabase } from '~/supabase';
 
 const SignUpScreen = () => {
   const {
@@ -25,8 +26,19 @@ const SignUpScreen = () => {
     },
   });
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    const { email, password, fullName, phone } = data;
+
+    const { data: user, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        data: {
+          full_name: fullName,
+          phone: Number(phone),
+        },
+      },
+    });
   };
 
   return (
