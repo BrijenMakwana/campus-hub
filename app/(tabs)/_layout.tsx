@@ -1,6 +1,7 @@
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import Fontisto from '@expo/vector-icons/Fontisto';
 import { Tabs } from 'expo-router';
+import { Pressable } from 'react-native';
 
 export default function TabLayout() {
   return (
@@ -17,6 +18,21 @@ export default function TabLayout() {
         options={{
           title: 'Home',
           tabBarIcon: ({ color }) => <Fontisto name="home" size={24} color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="sell-books"
+        options={{
+          tabBarButton: (props) => (
+            <Pressable
+              {...props}
+              className="items-center justify-center"
+              style={{
+                top: -20,
+              }}>
+              <FontAwesome6 name="circle-plus" size={45} color="hsl(199 87% 55%)" />
+            </Pressable>
+          ),
         }}
       />
       <Tabs.Screen

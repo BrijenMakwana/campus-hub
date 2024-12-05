@@ -1,4 +1,4 @@
-import { Link, router } from 'expo-router';
+import { Link } from 'expo-router';
 import { useForm, Controller } from 'react-hook-form';
 import { View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -7,10 +7,11 @@ import ReadingSvg from '../../assets/reading.svg';
 
 import BackgroundShape from '~/components/BackgroundShape';
 import CustomInput from '~/components/CustomInput';
+import Loading from '~/components/Loading';
 import { Button } from '~/components/ui/button';
 import { Text } from '~/components/ui/text';
+import { useSignIn } from '~/hooks';
 import { ArrowRight } from '~/lib/icons/ArrowRight';
-import { supabase } from '~/supabase';
 
 const SignInScreen = () => {
   const {
@@ -24,18 +25,10 @@ const SignInScreen = () => {
     },
   });
 
+  const { mutate: signIn, isPending, error } = useSignIn();
+
   const onSubmit = async (data) => {
-    const { email, password } = data;
-
-    const { data: user, error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
-
-    console.log(user);
-
-    console.log(error);
-    if (!error) router.replace('/(tabs)');
+    signIn(data);
   };
 
   return (
@@ -100,12 +93,18 @@ const SignInScreen = () => {
           )}
           name="password"
         />
+
+        {error && <Text className="text-red-500">{error.message}</Text>}
       </View>
 
       <View className="mt-auto gap-3">
-        <Button size="lg" onPress={handleSubmit(onSubmit)} className="bg-primary">
-          <Text>Login</Text>
-        </Button>
+        {isPending ? (
+          <Loading />
+        ) : (
+          <Button size="lg" onPress={handleSubmit(onSubmit)} className="bg-primary">
+            <Text> {isPending ? 'Wait' : 'Login'}</Text>
+          </Button>
+        )}
 
         <View className="flex flex-row items-center justify-center">
           <Text className="text-center">Don't have an account?</Text>
