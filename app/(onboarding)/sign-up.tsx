@@ -7,10 +7,11 @@ import SharingSvg from '../../assets/sharing.svg';
 
 import BackgroundShape from '~/components/BackgroundShape';
 import CustomInput from '~/components/CustomInput';
+import Loading from '~/components/Loading';
 import { Button } from '~/components/ui/button';
 import { Text } from '~/components/ui/text';
+import { useSignUp } from '~/hooks';
 import { ArrowLeft } from '~/lib/icons/ArrowLeft';
-import { supabase } from '~/supabase';
 
 const SignUpScreen = () => {
   const {
@@ -26,19 +27,10 @@ const SignUpScreen = () => {
     },
   });
 
-  const onSubmit = async (data) => {
-    const { email, password, fullName, phone } = data;
+  const { mutate: signUp, isPending, error } = useSignUp();
 
-    const { data: user, error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        data: {
-          full_name: fullName,
-          phone: Number(phone),
-        },
-      },
-    });
+  const onSubmit = async (data) => {
+    signUp(data);
   };
 
   return (
@@ -144,12 +136,18 @@ const SignUpScreen = () => {
           )}
           name="password"
         />
+
+        {error && <Text className="text-red-500">{error.message}</Text>}
       </View>
 
       <View className="mt-auto gap-3">
-        <Button size="lg" onPress={handleSubmit(onSubmit)} className="bg-primary">
-          <Text>Register</Text>
-        </Button>
+        {isPending ? (
+          <Loading />
+        ) : (
+          <Button size="lg" onPress={handleSubmit(onSubmit)} className="bg-primary">
+            <Text>Register</Text>
+          </Button>
+        )}
 
         <Button
           size="sm"
