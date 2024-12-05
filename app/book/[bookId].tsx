@@ -1,11 +1,11 @@
 import { useLocalSearchParams } from 'expo-router';
-import { View, Dimensions } from 'react-native';
+import { View } from 'react-native';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import Animated, { FlipInEasyY, Easing } from 'react-native-reanimated';
-import RenderHtml from 'react-native-render-html';
 
 import ExpandableText from '~/components/ExpandableText';
 import GoBack from '~/components/GoBack';
+import HTMLDescription from '~/components/HTMLDescription';
 import Loader from '~/components/Loader';
 import SvgShape from '~/components/SvgShape';
 import { Badge } from '~/components/ui/badge';
@@ -93,12 +93,7 @@ const BookScreen = () => {
           </View>
 
           <ExpandableText>
-            <RenderHtml
-              contentWidth={Dimensions.get('screen').width}
-              source={{
-                html: description,
-              }}
-            />
+            <HTMLDescription text={description} />
           </ExpandableText>
 
           <View className="flex flex-row flex-wrap items-center gap-2">
