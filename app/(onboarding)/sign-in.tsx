@@ -10,6 +10,7 @@ import CustomInput from '~/components/CustomInput';
 import { Button } from '~/components/ui/button';
 import { Text } from '~/components/ui/text';
 import { ArrowRight } from '~/lib/icons/ArrowRight';
+import { supabase } from '~/supabase';
 
 const SignInScreen = () => {
   const {
@@ -23,10 +24,18 @@ const SignInScreen = () => {
     },
   });
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    const { email, password } = data;
 
-    router.replace('/(tabs)');
+    const { data: user, error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+
+    console.log(user);
+
+    console.log(error);
+    if (!error) router.replace('/(tabs)');
   };
 
   return (
