@@ -3,6 +3,9 @@ import { useForm, Controller } from 'react-hook-form';
 import { View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import SharingSvg from '../../assets/sharing.svg';
+
+import BackgroundShape from '~/components/BackgroundShape';
 import CustomInput from '~/components/CustomInput';
 import { Button } from '~/components/ui/button';
 import { Text } from '~/components/ui/text';
@@ -28,7 +31,22 @@ const SignUpScreen = () => {
 
   return (
     <SafeAreaView className="flex-1 bg-background p-5">
-      <View className="gap-5">
+      <BackgroundShape />
+
+      <SharingSvg
+        width={200}
+        height={170}
+        style={{
+          alignSelf: 'center',
+        }}
+      />
+
+      <View className="mt-14 gap-2">
+        <Text className="text-2xl font-semibold">Welcome aboard, book lover!</Text>
+        <Text className="text-gray-400">Create an account to unlock your next reads</Text>
+      </View>
+
+      <View className="mt-5 gap-5">
         <Controller
           control={control}
           rules={{
@@ -118,7 +136,7 @@ const SignUpScreen = () => {
 
       <View className="mt-auto gap-3">
         <Button size="lg" onPress={handleSubmit(onSubmit)} className="bg-primary">
-          <Text>Sign Up</Text>
+          <Text>Register</Text>
         </Button>
 
         <Button
@@ -128,7 +146,7 @@ const SignUpScreen = () => {
           className="flex flex-row gap-3">
           <ArrowLeft className="text-foreground" size={23} strokeWidth={1.25} />
 
-          <Text>back to sign in</Text>
+          <Text>back to login</Text>
         </Button>
       </View>
     </SafeAreaView>

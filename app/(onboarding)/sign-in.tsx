@@ -3,6 +3,9 @@ import { useForm, Controller } from 'react-hook-form';
 import { View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import ReadingSvg from '../../assets/reading.svg';
+
+import BackgroundShape from '~/components/BackgroundShape';
 import CustomInput from '~/components/CustomInput';
 import { Button } from '~/components/ui/button';
 import { Text } from '~/components/ui/text';
@@ -28,7 +31,22 @@ const SignInScreen = () => {
 
   return (
     <SafeAreaView className="flex-1 bg-background p-5">
-      <View className="gap-5">
+      <BackgroundShape />
+
+      <ReadingSvg
+        width={300}
+        height={170}
+        style={{
+          alignSelf: 'center',
+        }}
+      />
+
+      <View className="mt-20 gap-2">
+        <Text className="text-2xl font-semibold">Welcome back, bookworm!</Text>
+        <Text className="text-gray-400">Login to find your next semester's books</Text>
+      </View>
+
+      <View className="mt-7 gap-5">
         <Controller
           control={control}
           rules={{
@@ -77,16 +95,20 @@ const SignInScreen = () => {
 
       <View className="mt-auto gap-3">
         <Button size="lg" onPress={handleSubmit(onSubmit)} className="bg-primary">
-          <Text>Sign In</Text>
+          <Text>Login</Text>
         </Button>
 
-        <Link href="/sign-up" asChild>
-          <Button size="sm" variant="link" className="flex flex-row gap-3">
-            <Text>new? sign up</Text>
+        <View className="flex flex-row items-center justify-center">
+          <Text className="text-center">Don't have an account?</Text>
 
-            <ArrowRight className="text-foreground" size={23} strokeWidth={1.25} />
-          </Button>
-        </Link>
+          <Link href="/sign-up" asChild>
+            <Button size="sm" variant="link" className="flex flex-row gap-3">
+              <Text>Register</Text>
+
+              <ArrowRight className="text-foreground" size={23} strokeWidth={1.25} />
+            </Button>
+          </Link>
+        </View>
       </View>
     </SafeAreaView>
   );
