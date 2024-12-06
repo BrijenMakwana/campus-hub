@@ -1,8 +1,10 @@
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import { supabase } from '~/supabase';
 
 export const useAddBookToWishlist = () => {
+  const queryClient = useQueryClient();
+
   const addBookToWishlist = async ({ bookId }: { bookId: string }) => {
     const { error } = await supabase
       .from('book_wishlist')
@@ -16,6 +18,7 @@ export const useAddBookToWishlist = () => {
     mutationFn: addBookToWishlist,
     onSuccess: () => {
       console.log('added');
+      queryClient.invalidateQueries({ queryKey: ['wishListedBooks'] });
     },
     onError: (error) => {
       console.log(error);
