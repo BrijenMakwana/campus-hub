@@ -1,4 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import Toast from 'react-native-toast-message';
 
 import { supabase } from '~/supabase';
 
@@ -17,11 +18,14 @@ export const useAddBookToWishlist = () => {
   return useMutation({
     mutationFn: addBookToWishlist,
     onSuccess: () => {
-      console.log('added');
       queryClient.invalidateQueries({ queryKey: ['wishListedBooks'] });
     },
     onError: (error) => {
-      console.log(error);
+      Toast.show({
+        type: 'error',
+        text1: error.message,
+        topOffset: 50,
+      });
     },
   });
 };
