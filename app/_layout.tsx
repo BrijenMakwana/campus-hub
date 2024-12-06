@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import * as React from 'react';
+import Toast from 'react-native-toast-message';
 
 const queryClient = new QueryClient();
 
@@ -20,6 +21,8 @@ export default function RootLayout() {
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="book/[bookId]" options={{ headerShown: false }} />
       </Stack>
+
+      <Toast />
     </QueryClientProvider>
   );
 }

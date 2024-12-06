@@ -1,14 +1,14 @@
 import { useState } from 'react';
-import { FlatList, View } from 'react-native';
+import { FlatList } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import BookItemWrapper from '~/components/BookItemWrapper';
 import Loading from '~/components/Loading';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '~/components/ui/tabs';
 import { Text } from '~/components/ui/text';
-import { useMyListedBooks } from '~/hooks';
+import { useMyListedBooks, useWishListedBooks } from '~/hooks';
 
-const WishListScreen = () => {
+const BookListingScreen = () => {
   const [value, setValue] = useState('wishlist');
 
   return (
@@ -23,7 +23,7 @@ const WishListScreen = () => {
           </TabsTrigger>
         </TabsList>
         <TabsContent value="wishlist">
-          <Text>1</Text>
+          <WishListTab />
         </TabsContent>
         <TabsContent value="for sale">
           <ForSaleTab />
@@ -33,7 +33,22 @@ const WishListScreen = () => {
   );
 };
 
-export default WishListScreen;
+export default BookListingScreen;
+
+const WishListTab = () => {
+  const { data, isPending, error } = useWishListedBooks();
+
+  if (isPending) return <Loading />;
+
+  return (
+    <FlatList
+      data={data}
+      renderItem={({ item }) => <BookItemWrapper {...item} />}
+      keyExtractor={(item) => item.id}
+      contentContainerClassName="gap-5 pb-28 px-5 mt-5"
+    />
+  );
+};
 
 const ForSaleTab = () => {
   const { data, isPending, error } = useMyListedBooks();

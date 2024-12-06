@@ -1,9 +1,12 @@
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import Toast from 'react-native-toast-message';
 
 import { supabase } from '~/supabase';
 import { BookCondition } from '~/types';
 
 export const useListBookForSale = () => {
+  const queryClient = useQueryClient();
+
   const listBookForSale = async ({
     bookId,
     bookCondition,
@@ -15,7 +18,7 @@ export const useListBookForSale = () => {
     price: string;
     remarks?: string;
   }) => {
-    const { data, error } = await supabase
+    const { error } = await supabase
       .from('book_listing')
       .insert([{ book_id: bookId, book_condition: bookCondition, price: Number(price), remarks }])
       .select();
@@ -26,10 +29,14 @@ export const useListBookForSale = () => {
   return useMutation({
     mutationFn: listBookForSale,
     onSuccess: () => {
-      console.log('added');
+      queryClient.invalidateQueries({ queryKey: ['myListedBooks'] });
     },
     onError: (error) => {
-      console.log(error);
+      Toast.show({
+        type: 'error',
+        text1: error.message,
+        topOffset: 50,
+      });
     },
   });
 };

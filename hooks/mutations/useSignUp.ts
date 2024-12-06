@@ -1,4 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
+import Toast from 'react-native-toast-message';
 
 import { supabase } from '~/supabase';
 
@@ -32,5 +33,12 @@ export const useSignUp = () => {
 
   return useMutation({
     mutationFn: signUp,
+    onError: (error) => {
+      Toast.show({
+        type: 'error',
+        text1: error.message,
+        topOffset: 50,
+      });
+    },
   });
 };

@@ -25,7 +25,7 @@ const SignInScreen = () => {
     },
   });
 
-  const { mutate: signIn, isPending, error } = useSignIn();
+  const { mutate: signIn, isPending } = useSignIn();
 
   const onSubmit = async (data) => {
     signIn(data);
@@ -93,8 +93,6 @@ const SignInScreen = () => {
           )}
           name="password"
         />
-
-        {error && <Text className="text-red-500">{error.message}</Text>}
       </View>
 
       <View className="mt-auto gap-3">

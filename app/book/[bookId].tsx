@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import Animated, { FlipInEasyY, Easing } from 'react-native-reanimated';
 
+import AddToWishList from '~/components/AddToWishList';
 import ExpandableText from '~/components/ExpandableText';
 import GoBack from '~/components/GoBack';
 import HTMLDescription from '~/components/HTMLDescription';
@@ -107,6 +108,8 @@ const BookScreen = () => {
           </View>
         </View>
       </Animated.ScrollView>
+
+      <AddToWishList bookId={bookId as string} />
     </>
   );
 };

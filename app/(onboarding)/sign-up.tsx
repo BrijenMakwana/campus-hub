@@ -1,17 +1,14 @@
-import { router } from 'expo-router';
 import { useForm, Controller } from 'react-hook-form';
 import { View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import SharingSvg from '../../assets/sharing.svg';
-
-import BackgroundShape from '~/components/BackgroundShape';
 import CustomInput from '~/components/CustomInput';
+import DecorativeShape from '~/components/DecorativeShape';
+import GoBack from '~/components/GoBack';
 import Loading from '~/components/Loading';
 import { Button } from '~/components/ui/button';
 import { Text } from '~/components/ui/text';
 import { useSignUp } from '~/hooks';
-import { ArrowLeft } from '~/lib/icons/ArrowLeft';
 
 const SignUpScreen = () => {
   const {
@@ -27,7 +24,7 @@ const SignUpScreen = () => {
     },
   });
 
-  const { mutate: signUp, isPending, error } = useSignUp();
+  const { mutate: signUp, isPending } = useSignUp();
 
   const onSubmit = async (data) => {
     signUp(data);
@@ -35,22 +32,16 @@ const SignUpScreen = () => {
 
   return (
     <SafeAreaView className="flex-1 bg-background p-5">
-      <BackgroundShape />
+      <DecorativeShape />
 
-      <SharingSvg
-        width={200}
-        height={170}
-        style={{
-          alignSelf: 'center',
-        }}
-      />
+      <GoBack />
 
-      <View className="mt-14 gap-2">
+      <View className="mt-3 gap-2">
         <Text className="text-2xl font-semibold">Welcome aboard, book lover!</Text>
         <Text className="text-gray-400">Create an account to unlock your next reads</Text>
       </View>
 
-      <View className="mt-5 gap-5">
+      <View className="mt-16 gap-5">
         <Controller
           control={control}
           rules={{
@@ -136,11 +127,9 @@ const SignUpScreen = () => {
           )}
           name="password"
         />
-
-        {error && <Text className="text-red-500">{error.message}</Text>}
       </View>
 
-      <View className="mt-auto gap-3">
+      <View className="mt-auto">
         {isPending ? (
           <Loading />
         ) : (
@@ -148,16 +137,6 @@ const SignUpScreen = () => {
             <Text>Register</Text>
           </Button>
         )}
-
-        <Button
-          size="sm"
-          onPress={() => router.back()}
-          variant="link"
-          className="flex flex-row gap-3">
-          <ArrowLeft className="text-foreground" size={23} strokeWidth={1.25} />
-
-          <Text>back to login</Text>
-        </Button>
       </View>
     </SafeAreaView>
   );
