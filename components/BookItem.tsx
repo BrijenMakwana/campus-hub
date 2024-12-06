@@ -21,13 +21,21 @@ const BookItem = (props: IBookItem) => {
 
   return (
     <Link href={`/book/${id}`} asChild>
-      <TouchableOpacity className="flex flex-row justify-between gap-5">
-        <Image
-          source={{
-            uri: imageLinks?.thumbnail || 'https://via.placeholder.com/300x400',
-          }}
-          className="aspect-[3/4] w-32 rounded-md"
-        />
+      <TouchableOpacity className="flex flex-row items-start justify-between gap-5">
+        <View>
+          <Image
+            source={{
+              uri: imageLinks?.thumbnail || 'https://via.placeholder.com/300x400',
+            }}
+            className="aspect-[3/4] w-32 rounded-md"
+          />
+
+          {book_condition && (
+            <View className="absolute bottom-0 w-full items-center rounded-b-md bg-accent/75 py-1 ">
+              <Text className="font-medium capitalize">{book_condition}</Text>
+            </View>
+          )}
+        </View>
 
         <View className="flex-1 gap-1">
           <Text className="text-lg font-semibold">{title}</Text>
@@ -44,12 +52,6 @@ const BookItem = (props: IBookItem) => {
             <Text className="mt-auto text-right  text-sm">Added {dayjs(created_at).fromNow()}</Text>
           )}
         </View>
-
-        {book_condition && (
-          <View className="absolute bottom-5 left-0 rounded-r-full bg-accent py-1 pl-3 pr-5">
-            <Text className="font-medium capitalize">{book_condition}</Text>
-          </View>
-        )}
       </TouchableOpacity>
     </Link>
   );
