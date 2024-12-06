@@ -6,6 +6,7 @@ import SearchBooksScreen from './search-books';
 import { useListBookForSale } from '../../hooks';
 
 import CustomInput from '~/components/CustomInput';
+import Loading from '~/components/Loading';
 import WishListBook from '~/components/WishListBook';
 import { Button } from '~/components/ui/button';
 import { Label } from '~/components/ui/label';
@@ -29,10 +30,10 @@ const SellBooksScreen = () => {
       remarks: '',
     },
   });
-  const { mutate: listBookForSale, isPending, error } = useListBookForSale();
+  const { mutate: listBookForSale, isPending } = useListBookForSale();
 
   const onSubmit = async (data) => {
-    listBookForSale({ bookId: 'hjEFCAAAQBAJ', ...data });
+    listBookForSale({ bookId: 'qBfRDQAAQBAJ', ...data });
   };
 
   return (
@@ -46,7 +47,7 @@ const SellBooksScreen = () => {
           </TouchableOpacity>
 
           <Label>Book you are selling</Label>
-          <WishListBook bookId="hjEFCAAAQBAJ" />
+          <WishListBook bookId="qBfRDQAAQBAJ" />
 
           <Separator />
 
@@ -107,9 +108,13 @@ const SellBooksScreen = () => {
           />
 
           <View className="mt-auto gap-3">
-            <Button className="bg-primary" onPress={handleSubmit(onSubmit)}>
-              <Text>List Book for Sale</Text>
-            </Button>
+            {isPending ? (
+              <Loading />
+            ) : (
+              <Button className="bg-primary" onPress={handleSubmit(onSubmit)}>
+                <Text>List Book for Sale</Text>
+              </Button>
+            )}
 
             <Button variant="outline">
               <Text>Discard</Text>
