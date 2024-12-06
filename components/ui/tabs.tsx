@@ -34,7 +34,7 @@ const TabsTrigger = React.forwardRef<TabsPrimitive.TriggerRef, TabsPrimitive.Tri
           className={cn(
             'inline-flex items-center justify-center rounded-sm px-3 py-1.5 text-sm font-medium shadow-none web:whitespace-nowrap web:ring-offset-background web:transition-all web:focus-visible:outline-none web:focus-visible:ring-2 web:focus-visible:ring-ring web:focus-visible:ring-offset-2',
             props.disabled && 'opacity-50 web:pointer-events-none',
-            props.value === value && 'bg-background shadow-lg shadow-foreground/10',
+            props.value === value && 'bg-secondary shadow-lg shadow-foreground/10',
             className
           )}
           {...props}
