@@ -9,6 +9,7 @@ interface IBookItemWrapper {
   price: number;
   book_condition: BookCondition;
   remarks: string;
+  created_at: Date;
 }
 
 const BookItemWrapper = (props: IBookItemWrapper) => {

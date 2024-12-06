@@ -1,3 +1,5 @@
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
 import { Link } from 'expo-router';
 import { Image, View, Text, TouchableOpacity } from 'react-native';
 
@@ -7,12 +9,15 @@ interface IBookItem extends IBook {
   price?: number;
   book_condition?: BookCondition;
   remarks?: string;
+  created_at?: Date;
 }
 
 const BookItem = (props: IBookItem) => {
-  const { id, volumeInfo, price, book_condition, remarks } = props;
+  const { id, volumeInfo, price, book_condition, remarks, created_at } = props;
 
   const { imageLinks, title, authors, pageCount } = volumeInfo;
+
+  dayjs.extend(relativeTime);
 
   return (
     <Link href={`/book/${id}`} asChild>
@@ -32,6 +37,12 @@ const BookItem = (props: IBookItem) => {
           <Text className="text-sm">{pageCount} pages</Text>
 
           {price && <Text className="text-lg font-semibold text-primary">${price}</Text>}
+
+          {remarks && <Text className="text-gray-500">{remarks}</Text>}
+
+          {created_at && (
+            <Text className="mt-auto text-right  text-sm">Added {dayjs(created_at).fromNow()}</Text>
+          )}
         </View>
 
         {book_condition && (
