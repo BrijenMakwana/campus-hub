@@ -93,10 +93,16 @@ const SellBooksScreen = () => {
 
           <Controller
             control={control}
+            rules={{
+              maxLength: {
+                value: 150,
+                message: 'Remarks cannot exceed 150 characters',
+              },
+            }}
             render={({ field: { onChange, onBlur, value } }) => (
               <CustomInput
                 label="Remarks (Optional)"
-                placeholder="e.g., 5"
+                placeholder="e.g., Slightly worn, good condition"
                 multiline
                 onBlur={onBlur}
                 onChangeText={onChange}
