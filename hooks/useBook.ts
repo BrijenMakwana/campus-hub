@@ -17,5 +17,8 @@ export const useBook = (bookId: string) => {
   return useQuery({
     queryKey: [bookId],
     queryFn: getBook,
+    refetchOnWindowFocus: false,
+    refetchOnMount: false,
+    staleTime: Infinity,
   });
 };

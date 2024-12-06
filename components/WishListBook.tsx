@@ -1,4 +1,5 @@
 import BookItem from './BookItem';
+import Loading from './Loading';
 
 import { useBook } from '~/hooks';
 
@@ -11,7 +12,7 @@ const WishListBook = (props: IWishListBook) => {
 
   const { data, isPending, error } = useBook(bookId);
 
-  if (isPending) return;
+  if (isPending) return <Loading />;
 
   if (error) return;
 
