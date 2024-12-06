@@ -8,7 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '~/components/ui/tabs';
 import { Text } from '~/components/ui/text';
 import { useMyListedBooks, useWishListedBooks } from '~/hooks';
 
-const WishListScreen = () => {
+const BookListingScreen = () => {
   const [value, setValue] = useState('wishlist');
 
   return (
@@ -33,7 +33,7 @@ const WishListScreen = () => {
   );
 };
 
-export default WishListScreen;
+export default BookListingScreen;
 
 const WishListTab = () => {
   const { data, isPending, error } = useWishListedBooks();

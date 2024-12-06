@@ -43,9 +43,9 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="wishlist"
+        name="book-listing"
         options={{
-          title: 'Wishlist',
+          title: 'Bookshelf',
           tabBarIcon: ({ color }) => <FontAwesome6 name="book-bookmark" size={24} color={color} />,
         }}
       />
