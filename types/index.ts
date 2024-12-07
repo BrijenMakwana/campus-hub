@@ -1,4 +1,4 @@
-export interface IBook {
+export interface IGoogleBook {
   id: string;
   volumeInfo: {
     title: string;

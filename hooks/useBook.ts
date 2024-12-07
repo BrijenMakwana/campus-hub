@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 
-import { IBook } from '~/types';
+import { IGoogleBook } from '~/types';
 
 export const useBook = (bookId: string) => {
-  const getBook = async (): Promise<IBook> => {
+  const getBook = async (): Promise<IGoogleBook> => {
     const response = await axios.get(`https://www.googleapis.com/books/v1/volumes/${bookId}`, {
       params: {
         key: process.env.EXPO_PUBLIC_GOOGLE_BOOKS_API_KEY,

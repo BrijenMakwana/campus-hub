@@ -6,9 +6,9 @@ import { Image, View, Text, TouchableOpacity } from 'react-native';
 import { Badge } from './ui/badge';
 
 import { cn } from '~/lib/utils';
-import { BookCondition, IBook } from '~/types';
+import { BookCondition, IGoogleBook } from '~/types';
 
-interface IBookItem extends IBook {
+interface IBookItem extends IGoogleBook {
   price?: number;
   book_condition?: BookCondition;
   remarks?: string;
