@@ -21,7 +21,7 @@ const BookItemWrapper = (props: IBookItemWrapper) => {
 
   if (error) return;
 
-  return <BookItem {...data} {...rest} />;
+  return <BookItem {...data} {...rest} id={book_id} />;
 };
 
 export default BookItemWrapper;
