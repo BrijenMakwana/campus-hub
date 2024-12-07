@@ -1,6 +1,7 @@
 import { UseQueryResult } from '@tanstack/react-query';
+import LottieView from 'lottie-react-native';
 import { useState } from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import BookItemWrapper from '~/components/BookItemWrapper';
@@ -52,6 +53,26 @@ const BooksTab = ({
       renderItem={({ item }) => <BookItemWrapper {...item} />}
       keyExtractor={(item) => item.id.toString()}
       contentContainerClassName="gap-5 pb-28 px-5 mt-5"
+      ListEmptyComponent={Empty}
     />
+  );
+};
+
+const Empty = () => {
+  return (
+    <View className="items-center justify-center py-32">
+      <LottieView
+        autoPlay
+        loop
+        style={{
+          width: 250,
+          height: 250,
+        }}
+        source={require('../../assets/booklist.zip')}
+        speed={1}
+      />
+
+      <Text className="text-center">Seems a bit empty. Let’s fill it with some books!</Text>
+    </View>
   );
 };
