@@ -49,7 +49,6 @@ const BookItem = (props: IBookItem) => {
                 <Text
                   className={cn(
                     'font-medium',
-
                     book_condition === BookCondition.GOOD
                       ? 'text-green-400'
                       : book_condition === BookCondition.USED
@@ -67,7 +66,7 @@ const BookItem = (props: IBookItem) => {
           {remarks && <Text className="mt-1 text-gray-500">{remarks}</Text>}
 
           {created_at && (
-            <Text className="mt-auto text-right  text-sm">Added {dayjs(created_at).fromNow()}</Text>
+            <Text className="mt-auto text-right text-sm">Added {dayjs(created_at).fromNow()}</Text>
           )}
         </View>
       </TouchableOpacity>

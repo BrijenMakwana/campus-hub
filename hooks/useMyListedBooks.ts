@@ -4,7 +4,11 @@ import { supabase } from '~/supabase';
 
 export const useMyListedBooks = () => {
   const myListedBooks = async () => {
-    const { data } = await supabase.from('book_listing').select('*');
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    const { data } = await supabase.from('book_listing').select('*').eq('user_id', user?.id);
 
     return data;
   };
