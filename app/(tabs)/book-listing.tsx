@@ -1,3 +1,4 @@
+import { UseQueryResult } from '@tanstack/react-query';
 import { useState } from 'react';
 import { FlatList } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -23,10 +24,10 @@ const BookListingScreen = () => {
           </TabsTrigger>
         </TabsList>
         <TabsContent value="wishlist">
-          <WishListTab />
+          <BooksTab useBooksHook={useWishListedBooks} />
         </TabsContent>
         <TabsContent value="for sale">
-          <ForSaleTab />
+          <BooksTab useBooksHook={useMyListedBooks} />
         </TabsContent>
       </Tabs>
     </SafeAreaView>
@@ -35,23 +36,12 @@ const BookListingScreen = () => {
 
 export default BookListingScreen;
 
-const WishListTab = () => {
-  const { data, isPending, error } = useWishListedBooks();
-
-  if (isPending) return <Loading />;
-
-  return (
-    <FlatList
-      data={data}
-      renderItem={({ item }) => <BookItemWrapper {...item} />}
-      keyExtractor={(item) => item.id}
-      contentContainerClassName="gap-5 pb-28 px-5 mt-5"
-    />
-  );
-};
-
-const ForSaleTab = () => {
-  const { data, isPending, error } = useMyListedBooks();
+const BooksTab = ({
+  useBooksHook,
+}: {
+  useBooksHook: () => UseQueryResult<any[] | null, Error>;
+}) => {
+  const { data, isPending, error } = useBooksHook();
 
   if (isPending) return <Loading />;
 
