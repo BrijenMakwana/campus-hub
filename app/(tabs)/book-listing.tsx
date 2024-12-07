@@ -52,7 +52,7 @@ const BooksTab = ({
       data={data}
       renderItem={({ item }) => <BookItemWrapper {...item} />}
       keyExtractor={(item) => item.id.toString()}
-      contentContainerClassName="gap-5 pb-28 px-5 mt-5"
+      contentContainerClassName="gap-5 pb-52 px-5 mt-5"
       ListEmptyComponent={Empty}
     />
   );
