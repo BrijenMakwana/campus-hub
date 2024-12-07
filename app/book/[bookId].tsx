@@ -1,5 +1,5 @@
 import { useLocalSearchParams } from 'expo-router';
-import { View } from 'react-native';
+import { FlatList, View } from 'react-native';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import Animated, { FlipInEasyY, Easing } from 'react-native-reanimated';
 
@@ -8,10 +8,11 @@ import ExpandableText from '~/components/ExpandableText';
 import GoBack from '~/components/GoBack';
 import HTMLDescription from '~/components/HTMLDescription';
 import Loader from '~/components/Loader';
+import SellerCard from '~/components/SellerCard';
 import SvgShape from '~/components/SvgShape';
 import { Badge } from '~/components/ui/badge';
 import { Text } from '~/components/ui/text';
-import { useAnimatedHeader, useBook } from '~/hooks';
+import { useAnimatedHeader, useBook, useBookListings } from '~/hooks';
 
 const BookScreen = () => {
   const { bookId } = useLocalSearchParams();
@@ -19,6 +20,8 @@ const BookScreen = () => {
   const { scrollHandler, animatedHeaderStyle } = useAnimatedHeader();
 
   const { data: book, isPending, error } = useBook(bookId);
+
+  const { data: bookListings } = useBookListings(bookId);
 
   if (isPending) return <Loader varient="loading" />;
 
@@ -107,6 +110,13 @@ const BookScreen = () => {
             )}
           </View>
         </View>
+
+        <FlatList
+          data={bookListings}
+          renderItem={({ item }) => <SellerCard {...item} />}
+          keyExtractor={(item) => item.id.toString()}
+          contentContainerClassName="px-5 gap-5 mt-5"
+        />
       </Animated.ScrollView>
 
       <AddToWishList bookId={bookId as string} />

@@ -1,12 +1,17 @@
 import { useQuery } from '@tanstack/react-query';
 
 import { supabase } from '~/supabase';
+import { IBookSale } from '~/types';
 
 export const useMyListedBooks = () => {
-  const myListedBooks = async () => {
-    const { data } = await supabase.from('book_listing').select('*');
+  const myListedBooks = async (): Promise<IBookSale[]> => {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
 
-    return data;
+    const { data } = await supabase.from('book_listing').select('*').eq('user_id', user?.id);
+
+    return (data ?? []) as IBookSale[];
   };
 
   return useQuery({

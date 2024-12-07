@@ -1,27 +1,19 @@
 import BookItem from './BookItem';
-import Loading from './Loading';
 
+import { Skeleton } from '~/components/ui/skeleton';
 import { useBook } from '~/hooks';
-import { BookCondition } from '~/types';
+import { IBookSale, IWishlistBook } from '~/types';
 
-interface IBookItemWrapper {
-  book_id: string;
-  price: number;
-  book_condition: BookCondition;
-  remarks: string;
-  created_at: Date;
-}
-
-const BookItemWrapper = (props: IBookItemWrapper) => {
+const BookItemWrapper = (props: IWishlistBook | IBookSale) => {
   const { book_id, ...rest } = props;
 
-  const { data, isPending, error } = useBook(book_id);
+  const { data: book, isPending, error } = useBook(book_id);
 
-  if (isPending) return <Loading />;
+  if (isPending) return <Skeleton className="h-40 w-full bg-neutral-300" />;
 
   if (error) return;
 
-  return <BookItem {...data} {...rest} />;
+  return <BookItem {...book} {...rest} id={book_id} />;
 };
 
 export default BookItemWrapper;
