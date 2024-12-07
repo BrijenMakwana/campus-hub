@@ -8,22 +8,9 @@ import { Text } from './ui/text';
 
 import { User } from '~/lib/icons/User';
 import { cn } from '~/lib/utils';
-import { BookCondition } from '~/types';
+import { BookCondition, IBookSaleWithUser } from '~/types';
 
-interface ISellerCard {
-  book_condition: BookCondition;
-  book_id: string;
-  created_at: Date;
-  id: number;
-  price: number;
-  remarks: string;
-  users: {
-    full_name: string;
-    phone: number;
-  };
-}
-
-const SellerCard = (props: ISellerCard) => {
+const SellerCard = (props: IBookSaleWithUser) => {
   dayjs.extend(relativeTime);
 
   const { users, book_condition, remarks, created_at, price } = props;

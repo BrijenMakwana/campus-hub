@@ -1,9 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 
 import { supabase } from '~/supabase';
+import { IBookSaleWithUser } from '~/types';
 
 export const useBookListings = (bookId: string) => {
-  const getBookListings = async () => {
+  const getBookListings = async (): Promise<IBookSaleWithUser[]> => {
     const { data } = await supabase
       .from('book_listing')
       .select(
@@ -17,7 +18,7 @@ export const useBookListings = (bookId: string) => {
       )
       .eq('book_id', bookId);
 
-    return data;
+    return (data ?? []) as IBookSaleWithUser[];
   };
 
   return useQuery({

@@ -8,6 +8,7 @@ import Loading from '~/components/Loading';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '~/components/ui/tabs';
 import { Text } from '~/components/ui/text';
 import { useMyListedBooks, useWishListedBooks } from '~/hooks';
+import { IBookSale, IWishlistBook } from '~/types';
 
 const BookListingScreen = () => {
   const [value, setValue] = useState('wishlist');
@@ -39,7 +40,7 @@ export default BookListingScreen;
 const BooksTab = ({
   useBooksHook,
 }: {
-  useBooksHook: () => UseQueryResult<any[] | null, Error>;
+  useBooksHook: () => UseQueryResult<IWishlistBook[] | IBookSale[], Error>;
 }) => {
   const { data, isPending, error } = useBooksHook();
 
@@ -49,7 +50,7 @@ const BooksTab = ({
     <FlatList
       data={data}
       renderItem={({ item }) => <BookItemWrapper {...item} />}
-      keyExtractor={(item) => item.id}
+      keyExtractor={(item) => item.id.toString()}
       contentContainerClassName="gap-5 pb-28 px-5 mt-5"
     />
   );

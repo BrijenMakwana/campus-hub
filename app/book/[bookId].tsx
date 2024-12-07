@@ -114,7 +114,7 @@ const BookScreen = () => {
         <FlatList
           data={bookListings}
           renderItem={({ item }) => <SellerCard {...item} />}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item) => item.id.toString()}
           contentContainerClassName="px-5 gap-5 mt-5"
         />
       </Animated.ScrollView>

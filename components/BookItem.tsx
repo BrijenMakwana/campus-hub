@@ -11,7 +11,7 @@ import { BookCondition, IGoogleBook } from '~/types';
 interface IBookItem extends IGoogleBook {
   price?: number;
   book_condition?: BookCondition;
-  remarks?: string;
+  remarks?: string | null;
   created_at?: Date;
 }
 
