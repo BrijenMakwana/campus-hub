@@ -3,6 +3,9 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 import { Link } from 'expo-router';
 import { Image, View, Text, TouchableOpacity } from 'react-native';
 
+import { Badge } from './ui/badge';
+
+import { cn } from '~/lib/utils';
 import { BookCondition, IBook } from '~/types';
 
 interface IBookItem extends IBook {
@@ -21,7 +24,7 @@ const BookItem = (props: IBookItem) => {
 
   return (
     <Link href={`/book/${id}`} asChild>
-      <TouchableOpacity className="flex flex-row items-start justify-between gap-5">
+      <TouchableOpacity className="flex flex-row justify-between gap-5">
         <View>
           <Image
             source={{
@@ -29,24 +32,39 @@ const BookItem = (props: IBookItem) => {
             }}
             className="aspect-[3/4] w-32 rounded-md"
           />
-
-          {book_condition && (
-            <View className="absolute bottom-0 w-full items-center rounded-b-md bg-accent/75 py-1 ">
-              <Text className="font-medium capitalize">{book_condition}</Text>
-            </View>
-          )}
         </View>
 
         <View className="flex-1 gap-1">
           <Text className="text-lg font-semibold">{title}</Text>
 
-          <Text className="text-sm font-medium capitalize text-accent">{authors?.join(', ')}</Text>
+          <Text className="text-sm font-medium capitalize text-gray-500">
+            {authors?.join(', ')}
+          </Text>
 
           <Text className="text-sm">{pageCount} pages</Text>
 
-          {price && <Text className="text-lg font-semibold text-primary">${price}</Text>}
+          <View className="mt-2 flex flex-row items-center justify-start gap-3">
+            {book_condition && (
+              <Badge variant="outline" className="self-start">
+                <Text
+                  className={cn(
+                    'font-medium',
 
-          {remarks && <Text className="text-gray-500">{remarks}</Text>}
+                    book_condition === BookCondition.GOOD
+                      ? 'text-green-400'
+                      : book_condition === BookCondition.USED
+                        ? 'text-yellow-400'
+                        : 'text-red-400'
+                  )}>
+                  {book_condition}
+                </Text>
+              </Badge>
+            )}
+
+            {price && <Text className="self-start text-lg text-primary">${price}</Text>}
+          </View>
+
+          {remarks && <Text className="mt-1 text-gray-500">{remarks}</Text>}
 
           {created_at && (
             <Text className="mt-auto text-right  text-sm">Added {dayjs(created_at).fromNow()}</Text>
