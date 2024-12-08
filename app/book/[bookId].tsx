@@ -17,11 +17,13 @@ import { useAnimatedHeader, useBook, useBookListings } from '~/hooks';
 const BookScreen = () => {
   const { bookId } = useLocalSearchParams();
 
-  const { data: book } = useBook(bookId);
+  const { data: book, isPending } = useBook(bookId);
+
+  const { data: bookListings } = useBookListings(bookId);
 
   const { scrollHandler, animatedHeaderStyle } = useAnimatedHeader();
 
-  const { data: bookListings } = useBookListings(bookId);
+  if (isPending) return <Loader varient="loading" />;
 
   return (
     <View className="flex-1 bg-background">
@@ -55,11 +57,7 @@ export default BookScreen;
 const Book = () => {
   const { bookId } = useLocalSearchParams();
 
-  const { data: book, isPending, error } = useBook(bookId);
-
-  if (isPending) return <Loader varient="loading" />;
-
-  if (error) return <Text>error</Text>;
+  const { data: book } = useBook(bookId);
 
   const {
     imageLinks,
