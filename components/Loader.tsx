@@ -11,14 +11,14 @@ const Loader = (props: ILoader) => {
   const { varient } = props;
 
   return (
-    <View className="h-full w-full items-center justify-center gap-3">
+    <View className="h-64 w-full items-center justify-center">
       <LottieView
         autoPlay
         loop
         style={styles.lottie}
         source={
           varient === 'loading'
-            ? require('./../assets/loading.zip')
+            ? require('./../assets/book.zip')
             : require('./../assets/search.zip')
         }
         speed={1}
@@ -29,8 +29,8 @@ const Loader = (props: ILoader) => {
 };
 const styles = StyleSheet.create({
   lottie: {
-    height: 100,
-    width: 100,
+    height: 120,
+    width: 120,
   },
 });
 
