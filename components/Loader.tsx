@@ -11,7 +11,7 @@ const Loader = (props: ILoader) => {
   const { varient } = props;
 
   return (
-    <View className="h-full w-full items-center justify-center">
+    <View className="h-full w-full items-center justify-center bg-background">
       <LottieView
         autoPlay
         loop

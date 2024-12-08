@@ -4,6 +4,7 @@ import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import Animated, { FlipInEasyY, Easing } from 'react-native-reanimated';
 
 import AddToWishList from '~/components/AddToWishList';
+import Error from '~/components/Error';
 import ExpandableText from '~/components/ExpandableText';
 import GoBack from '~/components/GoBack';
 import HTMLDescription from '~/components/HTMLDescription';
@@ -17,13 +18,15 @@ import { useAnimatedHeader, useBook, useBookListings } from '~/hooks';
 const BookScreen = () => {
   const { bookId } = useLocalSearchParams();
 
-  const { data: book, isPending } = useBook(bookId);
+  const { data: book, isPending, error, refetch } = useBook(bookId);
 
   const { data: bookListings } = useBookListings(bookId);
 
   const { scrollHandler, animatedHeaderStyle } = useAnimatedHeader();
 
   if (isPending) return <Loader varient="loading" />;
+
+  if (error) return <Error refetch={refetch} />;
 
   return (
     <View className="flex-1 bg-background">
