@@ -4,6 +4,7 @@ import ReanimatedSwipeable from 'react-native-gesture-handler/ReanimatedSwipeabl
 import Reanimated, { SharedValue, useAnimatedStyle } from 'react-native-reanimated';
 
 import BookItem from './BookItem';
+import { Button } from './ui/button';
 
 import { Skeleton } from '~/components/ui/skeleton';
 import { useBook } from '~/hooks';
@@ -11,8 +12,12 @@ import { Edit } from '~/lib/icons/Edit';
 import { Trash } from '~/lib/icons/Trash';
 import { IBookSale, IWishlistBook } from '~/types';
 
-const BookItemWrapper = (props: IWishlistBook | IBookSale) => {
-  const { book_id, ...rest } = props;
+type BookItemWrapperProps = (IWishlistBook | IBookSale) & {
+  removeBook: () => void;
+};
+
+const BookItemWrapper = (props: BookItemWrapperProps) => {
+  const { book_id, removeBook, ...rest } = props;
 
   const { data: book, isPending, error } = useBook(book_id);
 
@@ -26,7 +31,14 @@ const BookItemWrapper = (props: IWishlistBook | IBookSale) => {
         friction={2}
         enableTrackpadTwoFingerGesture
         rightThreshold={40}
-        renderRightActions={RightAction}>
+        renderRightActions={(progress, drag) => (
+          <RightAction
+            prog={progress}
+            drag={drag}
+            removeBook={removeBook}
+            isEditable={'price' in props}
+          />
+        )}>
         <BookItem {...book} {...rest} id={book_id} />
       </ReanimatedSwipeable>
     </GestureHandlerRootView>
@@ -35,10 +47,20 @@ const BookItemWrapper = (props: IWishlistBook | IBookSale) => {
 
 export default BookItemWrapper;
 
-function RightAction(prog: SharedValue<number>, drag: SharedValue<number>) {
+function RightAction({
+  prog,
+  drag,
+  removeBook,
+  isEditable,
+}: {
+  prog: SharedValue<number>;
+  drag: SharedValue<number>;
+  removeBook: () => void;
+  isEditable: boolean;
+}) {
   const styleAnimation = useAnimatedStyle(() => {
     return {
-      transform: [{ translateX: drag.value + 100 }],
+      transform: [{ translateX: drag.value + 130 }],
     };
   });
 
@@ -46,11 +68,18 @@ function RightAction(prog: SharedValue<number>, drag: SharedValue<number>) {
     <Reanimated.View style={styleAnimation}>
       <View
         style={{
-          width: 100,
+          width: 130,
         }}
-        className="flex h-full flex-row items-center justify-center gap-5">
-        <Edit className="text-gray-800" size={23} strokeWidth={2} />
-        <Trash className="text-red-400" size={23} strokeWidth={2} />
+        className="flex h-full flex-row items-center justify-center gap-3">
+        {isEditable && (
+          <Button variant="outline">
+            <Edit className="text-gray-800" size={20} strokeWidth={2} />
+          </Button>
+        )}
+
+        <Button onPress={removeBook} variant="outline">
+          <Trash className="text-red-400" size={20} strokeWidth={2} />
+        </Button>
       </View>
     </Reanimated.View>
   );
