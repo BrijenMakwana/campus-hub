@@ -10,6 +10,7 @@ import { useBook } from '~/hooks';
 import { Edit } from '~/lib/icons/Edit';
 import { Trash } from '~/lib/icons/Trash';
 import { IBookSale, IWishlistBook } from '~/types';
+import { Button } from './ui/button';
 
 type BookItemWrapperProps = (IWishlistBook | IBookSale) & {
   removeBook: () => void;
@@ -52,7 +53,7 @@ function RightAction({
 }) {
   const styleAnimation = useAnimatedStyle(() => {
     return {
-      transform: [{ translateX: drag.value + 100 }],
+      transform: [{ translateX: drag.value + 130 }],
     };
   });
 
@@ -60,14 +61,16 @@ function RightAction({
     <Reanimated.View style={styleAnimation}>
       <View
         style={{
-          width: 100,
+          width: 130,
         }}
-        className="flex h-full flex-row items-center justify-center gap-5">
-        <Edit className="text-gray-800" size={23} strokeWidth={2} />
+        className="flex h-full flex-row items-center justify-center gap-3">
+        <Button variant="outline">
+          <Edit className="text-gray-800" size={20} strokeWidth={2} />
+        </Button>
 
-        <TouchableOpacity onPress={removeBook}>
-          <Trash className="text-red-400" size={23} strokeWidth={2} />
-        </TouchableOpacity>
+        <Button onPress={removeBook} variant="outline">
+          <Trash className="text-red-400" size={20} strokeWidth={2} />
+        </Button>
       </View>
     </Reanimated.View>
   );
