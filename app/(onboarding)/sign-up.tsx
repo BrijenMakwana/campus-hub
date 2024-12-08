@@ -41,7 +41,7 @@ const SignUpScreen = () => {
         <Text className="text-gray-400">Create an account to unlock your next reads</Text>
       </View>
 
-      <View className="mt-16 gap-5">
+      <View className="mt-10 gap-5">
         <Controller
           control={control}
           rules={{
