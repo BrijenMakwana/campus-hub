@@ -60,7 +60,7 @@ const BookItem = (props: IBookItem) => {
               </Badge>
             )}
 
-            {price && <Text className="self-start text-lg text-primary">${price}</Text>}
+            {price && <Text className="self-start text-lg font-medium text-primary">${price}</Text>}
           </View>
 
           {remarks && <Text className="mt-1 text-gray-500">{remarks}</Text>}
