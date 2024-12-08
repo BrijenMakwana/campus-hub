@@ -1,16 +1,16 @@
-import { TouchableOpacity, View } from 'react-native';
+import { View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import ReanimatedSwipeable from 'react-native-gesture-handler/ReanimatedSwipeable';
 import Reanimated, { SharedValue, useAnimatedStyle } from 'react-native-reanimated';
 
 import BookItem from './BookItem';
+import { Button } from './ui/button';
 
 import { Skeleton } from '~/components/ui/skeleton';
 import { useBook } from '~/hooks';
 import { Edit } from '~/lib/icons/Edit';
 import { Trash } from '~/lib/icons/Trash';
 import { IBookSale, IWishlistBook } from '~/types';
-import { Button } from './ui/button';
 
 type BookItemWrapperProps = (IWishlistBook | IBookSale) & {
   removeBook: () => void;
@@ -32,7 +32,12 @@ const BookItemWrapper = (props: BookItemWrapperProps) => {
         enableTrackpadTwoFingerGesture
         rightThreshold={40}
         renderRightActions={(progress, drag) => (
-          <RightAction prog={progress} drag={drag} removeBook={removeBook} />
+          <RightAction
+            prog={progress}
+            drag={drag}
+            removeBook={removeBook}
+            isEditable={'price' in props}
+          />
         )}>
         <BookItem {...book} {...rest} id={book_id} />
       </ReanimatedSwipeable>
@@ -46,10 +51,12 @@ function RightAction({
   prog,
   drag,
   removeBook,
+  isEditable,
 }: {
   prog: SharedValue<number>;
   drag: SharedValue<number>;
   removeBook: () => void;
+  isEditable: boolean;
 }) {
   const styleAnimation = useAnimatedStyle(() => {
     return {
@@ -64,9 +71,11 @@ function RightAction({
           width: 130,
         }}
         className="flex h-full flex-row items-center justify-center gap-3">
-        <Button variant="outline">
-          <Edit className="text-gray-800" size={20} strokeWidth={2} />
-        </Button>
+        {isEditable && (
+          <Button variant="outline">
+            <Edit className="text-gray-800" size={20} strokeWidth={2} />
+          </Button>
+        )}
 
         <Button onPress={removeBook} variant="outline">
           <Trash className="text-red-400" size={20} strokeWidth={2} />
