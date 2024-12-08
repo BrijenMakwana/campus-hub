@@ -1,14 +1,20 @@
-import { UseQueryResult } from '@tanstack/react-query';
+import { UseQueryResult, UseMutationResult } from '@tanstack/react-query';
 import LottieView from 'lottie-react-native';
 import { useState } from 'react';
-import { FlatList, View } from 'react-native';
+import { View } from 'react-native';
+import Animated, { LinearTransition } from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import BookItemWrapper from '~/components/BookItemWrapper';
 import Loading from '~/components/Loading';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '~/components/ui/tabs';
 import { Text } from '~/components/ui/text';
-import { useMyListedBooks, useWishListedBooks } from '~/hooks';
+import {
+  useMyListedBooks,
+  useRemoveBookFromSale,
+  useRemoveBookFromWishlist,
+  useWishListedBooks,
+} from '~/hooks';
 import { IBookSale, IWishlistBook } from '~/types';
 
 const BookListingScreen = () => {
@@ -26,10 +32,10 @@ const BookListingScreen = () => {
           </TabsTrigger>
         </TabsList>
         <TabsContent value="wishlist">
-          <BooksTab useBooksHook={useWishListedBooks} />
+          <BooksTab useBooks={useWishListedBooks} useRemoveBook={useRemoveBookFromWishlist} />
         </TabsContent>
         <TabsContent value="for sale">
-          <BooksTab useBooksHook={useMyListedBooks} />
+          <BooksTab useBooks={useMyListedBooks} useRemoveBook={useRemoveBookFromSale} />
         </TabsContent>
       </Tabs>
     </SafeAreaView>
@@ -39,21 +45,35 @@ const BookListingScreen = () => {
 export default BookListingScreen;
 
 const BooksTab = ({
-  useBooksHook,
+  useBooks,
+  useRemoveBook,
 }: {
-  useBooksHook: () => UseQueryResult<IWishlistBook[] | IBookSale[], Error>;
+  useBooks: () => UseQueryResult<IWishlistBook[] | IBookSale[], Error>;
+  useRemoveBook: () => UseMutationResult<
+    void,
+    Error,
+    {
+      id: number;
+    },
+    unknown
+  >;
 }) => {
-  const { data, isPending, error } = useBooksHook();
+  const { data, isPending, error } = useBooks();
+
+  const { mutate: removeBook } = useRemoveBook();
 
   if (isPending) return <Loading />;
 
   return (
-    <FlatList
+    <Animated.FlatList
       data={data}
-      renderItem={({ item }) => <BookItemWrapper {...item} />}
+      renderItem={({ item }) => (
+        <BookItemWrapper {...item} removeBook={() => removeBook({ id: item.id })} />
+      )}
       keyExtractor={(item) => item.id.toString()}
       contentContainerClassName="gap-5 pb-52 px-5 mt-5"
       ListEmptyComponent={Empty}
+      itemLayoutAnimation={LinearTransition}
     />
   );
 };

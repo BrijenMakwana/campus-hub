@@ -1,4 +1,4 @@
-import { View } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import ReanimatedSwipeable from 'react-native-gesture-handler/ReanimatedSwipeable';
 import Reanimated, { SharedValue, useAnimatedStyle } from 'react-native-reanimated';
@@ -11,8 +11,12 @@ import { Edit } from '~/lib/icons/Edit';
 import { Trash } from '~/lib/icons/Trash';
 import { IBookSale, IWishlistBook } from '~/types';
 
-const BookItemWrapper = (props: IWishlistBook | IBookSale) => {
-  const { book_id, ...rest } = props;
+type BookItemWrapperProps = (IWishlistBook | IBookSale) & {
+  removeBook: () => void;
+};
+
+const BookItemWrapper = (props: BookItemWrapperProps) => {
+  const { book_id, removeBook, ...rest } = props;
 
   const { data: book, isPending, error } = useBook(book_id);
 
@@ -26,7 +30,9 @@ const BookItemWrapper = (props: IWishlistBook | IBookSale) => {
         friction={2}
         enableTrackpadTwoFingerGesture
         rightThreshold={40}
-        renderRightActions={RightAction}>
+        renderRightActions={(progress, drag) => (
+          <RightAction prog={progress} drag={drag} removeBook={removeBook} />
+        )}>
         <BookItem {...book} {...rest} id={book_id} />
       </ReanimatedSwipeable>
     </GestureHandlerRootView>
@@ -35,7 +41,15 @@ const BookItemWrapper = (props: IWishlistBook | IBookSale) => {
 
 export default BookItemWrapper;
 
-function RightAction(prog: SharedValue<number>, drag: SharedValue<number>) {
+function RightAction({
+  prog,
+  drag,
+  removeBook,
+}: {
+  prog: SharedValue<number>;
+  drag: SharedValue<number>;
+  removeBook: () => void;
+}) {
   const styleAnimation = useAnimatedStyle(() => {
     return {
       transform: [{ translateX: drag.value + 100 }],
@@ -50,7 +64,10 @@ function RightAction(prog: SharedValue<number>, drag: SharedValue<number>) {
         }}
         className="flex h-full flex-row items-center justify-center gap-5">
         <Edit className="text-gray-800" size={23} strokeWidth={2} />
-        <Trash className="text-red-400" size={23} strokeWidth={2} />
+
+        <TouchableOpacity onPress={removeBook}>
+          <Trash className="text-red-400" size={23} strokeWidth={2} />
+        </TouchableOpacity>
       </View>
     </Reanimated.View>
   );
