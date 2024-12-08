@@ -7,6 +7,7 @@ import BookItem from './BookItem';
 
 import { Skeleton } from '~/components/ui/skeleton';
 import { useBook } from '~/hooks';
+import { Edit } from '~/lib/icons/Edit';
 import { Trash } from '~/lib/icons/Trash';
 import { IBookSale, IWishlistBook } from '~/types';
 
@@ -46,18 +47,10 @@ function RightAction(prog: SharedValue<number>, drag: SharedValue<number>) {
       <View
         style={{
           width: 100,
-          height: '100%',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}>
-        <Trash
-          className="text-secondary"
-          size={25}
-          strokeWidth={2}
-          style={{
-            width: 100,
-          }}
-        />
+        }}
+        className="flex h-full flex-row items-center justify-center gap-5">
+        <Edit className="text-gray-800" size={23} strokeWidth={2} />
+        <Trash className="text-red-400" size={23} strokeWidth={2} />
       </View>
     </Reanimated.View>
   );

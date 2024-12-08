@@ -9,3 +9,5 @@ export * from './mutations/useSignIn';
 export * from './mutations/useSignUp';
 export * from './mutations/useListBookForSale';
 export * from './mutations/useAddBookToWishlist';
+export * from './mutations/useRemoveBookFromSale';
+export * from './mutations/useRemoveBookFromWishlist';
