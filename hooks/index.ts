@@ -4,6 +4,7 @@ export * from './useAnimatedHeader';
 export * from './useMyListedBooks';
 export * from './useWishListedBooks';
 export * from './useBookListing';
+export * from './useBookListings';
 
 export * from './mutations/useSignIn';
 export * from './mutations/useSignUp';

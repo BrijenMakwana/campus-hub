@@ -4,7 +4,7 @@ import { supabase } from '~/supabase';
 import { IBookSaleWithUser } from '~/types';
 
 export const useBookListing = (bookId: string) => {
-  const getBookListings = async (): Promise<IBookSaleWithUser[]> => {
+  const getBookListing = async (): Promise<IBookSaleWithUser[]> => {
     const { data } = await supabase
       .from('book_listing')
       .select(
@@ -22,8 +22,8 @@ export const useBookListing = (bookId: string) => {
   };
 
   return useQuery({
-    queryKey: [`bookListings ${bookId}`],
-    queryFn: getBookListings,
+    queryKey: [`bookListing ${bookId}`],
+    queryFn: getBookListing,
     enabled: !!bookId,
   });
 };
