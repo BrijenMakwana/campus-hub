@@ -4,6 +4,7 @@ import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import Animated, { FlipInEasyY, Easing } from 'react-native-reanimated';
 
 import AddToWishList from '~/components/AddToWishList';
+import Error from '~/components/Error';
 import ExpandableText from '~/components/ExpandableText';
 import GoBack from '~/components/GoBack';
 import HTMLDescription from '~/components/HTMLDescription';
@@ -11,17 +12,22 @@ import Loader from '~/components/Loader';
 import SellerCard from '~/components/SellerCard';
 import SvgShape from '~/components/SvgShape';
 import { Badge } from '~/components/ui/badge';
+import { Separator } from '~/components/ui/separator';
 import { Text } from '~/components/ui/text';
-import { useAnimatedHeader, useBook, useBookListings } from '~/hooks';
+import { useAnimatedHeader, useBook, useBookListing } from '~/hooks';
 
 const BookScreen = () => {
   const { bookId } = useLocalSearchParams();
 
-  const { data: book } = useBook(bookId);
+  const { data: book, isPending, error, refetch } = useBook(bookId);
+
+  const { data: bookListings } = useBookListing(bookId);
 
   const { scrollHandler, animatedHeaderStyle } = useAnimatedHeader();
 
-  const { data: bookListings } = useBookListings(bookId);
+  if (isPending) return <Loader varient="loading" />;
+
+  if (error) return <Error refetch={refetch} />;
 
   return (
     <View className="flex-1 bg-background">
@@ -40,7 +46,18 @@ const BookScreen = () => {
         renderItem={({ item }) => <SellerCard {...item} />}
         keyExtractor={(item) => item.id.toString()}
         contentContainerClassName="gap-5 pb-16"
-        ListHeaderComponent={Book}
+        ListHeaderComponent={() => (
+          <>
+            <Book />
+
+            {bookListings && bookListings.length > 0 && (
+              <>
+                <Separator className="my-5" />
+                <Text className="ml-5 font-medium">Buy This Book from Your Peers</Text>
+              </>
+            )}
+          </>
+        )}
         onScroll={scrollHandler}
         scrollEventThrottle={16}
       />
@@ -55,11 +72,7 @@ export default BookScreen;
 const Book = () => {
   const { bookId } = useLocalSearchParams();
 
-  const { data: book, isPending, error } = useBook(bookId);
-
-  if (isPending) return <Loader varient="loading" />;
-
-  if (error) return <Text>error</Text>;
+  const { data: book } = useBook(bookId);
 
   const {
     imageLinks,
@@ -70,7 +83,7 @@ const Book = () => {
     averageRating,
     categories,
     description,
-  } = book.volumeInfo;
+  } = book!.volumeInfo;
   return (
     <>
       <SvgShape color="#f683a7" secondaryColor="#f39655" />

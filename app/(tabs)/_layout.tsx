@@ -3,6 +3,12 @@ import Fontisto from '@expo/vector-icons/Fontisto';
 import { Tabs } from 'expo-router';
 import { Pressable } from 'react-native';
 
+import BookshelfIcon from '../../assets/tab_icons/bookshelf.svg';
+import HomeIcon from '../../assets/tab_icons/home.svg';
+import SearchIcon from '../../assets/tab_icons/search.svg';
+
+import TabBarIcon from '~/components/TabBarIcon';
+
 export default function TabLayout() {
   return (
     <Tabs
@@ -17,7 +23,12 @@ export default function TabLayout() {
         name="index"
         options={{
           title: 'Home',
-          tabBarIcon: ({ color }) => <Fontisto name="home" size={24} color={color} />,
+          tabBarIcon: ({ color, focused }) =>
+            focused ? (
+              <TabBarIcon Icon={HomeIcon} />
+            ) : (
+              <Fontisto name="home" size={24} color={color} />
+            ),
         }}
       />
       <Tabs.Screen
@@ -39,14 +50,24 @@ export default function TabLayout() {
         name="search-books"
         options={{
           title: 'Search',
-          tabBarIcon: ({ color }) => <Fontisto name="search" size={24} color={color} />,
+          tabBarIcon: ({ color, focused }) =>
+            focused ? (
+              <TabBarIcon Icon={SearchIcon} />
+            ) : (
+              <Fontisto name="search" size={24} color={color} />
+            ),
         }}
       />
       <Tabs.Screen
         name="book-listing"
         options={{
           title: 'Bookshelf',
-          tabBarIcon: ({ color }) => <FontAwesome6 name="book-bookmark" size={24} color={color} />,
+          tabBarIcon: ({ color, focused }) =>
+            focused ? (
+              <TabBarIcon Icon={BookshelfIcon} />
+            ) : (
+              <FontAwesome6 name="book-bookmark" size={24} color={color} />
+            ),
         }}
       />
     </Tabs>
