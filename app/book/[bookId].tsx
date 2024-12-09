@@ -50,8 +50,12 @@ const BookScreen = () => {
           <>
             <Book />
 
-            <Separator className="my-5" />
-            <Text className="ml-5 font-medium">Buy This Book from Your Peers</Text>
+            {bookListings && bookListings.length > 0 && (
+              <>
+                <Separator className="my-5" />
+                <Text className="ml-5 font-medium">Buy This Book from Your Peers</Text>
+              </>
+            )}
           </>
         )}
         onScroll={scrollHandler}
