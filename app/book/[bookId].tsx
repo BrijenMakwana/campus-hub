@@ -12,6 +12,7 @@ import Loader from '~/components/Loader';
 import SellerCard from '~/components/SellerCard';
 import SvgShape from '~/components/SvgShape';
 import { Badge } from '~/components/ui/badge';
+import { Separator } from '~/components/ui/separator';
 import { Text } from '~/components/ui/text';
 import { useAnimatedHeader, useBook, useBookListing } from '~/hooks';
 
@@ -45,7 +46,14 @@ const BookScreen = () => {
         renderItem={({ item }) => <SellerCard {...item} />}
         keyExtractor={(item) => item.id.toString()}
         contentContainerClassName="gap-5 pb-16"
-        ListHeaderComponent={Book}
+        ListHeaderComponent={() => (
+          <>
+            <Book />
+
+            <Separator className="my-5" />
+            <Text className="ml-5 font-medium">Buy This Book from Your Peers</Text>
+          </>
+        )}
         onScroll={scrollHandler}
         scrollEventThrottle={16}
       />

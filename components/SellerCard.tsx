@@ -18,7 +18,7 @@ const SellerCard = (props: IBookSaleWithUser) => {
   const { full_name } = users;
 
   return (
-    <View className="flex flex-row items-center justify-between gap-5 rounded-lg border border-gray-300 p-5">
+    <View className="mx-5 flex flex-row items-center justify-between gap-5 rounded-lg bg-secondary/15 p-5">
       <View className="flex-1 gap-2">
         <View className="flex flex-row gap-2">
           <User className="text-foreground" size={25} strokeWidth={2} />
@@ -39,15 +39,15 @@ const SellerCard = (props: IBookSaleWithUser) => {
           </Text>
         </Badge>
 
-        <Text className="text-gray-500">{remarks}</Text>
+        <Text>{remarks}</Text>
 
         <Text className="mt-auto text-sm">Added {dayjs(created_at).fromNow()}</Text>
       </View>
 
       <View className="gap-3">
-        <Text className="text-right text-lg font-medium text-primary">${price}</Text>
+        <Text className="text-right text-lg font-medium text-accent">${price}</Text>
 
-        <Button size="sm">
+        <Button size="sm" className="bg-secondary">
           <Text>Connect</Text>
         </Button>
       </View>
