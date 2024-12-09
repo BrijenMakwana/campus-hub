@@ -28,7 +28,7 @@ const HomeScreen = () => {
       default:
         return books;
     }
-  }, [activeTab]);
+  }, [activeTab, books]);
 
   if (isPending) return <Loading />;
 
