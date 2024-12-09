@@ -13,14 +13,14 @@ import SellerCard from '~/components/SellerCard';
 import SvgShape from '~/components/SvgShape';
 import { Badge } from '~/components/ui/badge';
 import { Text } from '~/components/ui/text';
-import { useAnimatedHeader, useBook, useBookListings } from '~/hooks';
+import { useAnimatedHeader, useBook, useBookListing } from '~/hooks';
 
 const BookScreen = () => {
   const { bookId } = useLocalSearchParams();
 
   const { data: book, isPending, error, refetch } = useBook(bookId);
 
-  const { data: bookListings } = useBookListings(bookId);
+  const { data: bookListings } = useBookListing(bookId);
 
   const { scrollHandler, animatedHeaderStyle } = useAnimatedHeader();
 
@@ -71,7 +71,7 @@ const Book = () => {
     averageRating,
     categories,
     description,
-  } = book.volumeInfo;
+  } = book!.volumeInfo;
   return (
     <>
       <SvgShape color="#f683a7" secondaryColor="#f39655" />

@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { supabase } from '~/supabase';
 import { IBookSaleWithUser } from '~/types';
 
-export const useBookListings = (bookId: string) => {
+export const useBookListing = (bookId: string) => {
   const getBookListings = async (): Promise<IBookSaleWithUser[]> => {
     const { data } = await supabase
       .from('book_listing')
