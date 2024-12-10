@@ -29,7 +29,7 @@ const BookSellerScreen = () => {
 
       <FlatList
         data={books}
-        renderItem={({ item }) => <BookItemWrapper {...item} removeBook={() => {}} />}
+        renderItem={({ item }) => <BookItemWrapper {...item} />}
         keyExtractor={(item) => item.id.toString()}
         contentContainerClassName="gap-5 pb-10 px-5"
         ListHeaderComponent={() => (
