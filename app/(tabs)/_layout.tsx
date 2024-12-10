@@ -8,6 +8,7 @@ import HomeIcon from '../../assets/tab_icons/home.svg';
 import SearchIcon from '../../assets/tab_icons/search.svg';
 
 import TabBarIcon from '~/components/TabBarIcon';
+import { THEME } from '~/lib/constants';
 
 export default function TabLayout() {
   return (
@@ -17,7 +18,7 @@ export default function TabLayout() {
         tabBarIconStyle: {
           marginBottom: 1,
         },
-        tabBarActiveTintColor: 'hsl(199 87% 55%)',
+        tabBarActiveTintColor: THEME.light.primary,
       }}>
       <Tabs.Screen
         name="index"
@@ -41,7 +42,7 @@ export default function TabLayout() {
               style={{
                 top: -20,
               }}>
-              <FontAwesome6 name="circle-plus" size={45} color="hsl(199 87% 55%)" />
+              <FontAwesome6 name="circle-plus" size={45} color={THEME.light.primary} />
             </Pressable>
           ),
         }}

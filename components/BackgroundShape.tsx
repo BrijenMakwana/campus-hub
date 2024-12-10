@@ -2,6 +2,8 @@ import * as React from 'react';
 import { Dimensions } from 'react-native';
 import Svg, { Path, Defs, LinearGradient, Stop } from 'react-native-svg';
 
+import { THEME } from '~/lib/constants';
+
 type BackgroundShapeProps = {
   height?: number;
 };
@@ -13,8 +15,8 @@ const BackgroundShape = ({ height = 300 }: BackgroundShapeProps) => {
     <Svg width={screenWidth} height={height} style={{ position: 'absolute', top: 0 }}>
       <Defs>
         <LinearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <Stop offset="0%" stopColor="#f683a7" />
-          <Stop offset="100%" stopColor="#f39655" />
+          <Stop offset="0%" stopColor={THEME.light.secondary} />
+          <Stop offset="100%" stopColor={THEME.light.accent} />
         </LinearGradient>
       </Defs>
       <Path
