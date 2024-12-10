@@ -1,5 +1,6 @@
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
+import { Link } from 'expo-router';
 import { TouchableOpacity, View } from 'react-native';
 
 import { Badge } from './ui/badge';
@@ -9,7 +10,6 @@ import { Text } from './ui/text';
 import { User } from '~/lib/icons/User';
 import { cn } from '~/lib/utils';
 import { BookCondition, IBookSaleWithUser } from '~/types';
-import { Link } from 'expo-router';
 
 const SellerCard = (props: IBookSaleWithUser) => {
   dayjs.extend(relativeTime);
