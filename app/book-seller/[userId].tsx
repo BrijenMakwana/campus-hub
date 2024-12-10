@@ -40,7 +40,7 @@ const BookSellerScreen = () => {
             </View>
 
             <Separator className="my-5" />
-            <Text className="font-medium">Books for Sale</Text>
+            <Text className="text-lg font-medium">Books for Sale ({books?.length})</Text>
           </>
         )}
       />
