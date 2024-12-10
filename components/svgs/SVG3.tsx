@@ -4,11 +4,11 @@ import Svg, { Path, Defs, LinearGradient, Stop } from 'react-native-svg';
 
 import { THEME } from '~/lib/constants';
 
-interface ISvgShape {
+interface ISVG3 {
   height?: number;
 }
 
-const SvgShape = ({ height = 380 }: ISvgShape) => {
+const SVG3 = ({ height = 380 }: ISVG3) => {
   const screenWidth = Dimensions.get('window').width;
 
   return (
@@ -55,4 +55,4 @@ const SvgShape = ({ height = 380 }: ISvgShape) => {
   );
 };
 
-export default SvgShape;
+export default SVG3;

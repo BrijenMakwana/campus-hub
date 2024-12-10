@@ -10,7 +10,7 @@ import GoBack from '~/components/GoBack';
 import HTMLDescription from '~/components/HTMLDescription';
 import Loader from '~/components/Loader';
 import SellerCard from '~/components/SellerCard';
-import SvgShape from '~/components/SvgShape';
+import SVG3 from '~/components/svgs/SVG3';
 import { Badge } from '~/components/ui/badge';
 import { Separator } from '~/components/ui/separator';
 import { Text } from '~/components/ui/text';
@@ -88,7 +88,7 @@ const Book = () => {
   } = book!.volumeInfo;
   return (
     <>
-      <SvgShape />
+      <SVG3 />
 
       <Animated.Image
         source={{

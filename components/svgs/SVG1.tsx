@@ -1,14 +1,13 @@
-import * as React from 'react';
 import { Dimensions } from 'react-native';
 import Svg, { Path, Defs, LinearGradient, Stop } from 'react-native-svg';
 
 import { THEME } from '~/lib/constants';
 
-type BackgroundShapeProps = {
+interface ISVG1 {
   height?: number;
-};
+}
 
-const BackgroundShape = ({ height = 300 }: BackgroundShapeProps) => {
+const SVG1 = ({ height = 300 }: ISVG1) => {
   const screenWidth = Dimensions.get('window').width;
 
   return (
@@ -35,4 +34,4 @@ const BackgroundShape = ({ height = 300 }: BackgroundShapeProps) => {
   );
 };
 
-export default BackgroundShape;
+export default SVG1;

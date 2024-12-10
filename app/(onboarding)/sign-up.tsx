@@ -3,9 +3,9 @@ import { View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import CustomInput from '~/components/CustomInput';
-import DecorativeShape from '~/components/DecorativeShape';
 import GoBack from '~/components/GoBack';
 import Loading from '~/components/Loading';
+import SVG2 from '~/components/svgs/SVG2';
 import { Button } from '~/components/ui/button';
 import { Text } from '~/components/ui/text';
 import { useSignUp } from '~/hooks';
@@ -32,7 +32,7 @@ const SignUpScreen = () => {
 
   return (
     <SafeAreaView className="flex-1 bg-background p-5">
-      <DecorativeShape />
+      <SVG2 />
 
       <GoBack text="back to login" color="text-secondary" />
 

@@ -5,9 +5,9 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import ReadingSvg from '../../assets/reading.svg';
 
-import BackgroundShape from '~/components/BackgroundShape';
 import CustomInput from '~/components/CustomInput';
 import Loading from '~/components/Loading';
+import SVG1 from '~/components/svgs/SVG1';
 import { Button } from '~/components/ui/button';
 import { Text } from '~/components/ui/text';
 import { useSignIn } from '~/hooks';
@@ -33,7 +33,7 @@ const SignInScreen = () => {
 
   return (
     <SafeAreaView className="flex-1 bg-background p-5">
-      <BackgroundShape />
+      <SVG1 />
 
       <ReadingSvg
         width={300}
