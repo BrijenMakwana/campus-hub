@@ -34,7 +34,7 @@ const SignUpScreen = () => {
     <SafeAreaView className="flex-1 bg-background p-5">
       <DecorativeShape />
 
-      <GoBack />
+      <GoBack text="back to login" color="text-secondary" />
 
       <View className="mt-3 gap-2">
         <Text className="text-2xl font-semibold">Welcome aboard, book lover!</Text>
