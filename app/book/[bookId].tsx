@@ -10,7 +10,7 @@ import GoBack from '~/components/GoBack';
 import HTMLDescription from '~/components/HTMLDescription';
 import Loader from '~/components/Loader';
 import SellerCard from '~/components/SellerCard';
-import SvgShape from '~/components/SvgShape';
+import SVG3 from '~/components/svgs/SVG3';
 import { Badge } from '~/components/ui/badge';
 import { Separator } from '~/components/ui/separator';
 import { Text } from '~/components/ui/text';
@@ -21,7 +21,7 @@ const BookScreen = () => {
 
   const { data: book, isPending, error, refetch } = useBook(bookId);
 
-  const { data: bookListings } = useBookListing(bookId);
+  const { data: bookListing } = useBookListing(bookId);
 
   const { scrollHandler, animatedHeaderStyle } = useAnimatedHeader();
 
@@ -42,15 +42,17 @@ const BookScreen = () => {
       </Animated.View>
 
       <Animated.FlatList
-        data={bookListings}
+        data={bookListing}
         renderItem={({ item }) => <SellerCard {...item} />}
         keyExtractor={(item) => item.id.toString()}
         contentContainerClassName="gap-5 pb-16"
         ListHeaderComponent={() => (
           <>
+            <GoBack className="absolute left-4 top-10" text="Back" color="text-background" />
+
             <Book />
 
-            {bookListings && bookListings.length > 0 && (
+            {bookListing && bookListing.length > 0 && (
               <>
                 <Separator className="my-5" />
                 <Text className="ml-5 font-medium">Buy This Book from Your Peers</Text>
@@ -86,13 +88,13 @@ const Book = () => {
   } = book!.volumeInfo;
   return (
     <>
-      <SvgShape />
+      <SVG3 />
 
       <Animated.Image
         source={{
           uri: imageLinks?.thumbnail || 'https://via.placeholder.com/300x400',
         }}
-        className="mt-32 aspect-[3/4] w-48 self-center rounded-md"
+        className="mt-32 aspect-[3/4] w-48 self-center rounded-md shadow-md"
         resizeMode="stretch"
         entering={FlipInEasyY.delay(200).duration(300).easing(Easing.inOut(Easing.quad))}
       />

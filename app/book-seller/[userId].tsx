@@ -25,7 +25,7 @@ const BookSellerScreen = () => {
 
   return (
     <SafeAreaView className="flex-1 gap-5 bg-background">
-      <GoBack className="ml-3" />
+      <GoBack className="ml-3" text="Back" color="text-secondary" />
 
       <View className="gap-2 px-5">
         <Text className="text-2xl font-semibold capitalize">{full_name}</Text>

@@ -2,12 +2,12 @@ import Svg, { Path, Defs, LinearGradient, Stop } from 'react-native-svg';
 
 import { THEME } from '~/lib/constants';
 
-type DecorativeShapeProps = {
+interface ISVG2 {
   width?: number;
   height?: number;
-};
+}
 
-const DecorativeShape = ({ width = 120, height = 200 }: DecorativeShapeProps) => {
+const SVG2 = ({ width = 120, height = 200 }: ISVG2) => {
   return (
     <Svg
       width={width}
@@ -29,4 +29,4 @@ const DecorativeShape = ({ width = 120, height = 200 }: DecorativeShapeProps) =>
   );
 };
 
-export default DecorativeShape;
+export default SVG2;

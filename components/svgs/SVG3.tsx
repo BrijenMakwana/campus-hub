@@ -4,11 +4,11 @@ import Svg, { Path, Defs, LinearGradient, Stop } from 'react-native-svg';
 
 import { THEME } from '~/lib/constants';
 
-interface ISvgShape {
+interface ISVG3 {
   height?: number;
 }
 
-const SvgShape = ({ height = 380 }: ISvgShape) => {
+const SVG3 = ({ height = 380 }: ISVG3) => {
   const screenWidth = Dimensions.get('window').width;
 
   return (
@@ -18,6 +18,7 @@ const SvgShape = ({ height = 380 }: ISvgShape) => {
       viewBox={`0 0 ${screenWidth} 380`}
       style={{
         position: 'absolute',
+        zIndex: -1,
       }}>
       <Defs>
         <LinearGradient id="grad" x1="0" y1="0" x2="1" y2="0.8">
@@ -54,4 +55,4 @@ const SvgShape = ({ height = 380 }: ISvgShape) => {
   );
 };
 
-export default SvgShape;
+export default SVG3;

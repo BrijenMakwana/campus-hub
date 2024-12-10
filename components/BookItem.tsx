@@ -30,7 +30,7 @@ const BookItem = (props: IBookItem) => {
             source={{
               uri: imageLinks?.thumbnail || 'https://via.placeholder.com/300x400',
             }}
-            className="aspect-[3/4] w-32 rounded-md"
+            className="aspect-[3/4] w-32 rounded-md shadow-md"
           />
         </View>
 
