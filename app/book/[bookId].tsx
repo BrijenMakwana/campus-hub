@@ -86,7 +86,7 @@ const Book = () => {
   } = book!.volumeInfo;
   return (
     <>
-      <SvgShape color="#f683a7" secondaryColor="#f39655" />
+      <SvgShape />
 
       <Animated.Image
         source={{

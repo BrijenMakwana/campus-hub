@@ -1,5 +1,7 @@
 import Svg, { Path, Defs, LinearGradient, Stop } from 'react-native-svg';
 
+import { THEME } from '~/lib/constants';
+
 type DecorativeShapeProps = {
   width?: number;
   height?: number;
@@ -13,8 +15,8 @@ const DecorativeShape = ({ width = 120, height = 200 }: DecorativeShapeProps) =>
       style={{ position: 'absolute', right: 0, top: height * 0.3 }}>
       <Defs>
         <LinearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <Stop offset="0%" stopColor="#f683a7" />
-          <Stop offset="100%" stopColor="#f39655" />
+          <Stop offset="0%" stopColor={THEME.light.secondary} />
+          <Stop offset="100%" stopColor={THEME.light.accent} />
         </LinearGradient>
       </Defs>
       <Path

@@ -2,13 +2,13 @@ import React from 'react';
 import { Dimensions } from 'react-native';
 import Svg, { Path, Defs, LinearGradient, Stop } from 'react-native-svg';
 
+import { THEME } from '~/lib/constants';
+
 interface ISvgShape {
-  color: string;
-  secondaryColor: string;
   height?: number;
 }
 
-const SvgShape = ({ color, secondaryColor, height = 380 }: ISvgShape) => {
+const SvgShape = ({ height = 380 }: ISvgShape) => {
   const screenWidth = Dimensions.get('window').width;
 
   return (
@@ -21,8 +21,8 @@ const SvgShape = ({ color, secondaryColor, height = 380 }: ISvgShape) => {
       }}>
       <Defs>
         <LinearGradient id="grad" x1="0" y1="0" x2="1" y2="0.8">
-          <Stop offset="0" stopColor={color} stopOpacity="1" />
-          <Stop offset="1" stopColor={secondaryColor} stopOpacity="0.8" />
+          <Stop offset="0" stopColor={THEME.light.secondary} stopOpacity="1" />
+          <Stop offset="1" stopColor={THEME.light.accent} stopOpacity="0.8" />
         </LinearGradient>
       </Defs>
       <Path
