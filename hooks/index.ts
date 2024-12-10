@@ -4,6 +4,7 @@ export * from './queries/useMyListedBooks';
 export * from './queries/useWishListedBooks';
 export * from './queries/useBookListing';
 export * from './queries/useBookListings';
+export * from './queries/useBookSeller';
 
 export * from './mutations/useSignIn';
 export * from './mutations/useSignUp';

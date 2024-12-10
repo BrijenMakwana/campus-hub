@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
-import { View } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
@@ -9,22 +9,24 @@ import { Text } from './ui/text';
 import { User } from '~/lib/icons/User';
 import { cn } from '~/lib/utils';
 import { BookCondition, IBookSaleWithUser } from '~/types';
+import { Link } from 'expo-router';
 
 const SellerCard = (props: IBookSaleWithUser) => {
   dayjs.extend(relativeTime);
 
-  const { users, book_condition, remarks, created_at, price } = props;
+  const { users, user_id, book_condition, remarks, created_at, price } = props;
 
   const { full_name } = users;
 
   return (
     <View className="mx-5 flex flex-row items-center justify-between gap-5 rounded-lg bg-secondary/15 p-5">
       <View className="flex-1 gap-2">
-        <View className="flex flex-row gap-2">
-          <User className="text-foreground" size={25} strokeWidth={2} />
-          <Text className="text-lg capitalize">{full_name}</Text>
-        </View>
-
+        <Link href={`/book-seller/${user_id}`} asChild>
+          <TouchableOpacity className="flex flex-row gap-2">
+            <User className="text-foreground" size={25} strokeWidth={2} />
+            <Text className="text-lg capitalize">{full_name}</Text>
+          </TouchableOpacity>
+        </Link>
         <Badge variant="outline" className="mt-2 self-start">
           <Text
             className={cn(
