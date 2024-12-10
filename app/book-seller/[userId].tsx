@@ -25,24 +25,20 @@ const BookSellerScreen = () => {
 
   return (
     <SafeAreaView className="flex-1 gap-5 bg-background">
-      <GoBack />
+      <GoBack className="ml-3" />
 
+      <View className="gap-2 px-5">
+        <Text className="text-2xl font-semibold capitalize">{full_name}</Text>
+        <Text className="font-medium text-gray-500">{phone}</Text>
+      </View>
+
+      <Separator />
+      <Text className="ml-5 text-lg font-medium">Books for Sale ({books?.length})</Text>
       <FlatList
         data={books}
         renderItem={({ item }) => <BookItemWrapper {...item} />}
         keyExtractor={(item) => item.id.toString()}
         contentContainerClassName="gap-5 pb-10 px-5"
-        ListHeaderComponent={() => (
-          <>
-            <View className="gap-2">
-              <Text className="text-2xl font-semibold capitalize">{full_name}</Text>
-              <Text className="font-medium text-gray-500">{phone}</Text>
-            </View>
-
-            <Separator className="my-5" />
-            <Text className="text-lg font-medium">Books for Sale ({books?.length})</Text>
-          </>
-        )}
       />
     </SafeAreaView>
   );
