@@ -92,7 +92,7 @@ const Book = () => {
         source={{
           uri: imageLinks?.thumbnail || 'https://via.placeholder.com/300x400',
         }}
-        className="mt-32 aspect-[3/4] w-48 self-center rounded-md"
+        className="mt-32 aspect-[3/4] w-48 self-center rounded-md shadow-md"
         resizeMode="stretch"
         entering={FlipInEasyY.delay(200).duration(300).easing(Easing.inOut(Easing.quad))}
       />
