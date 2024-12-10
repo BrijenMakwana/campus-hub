@@ -48,6 +48,8 @@ const BookScreen = () => {
         contentContainerClassName="gap-5 pb-16"
         ListHeaderComponent={() => (
           <>
+            <GoBack className="absolute left-4 top-10" text="Back" color="text-background" />
+
             <Book />
 
             {bookListing && bookListing.length > 0 && (
