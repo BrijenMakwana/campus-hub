@@ -21,7 +21,7 @@ const BookScreen = () => {
 
   const { data: book, isPending, error, refetch } = useBook(bookId);
 
-  const { data: bookListings } = useBookListing(bookId);
+  const { data: bookListing } = useBookListing(bookId);
 
   const { scrollHandler, animatedHeaderStyle } = useAnimatedHeader();
 
@@ -42,7 +42,7 @@ const BookScreen = () => {
       </Animated.View>
 
       <Animated.FlatList
-        data={bookListings}
+        data={bookListing}
         renderItem={({ item }) => <SellerCard {...item} />}
         keyExtractor={(item) => item.id.toString()}
         contentContainerClassName="gap-5 pb-16"
@@ -50,7 +50,7 @@ const BookScreen = () => {
           <>
             <Book />
 
-            {bookListings && bookListings.length > 0 && (
+            {bookListing && bookListing.length > 0 && (
               <>
                 <Separator className="my-5" />
                 <Text className="ml-5 font-medium">Buy This Book from Your Peers</Text>
