@@ -73,6 +73,7 @@ const SignUpScreen = () => {
             <CustomInput
               label="email"
               placeholder="e.g., johndoe@example.com"
+              keyboardType="email-address"
               onBlur={onBlur}
               onChangeText={onChange}
               value={value}
@@ -123,6 +124,7 @@ const SignUpScreen = () => {
               value={value}
               error={errors.password?.message}
               secureTextEntry
+              onSubmitEditing={handleSubmit(onSubmit)}
             />
           )}
           name="password"

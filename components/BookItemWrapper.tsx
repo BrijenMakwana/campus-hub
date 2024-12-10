@@ -13,7 +13,7 @@ import { Trash } from '~/lib/icons/Trash';
 import { IBookSale, IWishlistBook } from '~/types';
 
 type BookItemWrapperProps = (IWishlistBook | IBookSale) & {
-  removeBook: () => void;
+  removeBook?: () => void;
 };
 
 const BookItemWrapper = (props: BookItemWrapperProps) => {
@@ -24,6 +24,8 @@ const BookItemWrapper = (props: BookItemWrapperProps) => {
   if (isPending) return <Skeleton className="h-40 w-full bg-neutral-300" />;
 
   if (error) return;
+
+  if (!removeBook) return <BookItem {...book} {...rest} id={book_id} />;
 
   return (
     <GestureHandlerRootView>
