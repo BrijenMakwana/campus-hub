@@ -17,11 +17,11 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarIconStyle: {
-          marginBottom: 5,
-        },
         tabBarStyle: {
           height: 55,
+        },
+        tabBarLabelStyle: {
+          marginTop: 5,
         },
         tabBarActiveTintColor: THEME.light.primary,
       }}>
