@@ -6,6 +6,7 @@ export * from './queries/useBookListing';
 export * from './queries/useBookListings';
 export * from './queries/useBookSeller';
 export * from './queries/useBookListingsByUser';
+export * from './queries/useCurrentUser';
 
 export * from './mutations/useSignIn';
 export * from './mutations/useSignUp';

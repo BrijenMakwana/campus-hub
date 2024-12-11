@@ -1,10 +1,12 @@
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import Fontisto from '@expo/vector-icons/Fontisto';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { Tabs } from 'expo-router';
 import { Pressable } from 'react-native';
 
 import BookshelfIcon from '../../assets/tab_icons/bookshelf.svg';
 import HomeIcon from '../../assets/tab_icons/home.svg';
+import ProfileIcon from '../../assets/tab_icons/profile.svg';
 import SearchIcon from '../../assets/tab_icons/search.svg';
 
 import TabBarIcon from '~/components/TabBarIcon';
@@ -16,7 +18,10 @@ export default function TabLayout() {
       screenOptions={{
         headerShown: false,
         tabBarIconStyle: {
-          marginBottom: 1,
+          marginBottom: 5,
+        },
+        tabBarStyle: {
+          height: 55,
         },
         tabBarActiveTintColor: THEME.light.primary,
       }}>
@@ -68,6 +73,18 @@ export default function TabLayout() {
               <TabBarIcon Icon={BookshelfIcon} />
             ) : (
               <FontAwesome6 name="book-bookmark" size={24} color={color} />
+            ),
+        }}
+      />
+      <Tabs.Screen
+        name="profile"
+        options={{
+          title: 'Profile',
+          tabBarIcon: ({ color, focused }) =>
+            focused ? (
+              <TabBarIcon Icon={ProfileIcon} />
+            ) : (
+              <MaterialCommunityIcons name="account" size={24} color={color} />
             ),
         }}
       />
