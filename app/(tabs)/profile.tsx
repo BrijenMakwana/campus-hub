@@ -19,6 +19,7 @@ const ProfileScreen = () => {
     <SafeAreaView className="flex-1 gap-5 bg-background p-5">
       <View className="gap-2">
         <Text className="text-2xl font-semibold capitalize">{user?.user_metadata.full_name}</Text>
+        <Text className="font-medium text-gray-500">{user?.email}</Text>
         <Text className="font-medium text-gray-500">{user?.user_metadata.phone}</Text>
       </View>
 
