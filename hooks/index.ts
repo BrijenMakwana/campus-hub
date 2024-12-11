@@ -14,5 +14,6 @@ export * from './mutations/useListBookForSale';
 export * from './mutations/useAddBookToWishlist';
 export * from './mutations/useRemoveBookFromSale';
 export * from './mutations/useRemoveBookFromWishlist';
+export * from './mutations/useLogOut';
 
 export * from './useAnimatedHeader';

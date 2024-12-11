@@ -6,10 +6,12 @@ import Loading from '~/components/Loading';
 import { Button } from '~/components/ui/button';
 import { Separator } from '~/components/ui/separator';
 import { Text } from '~/components/ui/text';
-import { useCurrentUser } from '~/hooks';
+import { useCurrentUser, useLogout } from '~/hooks';
 
 const ProfileScreen = () => {
   const { data: user, isPending, error, refetch } = useCurrentUser();
+
+  const { mutate: logout } = useLogout();
 
   if (isPending) return <Loading />;
 
@@ -25,7 +27,7 @@ const ProfileScreen = () => {
 
       <Separator />
 
-      <Button size="lg" className="mb-5 mt-auto" variant="destructive">
+      <Button size="lg" className="mb-5 mt-auto" variant="destructive" onPress={() => logout()}>
         <Text>Logout</Text>
       </Button>
     </SafeAreaView>
