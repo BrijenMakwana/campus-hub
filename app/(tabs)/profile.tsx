@@ -1,6 +1,7 @@
 import { View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import CurrencyPicker from '~/components/CurrencyPicker';
 import Error from '~/components/Error';
 import Loading from '~/components/Loading';
 import { Button } from '~/components/ui/button';
@@ -26,6 +27,8 @@ const ProfileScreen = () => {
       </View>
 
       <Separator />
+
+      <CurrencyPicker />
 
       <Button size="lg" className="mb-5 mt-auto" variant="destructive" onPress={() => logout()}>
         <Text>Logout</Text>

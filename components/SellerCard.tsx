@@ -9,6 +9,7 @@ import { Text } from './ui/text';
 
 import { User } from '~/lib/icons/User';
 import { cn } from '~/lib/utils';
+import useCurrencyStore from '~/store';
 import { BookCondition, IBookSaleWithUser } from '~/types';
 
 const SellerCard = (props: IBookSaleWithUser) => {
@@ -17,6 +18,8 @@ const SellerCard = (props: IBookSaleWithUser) => {
   const { users, user_id, book_condition, remarks, created_at, price } = props;
 
   const { full_name } = users;
+
+  const { currency } = useCurrencyStore();
 
   return (
     <View className="mx-5 flex flex-row items-center justify-between gap-5 rounded-lg bg-secondary/15 p-5">
@@ -47,7 +50,10 @@ const SellerCard = (props: IBookSaleWithUser) => {
       </View>
 
       <View className="gap-3">
-        <Text className="text-right text-lg font-medium text-accent">${price}</Text>
+        <Text className="text-right text-lg font-medium text-accent">
+          {currency.symbol}
+          {price}
+        </Text>
 
         <Button size="sm" className="bg-secondary">
           <Text>Connect</Text>
