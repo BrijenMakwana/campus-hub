@@ -1,10 +1,10 @@
 import { TextInput, View, TouchableOpacity } from 'react-native';
 
 import BarcodeScanner from './BarcodeScanner';
+import SearchIcon from '../assets/tab_icons/search.svg';
 
 import { Clear } from '~/lib/icons/Clear';
 import { Scan } from '~/lib/icons/Scan';
-import { Search } from '~/lib/icons/Search';
 
 interface ISearchBar {
   value: string;
@@ -17,7 +17,7 @@ const SearchBar = (props: ISearchBar) => {
 
   return (
     <View className="mx-5 flex flex-row items-center justify-between gap-3 rounded-md border border-input px-3 py-2">
-      <Search className="text-foreground" size={23} strokeWidth={1.25} />
+      <SearchIcon height={25} width={25} />
 
       <TextInput
         placeholder="Search books here..."
