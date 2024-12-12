@@ -6,8 +6,8 @@ import { TouchableOpacity, View } from 'react-native';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
 import { Text } from './ui/text';
+import StudentIcon from '../assets/student.svg';
 
-import { User } from '~/lib/icons/User';
 import { cn } from '~/lib/utils';
 import useCurrencyStore from '~/store';
 import { BookCondition, IBookSaleWithUser } from '~/types';
@@ -25,8 +25,8 @@ const SellerCard = (props: IBookSaleWithUser) => {
     <View className="mx-5 flex flex-row items-center justify-between gap-5 rounded-lg bg-secondary/15 p-5">
       <View className="flex-1 gap-2">
         <Link href={`/book-seller/${user_id}`} asChild>
-          <TouchableOpacity className="flex flex-row gap-2">
-            <User className="text-foreground" size={25} strokeWidth={2} />
+          <TouchableOpacity className="flex flex-row items-center gap-3">
+            <StudentIcon height={30} width={30} />
             <Text className="text-lg capitalize">{full_name}</Text>
           </TouchableOpacity>
         </Link>
