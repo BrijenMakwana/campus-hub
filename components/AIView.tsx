@@ -21,6 +21,7 @@ const AIView = (props: IAIView) => {
       onPress={() => refetch()}
       disabled={isFetching || isSuccess}>
       <LottieView
+        autoPlay
         loop
         style={{
           height: 45,
@@ -31,7 +32,7 @@ const AIView = (props: IAIView) => {
       />
 
       {isFetching ? (
-        <Text className="text-sm text-background">AI is generating...</Text>
+        <Text className="text-sm text-background">Just a moment, AI is working…</Text>
       ) : (
         <Text className="text-sm text-background">{answer ?? text}</Text>
       )}
