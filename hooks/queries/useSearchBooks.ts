@@ -12,7 +12,7 @@ export const useSearchBooks = (query: string) => {
       },
     });
 
-    return response.data.items;
+    return response.data?.items ?? [];
   };
 
   return useQuery({
