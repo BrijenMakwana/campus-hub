@@ -18,17 +18,21 @@ const BookCard = (props: IBookSale) => {
 
   return (
     <Link href={`/book/${book_id}`} asChild>
-      <TouchableOpacity className="w-48 gap-5">
+      <TouchableOpacity className="h-64 w-48 rounded-2xl bg-accent/30 p-7">
         <Image
           source={{
             uri: imageLinks?.thumbnail || 'https://via.placeholder.com/300x400',
           }}
-          className="aspect-[3/4] w-48 rounded-md shadow-md"
+          className="absolute -top-16 aspect-[3/4] w-36 self-center rounded-xl shadow-md"
         />
 
-        <View className="gap-2">
-          <Text className="text-xl font-semibold">{title}</Text>
-          <Text className="text-gray-500">{authors.join(', ')}</Text>
+        <View className="mt-28 gap-2">
+          <Text className="text-lg font-semibold" numberOfLines={2}>
+            {title}
+          </Text>
+          <Text className="text-sm text-gray-500" numberOfLines={2}>
+            {authors.join(', ')}
+          </Text>
         </View>
       </TouchableOpacity>
     </Link>
