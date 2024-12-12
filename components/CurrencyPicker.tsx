@@ -1,6 +1,8 @@
 import { ScrollView } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { Label } from './ui/label';
+
 import { Button } from '~/components/ui/button';
 import {
   DropdownMenu,
@@ -10,7 +12,6 @@ import {
 } from '~/components/ui/dropdown-menu';
 import { Text } from '~/components/ui/text';
 import useCurrencyStore from '~/store';
-import { Label } from './ui/label';
 
 export const countriesAndCurrencies = [
   { country: 'United States', currency: 'USD', symbol: '$' },

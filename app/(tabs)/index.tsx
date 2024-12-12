@@ -44,7 +44,7 @@ const HomeScreen = () => {
           extraData={activeTab}
           renderItem={({ item }) => <BookCard {...item} />}
           keyExtractor={(item) => item.id.toString()}
-          contentContainerClassName="gap-7 pr-7"
+          contentContainerClassName="gap-7 pr-7 items-end"
           itemLayoutAnimation={LinearTransition}
           horizontal
           showsHorizontalScrollIndicator={false}
