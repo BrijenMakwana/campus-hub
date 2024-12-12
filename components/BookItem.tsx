@@ -6,6 +6,7 @@ import { Image, View, Text, TouchableOpacity } from 'react-native';
 import { Badge } from './ui/badge';
 
 import { cn } from '~/lib/utils';
+import useCurrencyStore from '~/store';
 import { BookCondition, IGoogleBook } from '~/types';
 
 interface IBookItem extends IGoogleBook {
@@ -19,6 +20,8 @@ const BookItem = (props: IBookItem) => {
   const { id, volumeInfo, price, book_condition, remarks, created_at } = props;
 
   const { imageLinks, title, authors, pageCount } = volumeInfo;
+
+  const { currency } = useCurrencyStore();
 
   dayjs.extend(relativeTime);
 
@@ -60,7 +63,12 @@ const BookItem = (props: IBookItem) => {
               </Badge>
             )}
 
-            {price && <Text className="self-start text-lg font-medium text-primary">${price}</Text>}
+            {price && (
+              <Text className="self-start text-lg font-medium text-primary">
+                {currency.symbol}
+                {price}
+              </Text>
+            )}
           </View>
 
           {remarks && <Text className="mt-1 text-gray-500">{remarks}</Text>}
