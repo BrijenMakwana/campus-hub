@@ -1,7 +1,5 @@
 import { create } from 'zustand';
 
-import { countriesAndCurrencies } from '~/components/CurrencyPicker';
-
 interface Currency {
   country: string;
   currency: string;
@@ -14,7 +12,8 @@ interface CurrencyStore {
 }
 
 const useCurrencyStore = create<CurrencyStore>((set) => ({
-  currency: countriesAndCurrencies[0],
+  currency: { country: 'United States', currency: 'USD', symbol: '$' },
+
   setCurrency: (newCurrency) => set({ currency: newCurrency }),
 }));
 
