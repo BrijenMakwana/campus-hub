@@ -26,7 +26,7 @@ const BookCard = (props: IBookSale) => {
           className="absolute -top-16 aspect-[3/4] w-36 self-center rounded-xl shadow-md"
         />
 
-        <View className="mt-28 gap-2">
+        <View className="mt-28 gap-1">
           <Text className="text-lg font-semibold" numberOfLines={2}>
             {title}
           </Text>
