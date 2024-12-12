@@ -1,19 +1,22 @@
 import { useMemo, useState } from 'react';
-import { View } from 'react-native';
+import { ScrollView, View, FlatList } from 'react-native';
 import Animated, { LinearTransition } from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import BookCard from '~/components/BookCard';
+import BookItemWithUser from '~/components/BookItemWithUser';
 import Error from '~/components/Error';
 import Loading from '~/components/Loading';
 import VerticalTabs from '~/components/VerticalTabs';
-import { useBookListings } from '~/hooks';
+import { useBookListings, useBookListingsWithUsers } from '~/hooks';
 import { BookCondition } from '~/types';
 
 const HomeScreen = () => {
   const [activeTab, setActiveTab] = useState(0);
 
   const { data: books, isPending, error, refetch } = useBookListings();
+
+  const { data: booksWithUsers } = useBookListingsWithUsers();
 
   const sortBooks = useMemo(() => {
     switch (activeTab) {
@@ -36,20 +39,31 @@ const HomeScreen = () => {
 
   return (
     <SafeAreaView className="flex-1 bg-background">
-      <View className="mt-10 flex flex-row gap-5">
-        <VerticalTabs activeTab={activeTab} setActiveTab={setActiveTab} />
+      <ScrollView className="flex-1" contentContainerClassName="gap-5">
+        <View className="mt-10 flex flex-row gap-5">
+          <VerticalTabs activeTab={activeTab} setActiveTab={setActiveTab} />
 
-        <Animated.FlatList
-          data={sortBooks}
-          extraData={activeTab}
-          renderItem={({ item }) => <BookCard {...item} />}
+          <Animated.FlatList
+            data={sortBooks}
+            extraData={activeTab}
+            renderItem={({ item }) => <BookCard {...item} />}
+            keyExtractor={(item) => item.id.toString()}
+            contentContainerClassName="gap-7 pr-7 items-end"
+            itemLayoutAnimation={LinearTransition}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+          />
+        </View>
+
+        <FlatList
+          data={booksWithUsers}
+          renderItem={({ item }) => <BookItemWithUser {...item} />}
           keyExtractor={(item) => item.id.toString()}
-          contentContainerClassName="gap-7 pr-7 items-end"
-          itemLayoutAnimation={LinearTransition}
+          contentContainerClassName="gap-7 px-7"
           horizontal
           showsHorizontalScrollIndicator={false}
         />
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };

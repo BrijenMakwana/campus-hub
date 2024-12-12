@@ -49,7 +49,7 @@ const BookScreen = () => {
         data={bookListing}
         renderItem={({ item }) => <SellerCard {...item} />}
         keyExtractor={(item) => item.id.toString()}
-        contentContainerClassName="gap-5 pb-16"
+        contentContainerClassName="gap-5 pb-28"
         ListHeaderComponent={() => (
           <>
             <GoBack className="absolute left-4 top-10" text="Back" color="text-background" />
