@@ -17,3 +17,4 @@ export * from './mutations/useRemoveBookFromWishlist';
 export * from './mutations/useLogOut';
 
 export * from './useAnimatedHeader';
+export * from './useAI';

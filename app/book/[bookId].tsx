@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import Animated, { FlipInEasyY, Easing } from 'react-native-reanimated';
 
+import AIView from '~/components/AIView';
 import AddToWishList from '~/components/AddToWishList';
 import Error from '~/components/Error';
 import ExpandableText from '~/components/ExpandableText';
@@ -15,6 +16,7 @@ import { Badge } from '~/components/ui/badge';
 import { Separator } from '~/components/ui/separator';
 import { Text } from '~/components/ui/text';
 import { useAnimatedHeader, useBook, useBookListing } from '~/hooks';
+import useCurrencyStore from '~/store';
 
 const BookScreen = () => {
   const { bookId } = useLocalSearchParams();
@@ -24,6 +26,8 @@ const BookScreen = () => {
   const { data: bookListing } = useBookListing(bookId);
 
   const { scrollHandler, animatedHeaderStyle } = useAnimatedHeader();
+
+  const { currency } = useCurrencyStore();
 
   if (isPending) return <Loader varient="loading" />;
 
@@ -64,7 +68,13 @@ const BookScreen = () => {
         scrollEventThrottle={16}
       />
 
-      <AddToWishList bookId={bookId as string} />
+      {/* <AddToWishList bookId={bookId as string} />
+       */}
+
+      <AIView
+        text="Confused About Price? Ask AI!"
+        prompt={`Suggest a fair price for a second-hand book titled ${book.volumeInfo.title} by ${book.volumeInfo.authors.join(', ')}. The book is located in ${currency.country}, and the price should be in ${currency.currency}. Consider typical second-hand book pricing in this region and factor in the book’s used condition.Provide a one-line response with just the price suggestion.`}
+      />
     </View>
   );
 };
