@@ -7,6 +7,7 @@ export interface IGoogleBook {
     description: string;
     imageLinks: {
       thumbnail: string;
+      large?: string;
     };
     pageCount: number;
     categories: string[];

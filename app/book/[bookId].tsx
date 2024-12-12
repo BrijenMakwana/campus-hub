@@ -92,7 +92,7 @@ const Book = () => {
 
       <Animated.Image
         source={{
-          uri: imageLinks?.thumbnail || 'https://via.placeholder.com/300x400',
+          uri: imageLinks?.large || imageLinks?.thumbnail || 'https://via.placeholder.com/300x400',
         }}
         className="mt-32 aspect-[3/4] w-48 self-center rounded-md shadow-md"
         resizeMode="stretch"
