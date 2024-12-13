@@ -1,12 +1,13 @@
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
-import { Link } from 'expo-router';
-import { TouchableOpacity, Image, View } from 'react-native';
+import { Image, View } from 'react-native';
 
+import ConnectCall from './ConnectCall';
 import { Badge } from './ui/badge';
 import { Skeleton } from './ui/skeleton';
 import { Text } from './ui/text';
 import StudentIcon from '../assets/student.svg';
+import { Separator } from './ui/separator';
 
 import { useBook } from '~/hooks';
 import { cn } from '~/lib/utils';
@@ -14,9 +15,9 @@ import useCurrencyStore from '~/store';
 import { BookCondition, IBookSaleWithUser } from '~/types';
 
 const BookItemWithUser = (props: IBookSaleWithUser) => {
-  const { book_id, book_condition, price, created_at, users, user_id } = props;
+  const { book_id, book_condition, price, created_at, users } = props;
 
-  const { full_name } = users;
+  const { full_name, phone } = users;
 
   const { data: book, isPending } = useBook(book_id);
 
@@ -27,8 +28,8 @@ const BookItemWithUser = (props: IBookSaleWithUser) => {
   dayjs.extend(relativeTime);
 
   return (
-    <Link href={`/book-seller/${user_id}`} asChild>
-      <TouchableOpacity className="flex flex-row justify-between gap-5 rounded-2xl bg-secondary/15 p-5">
+    <View className="gap-5 rounded-2xl bg-secondary/15 p-5">
+      <View className="flex flex-row gap-5">
         <Image
           source={{
             uri: book?.volumeInfo.imageLinks.thumbnail || 'https://via.placeholder.com/300x400',
@@ -36,7 +37,7 @@ const BookItemWithUser = (props: IBookSaleWithUser) => {
           className="aspect-[3/4] w-28 rounded-md shadow-md"
         />
 
-        <View className="flex-1 gap-1">
+        <View className="w-48 flex-1 gap-1">
           <Text className="text-lg font-semibold" numberOfLines={2}>
             {book?.volumeInfo.title}
           </Text>
@@ -50,7 +51,7 @@ const BookItemWithUser = (props: IBookSaleWithUser) => {
               <Badge variant="outline" className="self-start">
                 <Text
                   className={cn(
-                    'font-medium',
+                    'text-sm font-medium',
                     book_condition === BookCondition.GOOD
                       ? 'text-green-400'
                       : book_condition === BookCondition.USED
@@ -69,17 +70,22 @@ const BookItemWithUser = (props: IBookSaleWithUser) => {
               </Text>
             )}
           </View>
-
-          <View className="mt-5 gap-1 self-end">
-            <View className="flex flex-row items-center gap-3">
-              <StudentIcon height={20} width={20} />
-              <Text>{full_name}</Text>
-            </View>
-            <Text className="text-right text-sm">Added {dayjs(created_at).fromNow()}</Text>
-          </View>
         </View>
-      </TouchableOpacity>
-    </Link>
+      </View>
+
+      <Separator className="bg-background" />
+
+      <View className="flex flex-row items-center justify-between">
+        <View className="gap-2">
+          <View className="flex flex-row items-center gap-3">
+            <StudentIcon height={20} width={20} />
+            <Text>{full_name}</Text>
+          </View>
+          <Text className="text-sm">Added {dayjs(created_at).fromNow()}</Text>
+        </View>
+        <ConnectCall phone={phone} />
+      </View>
+    </View>
   );
 };
 

@@ -6,8 +6,11 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import BookCard from '~/components/BookCard';
 import BookItemWithUser from '~/components/BookItemWithUser';
 import Error from '~/components/Error';
+import Header from '~/components/Header';
 import Loading from '~/components/Loading';
 import VerticalTabs from '~/components/VerticalTabs';
+import SVG4 from '~/components/svgs/SVG4';
+import { Label } from '~/components/ui/label';
 import { useBookListings, useBookListingsWithUsers } from '~/hooks';
 import { BookCondition } from '~/types';
 
@@ -39,8 +42,16 @@ const HomeScreen = () => {
 
   return (
     <SafeAreaView className="flex-1 bg-background">
-      <ScrollView className="flex-1" contentContainerClassName="gap-5">
-        <View className="mt-10 flex flex-row gap-5">
+      <SVG4 />
+      <ScrollView
+        className="flex-1"
+        contentContainerClassName="gap-5 pb-10"
+        stickyHeaderIndices={[0]}
+        showsVerticalScrollIndicator={false}>
+        <Header />
+
+        <Label className="ml-5">Discover Books</Label>
+        <View className="flex flex-row gap-5">
           <VerticalTabs activeTab={activeTab} setActiveTab={setActiveTab} />
 
           <Animated.FlatList
@@ -54,6 +65,8 @@ const HomeScreen = () => {
             showsHorizontalScrollIndicator={false}
           />
         </View>
+
+        <Label className="ml-5">Get in Touch for Books</Label>
 
         <FlatList
           data={booksWithUsers}
