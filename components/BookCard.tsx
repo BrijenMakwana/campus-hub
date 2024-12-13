@@ -30,7 +30,7 @@ const BookCard = (props: IBookSale) => {
           <Text className="text-lg font-semibold" numberOfLines={2}>
             {title}
           </Text>
-          <Text className="text-sm text-gray-500" numberOfLines={2}>
+          <Text className="text-sm font-medium text-gray-500" numberOfLines={2}>
             {authors.join(', ')}
           </Text>
         </View>

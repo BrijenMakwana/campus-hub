@@ -8,6 +8,7 @@ import BookItemWithUser from '~/components/BookItemWithUser';
 import Error from '~/components/Error';
 import Loading from '~/components/Loading';
 import VerticalTabs from '~/components/VerticalTabs';
+import { Label } from '~/components/ui/label';
 import { useBookListings, useBookListingsWithUsers } from '~/hooks';
 import { BookCondition } from '~/types';
 
@@ -40,7 +41,8 @@ const HomeScreen = () => {
   return (
     <SafeAreaView className="flex-1 bg-background">
       <ScrollView className="flex-1" contentContainerClassName="gap-5">
-        <View className="mt-10 flex flex-row gap-5">
+        <Label className="ml-5">Discover Books</Label>
+        <View className="flex flex-row gap-5">
           <VerticalTabs activeTab={activeTab} setActiveTab={setActiveTab} />
 
           <Animated.FlatList
@@ -54,6 +56,8 @@ const HomeScreen = () => {
             showsHorizontalScrollIndicator={false}
           />
         </View>
+
+        <Label className="ml-5">Get in Touch for Books</Label>
 
         <FlatList
           data={booksWithUsers}

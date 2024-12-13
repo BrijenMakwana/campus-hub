@@ -37,7 +37,7 @@ const BookItemWithUser = (props: IBookSaleWithUser) => {
           className="aspect-[3/4] w-28 rounded-md shadow-md"
         />
 
-        <View className="flex-1 gap-1">
+        <View className="w-48 flex-1 gap-1">
           <Text className="text-lg font-semibold" numberOfLines={2}>
             {book?.volumeInfo.title}
           </Text>
@@ -81,7 +81,7 @@ const BookItemWithUser = (props: IBookSaleWithUser) => {
             <StudentIcon height={20} width={20} />
             <Text>{full_name}</Text>
           </View>
-          <Text className="text-sm">Added {dayjs(created_at).fromNow()}</Text>V
+          <Text className="text-sm">Added {dayjs(created_at).fromNow()}</Text>
         </View>
         <ConnectCall phone={phone} />
       </View>
