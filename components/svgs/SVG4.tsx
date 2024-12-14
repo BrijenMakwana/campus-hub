@@ -31,9 +31,9 @@ const SVG4 = ({ height = 100 }: ISVG4) => {
         d={`
           M0 0
           L${screenWidth} 0
-          L${screenWidth} ${height * 0.4}
-          C${screenWidth * 0.85} ${height * 0.5}, ${screenWidth * 0.7} ${height * 0.6}, ${screenWidth * 0.5} ${height * 0.7}
-          C${screenWidth * 0.3} ${height * 0.8}, ${screenWidth * 0.15} ${height * 0.85}, 0 ${height * 0.9}
+          L${screenWidth} ${height * 0.45}
+          C${screenWidth} ${height * 0.45}, ${screenWidth * 0.8} ${height * 0.8}, ${screenWidth * 0.6} ${height * 0.7}
+          L0 ${height * 0.1}
           L0 0
           Z
         `}
@@ -43,9 +43,9 @@ const SVG4 = ({ height = 100 }: ISVG4) => {
         d={`
           M0 0
           L${screenWidth} 0
-          L${screenWidth} ${height * 0.3}
-          C${screenWidth * 0.75} ${height * 0.4}, ${screenWidth * 0.6} ${height * 0.5}, ${screenWidth * 0.4} ${height * 0.6}
-          C${screenWidth * 0.2} ${height * 0.7}, ${screenWidth * 0.1} ${height * 0.75}, 0 ${height * 0.8}
+          L${screenWidth} ${height * 0.35}
+          C${screenWidth} ${height * 0.35}, ${screenWidth * 0.75} ${height * 0.7}, ${screenWidth * 0.55} ${height * 0.6}
+          L0 ${height * 0.05}
           L0 0
           Z
         `}

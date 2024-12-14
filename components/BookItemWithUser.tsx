@@ -1,5 +1,6 @@
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
+import { Link } from 'expo-router';
 import { Image, TouchableOpacity, View } from 'react-native';
 
 import ConnectCall from './ConnectCall';
@@ -13,7 +14,6 @@ import { useBook } from '~/hooks';
 import { cn } from '~/lib/utils';
 import useCurrencyStore from '~/store';
 import { BookCondition, IBookSaleWithUser } from '~/types';
-import { Link } from 'expo-router';
 
 const BookItemWithUser = (props: IBookSaleWithUser) => {
   const { book_id, book_condition, price, created_at, users } = props;
