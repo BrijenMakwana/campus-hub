@@ -11,18 +11,19 @@ import StudentIcon from '../assets/student.svg';
 import { cn } from '~/lib/utils';
 import useCurrencyStore from '~/store';
 import { BookCondition, IBookSaleWithUser } from '~/types';
+import ConnectCall from './ConnectCall';
 
 const SellerCard = (props: IBookSaleWithUser) => {
   dayjs.extend(relativeTime);
 
   const { users, user_id, book_condition, remarks, created_at, price } = props;
 
-  const { full_name } = users;
+  const { full_name, phone } = users;
 
   const { currency } = useCurrencyStore();
 
   return (
-    <View className="mx-5 flex flex-row items-center justify-between gap-5 rounded-lg bg-secondary/15 p-5">
+    <View className="mx-5 flex flex-row items-center justify-between gap-5 rounded-2xl bg-secondary/15 p-5">
       <View className="flex-1 gap-2">
         <Link href={`/book-seller/${user_id}`} asChild>
           <TouchableOpacity className="flex flex-row items-center gap-3">
@@ -55,9 +56,7 @@ const SellerCard = (props: IBookSaleWithUser) => {
           {price}
         </Text>
 
-        <Button size="sm" className="bg-secondary">
-          <Text>Connect</Text>
-        </Button>
+        <ConnectCall phone={phone} />
       </View>
     </View>
   );
