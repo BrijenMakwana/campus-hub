@@ -3,6 +3,7 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 import { Link } from 'expo-router';
 import { TouchableOpacity, View } from 'react-native';
 
+import ConnectCall from './ConnectCall';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
 import { Text } from './ui/text';
@@ -17,12 +18,12 @@ const SellerCard = (props: IBookSaleWithUser) => {
 
   const { users, user_id, book_condition, remarks, created_at, price } = props;
 
-  const { full_name } = users;
+  const { full_name, phone } = users;
 
   const { currency } = useCurrencyStore();
 
   return (
-    <View className="mx-5 flex flex-row items-center justify-between gap-5 rounded-lg bg-secondary/15 p-5">
+    <View className="mx-5 flex flex-row items-center justify-between gap-5 rounded-2xl bg-secondary/20 p-5">
       <View className="flex-1 gap-2">
         <Link href={`/book-seller/${user_id}`} asChild>
           <TouchableOpacity className="flex flex-row items-center gap-3">
@@ -46,18 +47,18 @@ const SellerCard = (props: IBookSaleWithUser) => {
 
         <Text>{remarks}</Text>
 
-        <Text className="mt-auto text-sm">Added {dayjs(created_at).fromNow()}</Text>
+        <Text className="mt-auto text-sm text-neutral-500">
+          Added {dayjs(created_at).fromNow()}
+        </Text>
       </View>
 
       <View className="gap-3">
-        <Text className="text-right text-lg font-medium text-accent">
+        <Text className="text-right text-lg font-medium text-primary">
           {currency.symbol}
           {price}
         </Text>
 
-        <Button size="sm" className="bg-secondary">
-          <Text>Connect</Text>
-        </Button>
+        <ConnectCall phone={phone} />
       </View>
     </View>
   );

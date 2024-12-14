@@ -22,6 +22,7 @@ export default function RootLayout() {
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="book/[bookId]" options={{ headerShown: false }} />
         <Stack.Screen name="book-seller/[userId]" options={{ headerShown: false }} />
+        <Stack.Screen name="app-info" options={{ headerShown: false }} />
       </Stack>
 
       <Toast />
