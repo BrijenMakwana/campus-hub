@@ -13,12 +13,17 @@ import { Text } from '~/components/ui/text';
 import { useSignIn } from '~/hooks';
 import { ArrowRight } from '~/lib/icons/ArrowRight';
 
+interface ISignInForm {
+  email: string;
+  password: string;
+}
+
 const SignInScreen = () => {
   const {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<ISignInForm>({
     defaultValues: {
       email: '',
       password: '',
@@ -27,7 +32,7 @@ const SignInScreen = () => {
 
   const { mutate: signIn, isPending } = useSignIn();
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: ISignInForm) => {
     signIn(data);
   };
 
