@@ -1,8 +1,9 @@
 import { CameraView, useCameraPermissions } from 'expo-camera';
 import LottieView from 'lottie-react-native';
 import React, { PropsWithChildren, SetStateAction, useState } from 'react';
-import { TouchableOpacity, Modal, View, Button, StyleSheet } from 'react-native';
+import { Modal, View, StyleSheet, TouchableOpacity } from 'react-native';
 
+import { Button } from './ui/button';
 import { Text } from './ui/text';
 
 interface IBarcodeScanner {
@@ -20,7 +21,11 @@ const BarcodeScanner = (props: PropsWithChildren<IBarcodeScanner>) => {
 
   return (
     <>
-      <TouchableOpacity onPress={() => setModalVisible(true)}>{children}</TouchableOpacity>
+      <TouchableOpacity
+        className="items-center justify-center rounded-md border border-input px-5"
+        onPress={() => setModalVisible(true)}>
+        {children}
+      </TouchableOpacity>
 
       <Modal visible={modalVisible} onRequestClose={() => setModalVisible(false)}>
         <CameraViewer setValue={setValue} onClose={() => setModalVisible(false)} />
@@ -42,9 +47,11 @@ const CameraViewer = (props: ICameraViewer) => {
   if (!permission.granted) {
     // Camera permissions are not granted yet.
     return (
-      <View style={StyleSheet.absoluteFillObject}>
-        <Text>We need your permission to show the camera</Text>
-        <Button onPress={requestPermission} title="grant permission" />
+      <View className="flex-1 items-center justify-center gap-5">
+        <Text className="text-center text-lg">We need your permission to show the camera</Text>
+        <Button onPress={requestPermission}>
+          <Text>Grant Permission</Text>
+        </Button>
       </View>
     );
   }
