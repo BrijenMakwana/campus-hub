@@ -18,7 +18,7 @@ const BookCard = (props: IBookSale) => {
 
   return (
     <Link href={`/book/${book_id}`} asChild>
-      <TouchableOpacity className="h-60 w-48 rounded-2xl bg-accent/15 p-7">
+      <TouchableOpacity className="h-60 w-48 rounded-2xl bg-accent/20 p-7">
         <Image
           source={{
             uri: imageLinks?.thumbnail || 'https://via.placeholder.com/300x400',

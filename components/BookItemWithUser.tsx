@@ -28,7 +28,7 @@ const BookItemWithUser = (props: IBookSaleWithUser) => {
   dayjs.extend(relativeTime);
 
   return (
-    <View className="gap-5 rounded-2xl bg-secondary/15 p-5">
+    <View className="gap-5 rounded-2xl bg-secondary/20 p-5">
       <View className="flex flex-row gap-5">
         <Image
           source={{
@@ -81,7 +81,7 @@ const BookItemWithUser = (props: IBookSaleWithUser) => {
             <StudentIcon height={20} width={20} />
             <Text numberOfLines={1}>{full_name}</Text>
           </View>
-          <Text className="text-sm">Added {dayjs(created_at).fromNow()}</Text>
+          <Text className="text-sm text-neutral-500">Added {dayjs(created_at).fromNow()}</Text>
         </View>
         <ConnectCall phone={phone} />
       </View>

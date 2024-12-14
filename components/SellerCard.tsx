@@ -23,7 +23,7 @@ const SellerCard = (props: IBookSaleWithUser) => {
   const { currency } = useCurrencyStore();
 
   return (
-    <View className="mx-5 flex flex-row items-center justify-between gap-5 rounded-2xl bg-secondary/15 p-5">
+    <View className="mx-5 flex flex-row items-center justify-between gap-5 rounded-2xl bg-secondary/20 p-5">
       <View className="flex-1 gap-2">
         <Link href={`/book-seller/${user_id}`} asChild>
           <TouchableOpacity className="flex flex-row items-center gap-3">
