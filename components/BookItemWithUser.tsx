@@ -34,11 +34,11 @@ const BookItemWithUser = (props: IBookSaleWithUser) => {
           source={{
             uri: book?.volumeInfo.imageLinks.thumbnail || 'https://via.placeholder.com/300x400',
           }}
-          className="aspect-[3/4] w-28 rounded-md shadow-md"
+          className="aspect-[3/4] w-24 rounded-md shadow-md"
         />
 
         <View className="w-48 flex-1 gap-1">
-          <Text className="text-lg font-semibold" numberOfLines={2}>
+          <Text className="font-semibold" numberOfLines={2}>
             {book?.volumeInfo.title}
           </Text>
 
@@ -73,13 +73,13 @@ const BookItemWithUser = (props: IBookSaleWithUser) => {
         </View>
       </View>
 
-      <Separator className="bg-background" />
+      <Separator />
 
       <View className="flex flex-row items-center justify-between">
         <View className="gap-2">
-          <View className="flex flex-row items-center gap-3">
+          <View className="flex flex-row items-center gap-2">
             <StudentIcon height={20} width={20} />
-            <Text>{full_name}</Text>
+            <Text numberOfLines={1}>{full_name}</Text>
           </View>
           <Text className="text-sm">Added {dayjs(created_at).fromNow()}</Text>
         </View>

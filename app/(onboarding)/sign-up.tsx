@@ -10,23 +10,30 @@ import { Button } from '~/components/ui/button';
 import { Text } from '~/components/ui/text';
 import { useSignUp } from '~/hooks';
 
+interface ISignUpForm {
+  fullName: string;
+  email: string;
+  phone: string;
+  password: string;
+}
+
 const SignUpScreen = () => {
   const {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<ISignUpForm>({
     defaultValues: {
       fullName: '',
       email: '',
-      phone: 0,
+      phone: '',
       password: '',
     },
   });
 
   const { mutate: signUp, isPending } = useSignUp();
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: ISignUpForm) => {
     signUp(data);
   };
 
