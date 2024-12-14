@@ -1,9 +1,11 @@
+import { LinearGradient } from 'expo-linear-gradient';
 import LottieView from 'lottie-react-native';
 import { TouchableOpacity } from 'react-native';
 
 import { Text } from './ui/text';
 
 import { useAI } from '~/hooks';
+import { THEME } from '~/lib/constants';
 
 interface IAIView {
   text: string;
@@ -16,29 +18,36 @@ const AIView = (props: IAIView) => {
   const { data: answer, isFetching, error, refetch, isSuccess } = useAI(prompt);
 
   return (
-    <TouchableOpacity
-      className="gap5 absolute bottom-5 right-5 flex flex-row items-center justify-between rounded-full bg-secondary px-5"
-      onPress={() => refetch()}
-      disabled={isFetching || isSuccess}>
-      <LottieView
-        autoPlay
-        loop
-        style={{
-          height: 45,
-          width: 45,
-        }}
-        source={require('./../assets/ai.zip')}
-        speed={1}
-      />
+    <LinearGradient
+      colors={[THEME.light.secondary, THEME.light.accent, THEME.light.primary]}
+      className="absolute bottom-5 right-5 p-1"
+      style={{
+        borderRadius: 100,
+      }}>
+      <TouchableOpacity
+        className="flex flex-row items-center justify-between rounded-full bg-background pr-3"
+        onPress={() => refetch()}
+        disabled={isFetching || isSuccess}>
+        <LottieView
+          autoPlay
+          loop
+          style={{
+            height: 40,
+            width: 40,
+          }}
+          source={require('./../assets/ai.zip')}
+          speed={1}
+        />
 
-      {isFetching ? (
-        <Text className="text-sm text-background">Just a moment, AI is working…</Text>
-      ) : (
-        <Text className="text-sm text-background">{answer ?? text}</Text>
-      )}
+        {isFetching ? (
+          <Text className="text-sm">Just a moment, AI is working…</Text>
+        ) : (
+          <Text className="text-sm">{answer ?? text}</Text>
+        )}
 
-      {error && <Text className="text-background">{error.message}</Text>}
-    </TouchableOpacity>
+        {error && <Text className="text-red-400">{error.message}</Text>}
+      </TouchableOpacity>
+    </LinearGradient>
   );
 };
 
