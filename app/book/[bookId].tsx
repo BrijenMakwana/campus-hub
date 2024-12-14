@@ -1,4 +1,5 @@
 import { useLocalSearchParams } from 'expo-router';
+import LottieView from 'lottie-react-native';
 import { View } from 'react-native';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import Animated, { FlipInEasyY, Easing } from 'react-native-reanimated';
@@ -56,11 +57,12 @@ const BookScreen = () => {
 
             <Book />
 
-            {bookListing && bookListing.length > 0 && (
-              <>
-                <Separator className="my-5" />
-                <Text className="ml-5 font-medium">Buy This Book from Your Peers</Text>
-              </>
+            <Separator className="my-5" />
+
+            {bookListing && bookListing.length > 0 ? (
+              <Text className="ml-5 font-medium">Buy This Book from Your Peers</Text>
+            ) : (
+              <NotFound />
             )}
           </>
         )}
@@ -106,7 +108,7 @@ const Book = () => {
         }}
         className="mt-32 aspect-[3/4] w-48 self-center rounded-md shadow-md"
         resizeMode="stretch"
-        entering={FlipInEasyY.delay(200).duration(300).easing(Easing.inOut(Easing.quad))}
+        entering={FlipInEasyY.delay(100).duration(300).easing(Easing.inOut(Easing.quad))}
       />
 
       <Text className="mt-3 text-center font-medium">{pageCount} pages</Text>
@@ -153,5 +155,25 @@ const Book = () => {
         </View>
       </View>
     </>
+  );
+};
+
+const NotFound = () => {
+  return (
+    <View className="flex flex-row items-center">
+      <LottieView
+        autoPlay
+        loop
+        style={{
+          width: 100,
+          height: 100,
+        }}
+        source={require('../../assets/empty-box.zip')}
+        speed={1}
+      />
+      <Text className="flex-1 p-5 font-medium">
+        No student in your University is selling this book right now. Check back later!
+      </Text>
+    </View>
   );
 };

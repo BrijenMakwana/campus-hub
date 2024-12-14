@@ -3,6 +3,7 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 import { Link } from 'expo-router';
 import { TouchableOpacity, View } from 'react-native';
 
+import ConnectCall from './ConnectCall';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
 import { Text } from './ui/text';
@@ -11,7 +12,6 @@ import StudentIcon from '../assets/student.svg';
 import { cn } from '~/lib/utils';
 import useCurrencyStore from '~/store';
 import { BookCondition, IBookSaleWithUser } from '~/types';
-import ConnectCall from './ConnectCall';
 
 const SellerCard = (props: IBookSaleWithUser) => {
   dayjs.extend(relativeTime);
