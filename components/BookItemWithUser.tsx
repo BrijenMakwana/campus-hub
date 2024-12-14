@@ -79,7 +79,7 @@ const BookItemWithUser = (props: IBookSaleWithUser) => {
         <View className="gap-2">
           <View className="flex flex-row items-center gap-3">
             <StudentIcon height={20} width={20} />
-            <Text>{full_name}</Text>
+            <Text numberOfLines={1}>{full_name}</Text>
           </View>
           <Text className="text-sm">Added {dayjs(created_at).fromNow()}</Text>
         </View>
