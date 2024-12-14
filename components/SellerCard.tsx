@@ -47,11 +47,13 @@ const SellerCard = (props: IBookSaleWithUser) => {
 
         <Text>{remarks}</Text>
 
-        <Text className="mt-auto text-sm">Added {dayjs(created_at).fromNow()}</Text>
+        <Text className="mt-auto text-sm text-neutral-500">
+          Added {dayjs(created_at).fromNow()}
+        </Text>
       </View>
 
       <View className="gap-3">
-        <Text className="text-right text-lg font-medium text-accent">
+        <Text className="text-right text-lg font-medium text-primary">
           {currency.symbol}
           {price}
         </Text>

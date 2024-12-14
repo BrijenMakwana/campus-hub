@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
-import { Image, View } from 'react-native';
+import { Image, TouchableOpacity, View } from 'react-native';
 
 import ConnectCall from './ConnectCall';
 import { Badge } from './ui/badge';
@@ -13,6 +13,7 @@ import { useBook } from '~/hooks';
 import { cn } from '~/lib/utils';
 import useCurrencyStore from '~/store';
 import { BookCondition, IBookSaleWithUser } from '~/types';
+import { Link } from 'expo-router';
 
 const BookItemWithUser = (props: IBookSaleWithUser) => {
   const { book_id, book_condition, price, created_at, users } = props;
@@ -30,12 +31,16 @@ const BookItemWithUser = (props: IBookSaleWithUser) => {
   return (
     <View className="gap-5 rounded-2xl bg-secondary/20 p-5">
       <View className="flex flex-row gap-5">
-        <Image
-          source={{
-            uri: book?.volumeInfo.imageLinks.thumbnail || 'https://via.placeholder.com/300x400',
-          }}
-          className="aspect-[3/4] w-24 rounded-md shadow-md"
-        />
+        <Link href={`/book/${book_id}`} asChild>
+          <TouchableOpacity>
+            <Image
+              source={{
+                uri: book?.volumeInfo.imageLinks.thumbnail || 'https://via.placeholder.com/300x400',
+              }}
+              className="aspect-[3/4] w-24 rounded-md shadow-md"
+            />
+          </TouchableOpacity>
+        </Link>
 
         <View className="w-48 flex-1 gap-1">
           <Text className="font-semibold" numberOfLines={2}>
