@@ -1,4 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { router } from 'expo-router';
 import Toast from 'react-native-toast-message';
 
 import useCurrencyStore from '~/store';
@@ -34,6 +35,8 @@ export const useUpdateBookListing = () => {
     mutationFn: updateBookListing,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['myListedBooks'] });
+
+      router.back();
 
       Toast.show({
         type: 'success',

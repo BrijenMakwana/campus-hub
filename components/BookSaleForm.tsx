@@ -21,6 +21,7 @@ interface IBookSaleForm {
     remarks?: string;
   }) => void;
   isPending: boolean;
+  buttonText: string;
   defaultValues?: IForm;
 }
 
@@ -34,6 +35,7 @@ const BookSaleForm = (props: IBookSaleForm) => {
   const {
     onSubmit,
     isPending,
+    buttonText,
     defaultValues = {
       bookCondition: BookCondition.USED,
       price: '',
@@ -124,7 +126,7 @@ const BookSaleForm = (props: IBookSaleForm) => {
           <Loading />
         ) : (
           <Button className="bg-primary" onPress={handleSubmit(onSubmitForm)}>
-            <Text>List Book for Sale </Text>
+            <Text>{buttonText}</Text>
           </Button>
         )}
       </View>
