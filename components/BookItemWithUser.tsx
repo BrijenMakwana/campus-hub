@@ -22,7 +22,7 @@ const BookItemWithUser = (props: IBookSaleWithUser) => {
 
   const { data: book, isPending } = useBook(book_id);
 
-  const { currency } = useCurrencyStore();
+  const { currency, getExchangeRate } = useCurrencyStore();
 
   if (isPending) return <Skeleton className="h-48 w-80 bg-neutral-300" />;
 
@@ -71,7 +71,7 @@ const BookItemWithUser = (props: IBookSaleWithUser) => {
             {price && (
               <Text className="self-start text-lg font-medium text-primary">
                 {currency.symbol}
-                {price}
+                {getExchangeRate(price)}
               </Text>
             )}
           </View>

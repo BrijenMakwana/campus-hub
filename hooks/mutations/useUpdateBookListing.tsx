@@ -1,11 +1,14 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import Toast from 'react-native-toast-message';
 
+import useCurrencyStore from '~/store';
 import { supabase } from '~/supabase';
 import { BookCondition } from '~/types';
 
 export const useUpdateBookListing = () => {
   const queryClient = useQueryClient();
+
+  const { convertToUSD } = useCurrencyStore();
 
   const updateBookListing = async ({
     id,
@@ -20,7 +23,7 @@ export const useUpdateBookListing = () => {
   }) => {
     const { error } = await supabase
       .from('book_listing')
-      .update({ book_condition: bookCondition, price: Number(price), remarks })
+      .update({ book_condition: bookCondition, price: convertToUSD(Number(price)), remarks })
       .eq('id', id)
       .select();
 

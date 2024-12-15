@@ -5,7 +5,6 @@ import { TouchableOpacity, View } from 'react-native';
 
 import ConnectCall from './ConnectCall';
 import { Badge } from './ui/badge';
-import { Button } from './ui/button';
 import { Text } from './ui/text';
 import StudentIcon from '../assets/student.svg';
 
@@ -20,7 +19,7 @@ const SellerCard = (props: IBookSaleWithUser) => {
 
   const { full_name, phone } = users;
 
-  const { currency } = useCurrencyStore();
+  const { currency, getExchangeRate } = useCurrencyStore();
 
   return (
     <View className="mx-5 flex flex-row items-center justify-between gap-5 rounded-2xl bg-secondary/20 p-5">
@@ -55,7 +54,7 @@ const SellerCard = (props: IBookSaleWithUser) => {
       <View className="gap-3">
         <Text className="text-right text-lg font-medium text-primary">
           {currency.symbol}
-          {price}
+          {getExchangeRate(price)}
         </Text>
 
         <ConnectCall phone={phone} />

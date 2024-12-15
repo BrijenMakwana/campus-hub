@@ -27,7 +27,7 @@ const BookItem = (props: IBookItem) => {
 
   const { imageLinks, title, authors, pageCount } = volumeInfo;
 
-  const { currency } = useCurrencyStore();
+  const { currency, getExchangeRate } = useCurrencyStore();
 
   dayjs.extend(relativeTime);
 
@@ -89,7 +89,7 @@ const BookItem = (props: IBookItem) => {
             {price && (
               <Text className="self-start text-lg font-medium text-primary">
                 {currency.symbol}
-                {price}
+                {getExchangeRate(price)}
               </Text>
             )}
           </View>
