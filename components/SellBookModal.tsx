@@ -10,6 +10,7 @@ import { Text } from '~/components/ui/text';
 import { ToggleGroup, ToggleGroupItem } from '~/components/ui/toggle-group';
 import { useBook, useListBookForSale, useUpdateBookListing } from '~/hooks';
 import { Clear } from '~/lib/icons/Clear';
+import useCurrencyStore from '~/store';
 import { BookCondition } from '~/types';
 
 interface ISellBookModal {
@@ -50,6 +51,8 @@ const SellBookModal = (props: ISellBookModal) => {
   const { mutate: listBookForSale, isPending: isCreating } = useListBookForSale();
   const { mutate: updateBookListing, isPending: isUpdating } = useUpdateBookListing();
 
+  const { currency } = useCurrencyStore();
+
   const {
     control,
     handleSubmit,
@@ -72,7 +75,7 @@ const SellBookModal = (props: ISellBookModal) => {
 
   return (
     <Modal visible={modalVisible} onRequestClose={() => setModalVisible(false)}>
-      <View className="flex-1 gap-5 bg-background p-5">
+      <View className="flex-1 gap-4 bg-background p-5">
         <TouchableOpacity onPress={() => setModalVisible(false)} className="self-end">
           <Clear className="text-foreground" size={25} strokeWidth={1.25} />
         </TouchableOpacity>
@@ -88,7 +91,7 @@ const SellBookModal = (props: ISellBookModal) => {
                 uri:
                   book?.volumeInfo.imageLinks?.thumbnail || 'https://via.placeholder.com/300x400',
               }}
-              className="aspect-[3/4] w-32 rounded-md shadow-md"
+              className="aspect-[3/4] w-28 rounded-md shadow-md"
             />
 
             <View className="flex-1 gap-1">
@@ -135,9 +138,9 @@ const SellBookModal = (props: ISellBookModal) => {
           render={({ field: { onChange, onBlur, value } }) => (
             <CustomInput
               label="Price"
-              placeholder="e.g., 5"
+              placeholder={currency.symbol}
               keyboardType="numeric"
-              className="w-28"
+              className="w-32"
               onBlur={onBlur}
               onChangeText={onChange}
               value={value}
