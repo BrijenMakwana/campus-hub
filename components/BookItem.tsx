@@ -10,6 +10,9 @@ import { cn } from '~/lib/utils';
 import useCurrencyStore from '~/store';
 import { BookCondition, IGoogleBook } from '~/types';
 
+import { useState } from 'react';
+import SellBookModal from './SellBookModal';
+
 interface IBookItem extends IGoogleBook {
   price?: number;
   book_condition?: BookCondition;
@@ -19,6 +22,8 @@ interface IBookItem extends IGoogleBook {
 }
 
 const BookItem = (props: IBookItem) => {
+  const [modalVisible, setModalVisible] = useState(false);
+
   const { id, volumeInfo, price, book_condition, remarks, created_at, actionbtns = false } = props;
 
   const { imageLinks, title, authors, pageCount } = volumeInfo;
@@ -28,70 +33,78 @@ const BookItem = (props: IBookItem) => {
   dayjs.extend(relativeTime);
 
   return (
-    <View className="flex flex-row justify-between gap-5">
-      <Link href={`/book/${id}`} asChild>
-        <TouchableOpacity>
-          <Image
-            source={{
-              uri: imageLinks?.thumbnail || 'https://via.placeholder.com/300x400',
-            }}
-            className="aspect-[3/4] w-32 rounded-md shadow-md"
-          />
-        </TouchableOpacity>
-      </Link>
+    <>
+      <View className="flex flex-row justify-between gap-5">
+        <Link href={`/book/${id}`} asChild>
+          <TouchableOpacity>
+            <Image
+              source={{
+                uri: imageLinks?.thumbnail || 'https://via.placeholder.com/300x400',
+              }}
+              className="aspect-[3/4] w-32 rounded-md shadow-md"
+            />
+          </TouchableOpacity>
+        </Link>
 
-      <View className="flex-1 gap-1">
-        <Text className="text-lg font-semibold">{title}</Text>
+        <View className="flex-1 gap-1">
+          <Text className="text-lg font-semibold">{title}</Text>
 
-        <Text className="text-sm font-medium capitalize text-gray-500">{authors?.join(', ')}</Text>
+          <Text className="text-sm font-medium capitalize text-gray-500">
+            {authors?.join(', ')}
+          </Text>
 
-        <Text className="text-sm">{pageCount} pages</Text>
+          <Text className="text-sm">{pageCount} pages</Text>
 
-        {actionbtns && (
-          <View className="mt-2 flex flex-row gap-2">
-            <Link href={`/book/${id}`} asChild>
-              <Button size="sm">
-                <Text className="text-background">Looking For</Text>
+          {actionbtns && (
+            <View className="mt-2 flex flex-row gap-2">
+              <Link href={`/book/${id}`} asChild>
+                <Button size="sm">
+                  <Text className="text-background">Looking For</Text>
+                </Button>
+              </Link>
+
+              <Button size="sm" variant="outline" onPress={() => setModalVisible(true)}>
+                <Text>Sell Mine</Text>
               </Button>
-            </Link>
-
-            <Button size="sm" variant="outline">
-              <Text>Sell Mine</Text>
-            </Button>
-          </View>
-        )}
-
-        <View className="mt-2 flex flex-row items-center justify-start gap-3">
-          {book_condition && (
-            <Badge variant="outline" className="self-start">
-              <Text
-                className={cn(
-                  'font-medium',
-                  book_condition === BookCondition.GOOD
-                    ? 'text-green-400'
-                    : book_condition === BookCondition.USED
-                      ? 'text-yellow-400'
-                      : 'text-red-400'
-                )}>
-                {book_condition}
-              </Text>
-            </Badge>
+            </View>
           )}
-          {price && (
-            <Text className="self-start text-lg font-medium text-primary">
-              {currency.symbol}
-              {price}
-            </Text>
+
+          <View className="mt-2 flex flex-row items-center justify-start gap-3">
+            {book_condition && (
+              <Badge variant="outline" className="self-start">
+                <Text
+                  className={cn(
+                    'font-medium',
+                    book_condition === BookCondition.GOOD
+                      ? 'text-green-400'
+                      : book_condition === BookCondition.USED
+                        ? 'text-yellow-400'
+                        : 'text-red-400'
+                  )}>
+                  {book_condition}
+                </Text>
+              </Badge>
+            )}
+            {price && (
+              <Text className="self-start text-lg font-medium text-primary">
+                {currency.symbol}
+                {price}
+              </Text>
+            )}
+          </View>
+
+          {remarks && <Text className="mt-1 text-gray-500">{remarks}</Text>}
+
+          {created_at && (
+            <Text className="mt-auto text-right text-sm">Added {dayjs(created_at).fromNow()}</Text>
           )}
         </View>
-
-        {remarks && <Text className="mt-1 text-gray-500">{remarks}</Text>}
-
-        {created_at && (
-          <Text className="mt-auto text-right text-sm">Added {dayjs(created_at).fromNow()}</Text>
-        )}
       </View>
-    </View>
+
+      {modalVisible && (
+        <SellBookModal bookId={id} modalVisible={modalVisible} setModalVisible={setModalVisible} />
+      )}
+    </>
   );
 };
 
