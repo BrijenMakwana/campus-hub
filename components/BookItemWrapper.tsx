@@ -12,8 +12,8 @@ import { Skeleton } from '~/components/ui/skeleton';
 import { useBook } from '~/hooks';
 import { Edit } from '~/lib/icons/Edit';
 import { Trash } from '~/lib/icons/Trash';
-import { IBookSale, IWishlistBook } from '~/types';
 import useCurrencyStore from '~/store';
+import { IBookSale, IWishlistBook } from '~/types';
 
 type BookItemWrapperProps = (IWishlistBook | IBookSale) & {
   removeBook?: () => void;
