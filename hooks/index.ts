@@ -8,6 +8,7 @@ export * from './queries/useBookSeller';
 export * from './queries/useBookListingsByUser';
 export * from './queries/useCurrentUser';
 export * from './queries/useBookListingsWithUsers';
+export * from './queries/useBookListingById';
 
 export * from './mutations/useSignIn';
 export * from './mutations/useSignUp';
