@@ -13,6 +13,7 @@ import { useBook } from '~/hooks';
 import { Edit } from '~/lib/icons/Edit';
 import { Trash } from '~/lib/icons/Trash';
 import { IBookSale, IWishlistBook } from '~/types';
+import useCurrencyStore from '~/store';
 
 type BookItemWrapperProps = (IWishlistBook | IBookSale) & {
   removeBook?: () => void;
@@ -23,6 +24,8 @@ const BookItemWrapper = (props: BookItemWrapperProps) => {
   const [modalVisible, setModalVisible] = useState(false);
 
   const { data: book, isPending, error } = useBook(book_id);
+
+  const { getExchangeRate } = useCurrencyStore();
 
   if (isPending) return <Skeleton className="h-40 w-full bg-neutral-300" />;
 
@@ -38,7 +41,7 @@ const BookItemWrapper = (props: BookItemWrapperProps) => {
         setModalVisible={setModalVisible}
         defaultValues={{
           bookCondition: props.book_condition,
-          price: props.price.toString(),
+          price: getExchangeRate(props.price).toString(),
           remarks: props.remarks || '',
         }}
         mode="update"
