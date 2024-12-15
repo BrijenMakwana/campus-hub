@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import { View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import ReanimatedSwipeable from 'react-native-gesture-handler/ReanimatedSwipeable';
 import Reanimated, { SharedValue, useAnimatedStyle } from 'react-native-reanimated';
 
 import BookItem from './BookItem';
+import SellBookModal from './SellBookModal';
 import { Button } from './ui/button';
 
 import { Skeleton } from '~/components/ui/skeleton';
@@ -17,7 +19,8 @@ type BookItemWrapperProps = (IWishlistBook | IBookSale) & {
 };
 
 const BookItemWrapper = (props: BookItemWrapperProps) => {
-  const { book_id, removeBook, ...rest } = props;
+  const { id, book_id, removeBook, ...rest } = props;
+  const [modalVisible, setModalVisible] = useState(false);
 
   const { data: book, isPending, error } = useBook(book_id);
 
@@ -26,6 +29,22 @@ const BookItemWrapper = (props: BookItemWrapperProps) => {
   if (error) return;
 
   if (!removeBook) return <BookItem {...book} {...rest} id={book_id} />;
+
+  if (modalVisible && 'price' in props)
+    return (
+      <SellBookModal
+        bookId={book_id}
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
+        defaultValues={{
+          bookCondition: props.book_condition,
+          price: props.price.toString(),
+          remarks: props.remarks || '',
+        }}
+        mode="update"
+        id={id}
+      />
+    );
 
   return (
     <GestureHandlerRootView>
@@ -39,6 +58,7 @@ const BookItemWrapper = (props: BookItemWrapperProps) => {
             drag={drag}
             removeBook={removeBook}
             isEditable={'price' in props}
+            editBook={() => setModalVisible(true)}
           />
         )}>
         <BookItem {...book} {...rest} id={book_id} />
@@ -54,11 +74,13 @@ function RightAction({
   drag,
   removeBook,
   isEditable,
+  editBook,
 }: {
   prog: SharedValue<number>;
   drag: SharedValue<number>;
   removeBook: () => void;
   isEditable: boolean;
+  editBook?: () => void;
 }) {
   const styleAnimation = useAnimatedStyle(() => {
     return {
@@ -74,7 +96,7 @@ function RightAction({
         }}
         className="flex h-full flex-row items-center justify-center gap-3">
         {isEditable && (
-          <Button variant="outline">
+          <Button variant="outline" onPress={editBook}>
             <Edit className="text-gray-800" size={20} strokeWidth={2} />
           </Button>
         )}

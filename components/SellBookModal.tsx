@@ -1,7 +1,5 @@
 import { useForm, Controller } from 'react-hook-form';
-import { Modal, TouchableOpacity, View } from 'react-native';
-
-import BookItem from './BookItem';
+import { Modal, TouchableOpacity, View, Image } from 'react-native';
 
 import CustomInput from '~/components/CustomInput';
 import Loading from '~/components/Loading';
@@ -10,7 +8,7 @@ import { Label } from '~/components/ui/label';
 import { Separator } from '~/components/ui/separator';
 import { Text } from '~/components/ui/text';
 import { ToggleGroup, ToggleGroupItem } from '~/components/ui/toggle-group';
-import { useBook, useListBookForSale } from '~/hooks';
+import { useBook, useListBookForSale, useUpdateBookListing } from '~/hooks';
 import { Clear } from '~/lib/icons/Clear';
 import { BookCondition } from '~/types';
 
@@ -18,6 +16,13 @@ interface ISellBookModal {
   bookId: string;
   modalVisible: boolean;
   setModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  defaultValues?: {
+    bookCondition: BookCondition;
+    price: string;
+    remarks: string;
+  };
+  mode?: 'add' | 'update';
+  id?: number;
 }
 
 interface ISellBookForm {
@@ -27,26 +32,42 @@ interface ISellBookForm {
 }
 
 const SellBookModal = (props: ISellBookModal) => {
-  const { bookId, modalVisible, setModalVisible } = props;
+  const {
+    bookId,
+    modalVisible,
+    setModalVisible,
+    defaultValues = {
+      bookCondition: BookCondition.USED,
+      price: '',
+      remarks: '',
+    },
+    mode = 'add',
+    id,
+  } = props;
 
   const { data: book, isPending: bookIsPending } = useBook(bookId);
 
-  const { mutate: listBookForSale, isPending } = useListBookForSale();
+  const { mutate: listBookForSale, isPending: isCreating } = useListBookForSale();
+  const { mutate: updateBookListing, isPending: isUpdating } = useUpdateBookListing();
 
   const {
     control,
     handleSubmit,
     formState: { errors },
   } = useForm<ISellBookForm>({
-    defaultValues: {
-      bookCondition: BookCondition.USED,
-      price: '',
-      remarks: '',
-    },
+    defaultValues,
   });
 
   const onSubmit = async (data: ISellBookForm) => {
-    listBookForSale({ bookId, ...data });
+    if (mode === 'add') {
+      listBookForSale({ bookId, ...data });
+      return;
+    }
+
+    if (id) {
+      updateBookListing({ id, ...data });
+      setModalVisible(false);
+    }
   };
 
   return (
@@ -56,9 +77,33 @@ const SellBookModal = (props: ISellBookModal) => {
           <Clear className="text-foreground" size={25} strokeWidth={1.25} />
         </TouchableOpacity>
 
-        <Label>Book you are selling</Label>
+        <Label>Book you are {mode === 'add' ? 'selling' : 'editing'}</Label>
 
-        {bookIsPending ? <Loading /> : <BookItem {...book} />}
+        {bookIsPending ? (
+          <Loading />
+        ) : (
+          <View className="flex flex-row justify-between gap-5">
+            <Image
+              source={{
+                uri:
+                  book?.volumeInfo.imageLinks?.thumbnail || 'https://via.placeholder.com/300x400',
+              }}
+              className="aspect-[3/4] w-32 rounded-md shadow-md"
+            />
+
+            <View className="flex-1 gap-1">
+              <Text className="text-lg font-semibold" numberOfLines={2}>
+                {book?.volumeInfo.title}
+              </Text>
+
+              <Text className="text-sm font-medium capitalize text-gray-500" numberOfLines={1}>
+                {book?.volumeInfo.authors?.join(', ')}
+              </Text>
+
+              <Text className="text-sm">{book?.volumeInfo.pageCount} pages</Text>
+            </View>
+          </View>
+        )}
 
         <Separator />
 
@@ -125,11 +170,11 @@ const SellBookModal = (props: ISellBookModal) => {
         />
 
         <View className="mt-auto gap-3">
-          {isPending ? (
+          {isCreating || isUpdating ? (
             <Loading />
           ) : (
             <Button className="bg-primary" onPress={handleSubmit(onSubmit)}>
-              <Text>List Book for Sale</Text>
+              <Text>{mode === 'add' ? 'List Book for Sale' : 'Update Book Listing'} </Text>
             </Button>
           )}
 
