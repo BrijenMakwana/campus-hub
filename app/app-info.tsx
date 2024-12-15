@@ -5,6 +5,7 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { TouchableOpacity, TouchableOpacityProps, View, Linking } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import GithubCard from '~/components/GithubCard';
 import GoBack from '~/components/GoBack';
 import { Separator } from '~/components/ui/separator';
 import { Text } from '~/components/ui/text';
@@ -34,6 +35,8 @@ const AppInfoScreen = () => {
           url=""
         />
       </View>
+
+      {/* <GithubCard repoUrl="" /> */}
     </SafeAreaView>
   );
 };

@@ -33,7 +33,7 @@ const SellBookScreen = () => {
 
       <GoBack color="text-secondary" text="Back" />
 
-      <Label>Book you are selling</Label>
+      <Label>Book you are Selling</Label>
 
       <BookItem {...book} />
 
