@@ -11,19 +11,17 @@ import useCurrencyStore from '~/store';
 import { BookCondition } from '~/types';
 
 interface IBookSaleForm {
-  bookId: string;
   onSubmit: ({
-    bookId,
     bookCondition,
     price,
     remarks,
   }: {
-    bookId: string;
     bookCondition: BookCondition;
     price: string;
     remarks?: string;
   }) => void;
   isPending: boolean;
+  defaultValues?: IForm;
 }
 
 interface IForm {
@@ -33,7 +31,15 @@ interface IForm {
 }
 
 const BookSaleForm = (props: IBookSaleForm) => {
-  const { bookId, onSubmit, isPending } = props;
+  const {
+    onSubmit,
+    isPending,
+    defaultValues = {
+      bookCondition: BookCondition.USED,
+      price: '',
+      remarks: '',
+    },
+  } = props;
 
   const { currency } = useCurrencyStore();
 
@@ -42,18 +48,11 @@ const BookSaleForm = (props: IBookSaleForm) => {
     handleSubmit,
     formState: { errors },
   } = useForm<IForm>({
-    defaultValues: {
-      bookCondition: BookCondition.USED,
-      price: '',
-      remarks: '',
-    },
+    defaultValues,
   });
 
   const onSubmitForm = async (data: IForm) => {
-    onSubmit({
-      bookId,
-      ...data,
-    });
+    onSubmit(data);
   };
 
   return (

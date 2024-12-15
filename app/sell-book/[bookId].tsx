@@ -9,6 +9,7 @@ import Loader from '~/components/Loader';
 import { Label } from '~/components/ui/label';
 import { Separator } from '~/components/ui/separator';
 import { useBook, useListBookForSale } from '~/hooks';
+import { BookCondition } from '~/types';
 
 const SellBookScreen = () => {
   const { bookId } = useLocalSearchParams();
@@ -21,6 +22,10 @@ const SellBookScreen = () => {
 
   if (error) return <Error refetch={refetch} />;
 
+  const onSubmit = (data: { bookCondition: BookCondition; price: string; remarks?: string }) => {
+    listBookForSale({ bookId, ...data });
+  };
+
   return (
     <SafeAreaView className="flex-1 gap-2 bg-background p-5">
       <GoBack color="text-secondary" text="Back" />
@@ -31,7 +36,7 @@ const SellBookScreen = () => {
 
       <Separator className="mt-2" />
 
-      <BookSaleForm bookId={bookId as string} isPending={isMutating} onSubmit={listBookForSale} />
+      <BookSaleForm isPending={isMutating} onSubmit={onSubmit} />
     </SafeAreaView>
   );
 };

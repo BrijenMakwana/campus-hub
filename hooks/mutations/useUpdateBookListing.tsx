@@ -16,7 +16,7 @@ export const useUpdateBookListing = () => {
     price,
     remarks,
   }: {
-    id: number;
+    id: string;
     bookCondition: BookCondition;
     price: string;
     remarks?: string;
