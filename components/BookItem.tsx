@@ -1,17 +1,16 @@
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { Link } from 'expo-router';
+import { useState } from 'react';
 import { Image, View, Text, TouchableOpacity } from 'react-native';
 
+import SellBookModal from './SellBookModal';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
 
 import { cn } from '~/lib/utils';
 import useCurrencyStore from '~/store';
 import { BookCondition, IGoogleBook } from '~/types';
-
-import { useState } from 'react';
-import SellBookModal from './SellBookModal';
 
 interface IBookItem extends IGoogleBook {
   price?: number;
@@ -47,9 +46,11 @@ const BookItem = (props: IBookItem) => {
         </Link>
 
         <View className="flex-1 gap-1">
-          <Text className="text-lg font-semibold">{title}</Text>
+          <Text className="text-lg font-semibold" numberOfLines={2}>
+            {title}
+          </Text>
 
-          <Text className="text-sm font-medium capitalize text-gray-500">
+          <Text className="text-sm font-medium capitalize text-gray-500" numberOfLines={1}>
             {authors?.join(', ')}
           </Text>
 
@@ -58,12 +59,12 @@ const BookItem = (props: IBookItem) => {
           {actionbtns && (
             <View className="mt-2 flex flex-row gap-2">
               <Link href={`/book/${id}`} asChild>
-                <Button size="sm">
+                <Button>
                   <Text className="text-background">Looking For</Text>
                 </Button>
               </Link>
 
-              <Button size="sm" variant="outline" onPress={() => setModalVisible(true)}>
+              <Button variant="outline" onPress={() => setModalVisible(true)}>
                 <Text>Sell Mine</Text>
               </Button>
             </View>
