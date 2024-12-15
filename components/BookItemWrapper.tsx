@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import { View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import ReanimatedSwipeable from 'react-native-gesture-handler/ReanimatedSwipeable';
 import Reanimated, { SharedValue, useAnimatedStyle } from 'react-native-reanimated';
 
 import BookItem from './BookItem';
+import SellBookModal from './SellBookModal';
 import { Button } from './ui/button';
 
 import { Skeleton } from '~/components/ui/skeleton';
@@ -11,21 +13,41 @@ import { useBook } from '~/hooks';
 import { Edit } from '~/lib/icons/Edit';
 import { Trash } from '~/lib/icons/Trash';
 import { IBookSale, IWishlistBook } from '~/types';
+import useCurrencyStore from '~/store';
 
 type BookItemWrapperProps = (IWishlistBook | IBookSale) & {
   removeBook?: () => void;
 };
 
 const BookItemWrapper = (props: BookItemWrapperProps) => {
-  const { book_id, removeBook, ...rest } = props;
+  const { id, book_id, removeBook, ...rest } = props;
+  const [modalVisible, setModalVisible] = useState(false);
 
   const { data: book, isPending, error } = useBook(book_id);
+
+  const { getExchangeRate } = useCurrencyStore();
 
   if (isPending) return <Skeleton className="h-40 w-full bg-neutral-300" />;
 
   if (error) return;
 
   if (!removeBook) return <BookItem {...book} {...rest} id={book_id} />;
+
+  if (modalVisible && 'price' in props)
+    return (
+      <SellBookModal
+        bookId={book_id}
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
+        defaultValues={{
+          bookCondition: props.book_condition,
+          price: getExchangeRate(props.price).toString(),
+          remarks: props.remarks || '',
+        }}
+        mode="update"
+        id={id}
+      />
+    );
 
   return (
     <GestureHandlerRootView>
@@ -39,6 +61,7 @@ const BookItemWrapper = (props: BookItemWrapperProps) => {
             drag={drag}
             removeBook={removeBook}
             isEditable={'price' in props}
+            editBook={() => setModalVisible(true)}
           />
         )}>
         <BookItem {...book} {...rest} id={book_id} />
@@ -54,11 +77,13 @@ function RightAction({
   drag,
   removeBook,
   isEditable,
+  editBook,
 }: {
   prog: SharedValue<number>;
   drag: SharedValue<number>;
   removeBook: () => void;
   isEditable: boolean;
+  editBook?: () => void;
 }) {
   const styleAnimation = useAnimatedStyle(() => {
     return {
@@ -74,7 +99,7 @@ function RightAction({
         }}
         className="flex h-full flex-row items-center justify-center gap-3">
         {isEditable && (
-          <Button variant="outline">
+          <Button variant="outline" onPress={editBook}>
             <Edit className="text-gray-800" size={20} strokeWidth={2} />
           </Button>
         )}

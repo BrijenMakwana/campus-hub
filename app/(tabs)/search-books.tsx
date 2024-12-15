@@ -22,7 +22,7 @@ const SearchBooksScreen = () => {
 
       <FlatList
         data={books}
-        renderItem={({ item }) => <BookItem {...item} />}
+        renderItem={({ item }) => <BookItem {...item} actionbtns />}
         keyExtractor={(item) => item.id}
         contentContainerClassName="px-5 gap-5 pb-28"
         ListEmptyComponent={bookTitle && isSuccess ? Empty : null}

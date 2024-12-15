@@ -11,30 +11,7 @@ import {
   DropdownMenuTrigger,
 } from '~/components/ui/dropdown-menu';
 import { Text } from '~/components/ui/text';
-import useCurrencyStore from '~/store';
-
-export const countriesAndCurrencies = [
-  { country: 'United States', currency: 'USD', symbol: '$' },
-  { country: 'Eurozone', currency: 'EUR', symbol: '€' },
-  { country: 'United Kingdom', currency: 'GBP', symbol: '£' },
-  { country: 'India', currency: 'INR', symbol: '₹' },
-  { country: 'Japan', currency: 'JPY', symbol: '¥' },
-  { country: 'Canada', currency: 'CAD', symbol: '$' },
-  { country: 'Australia', currency: 'AUD', symbol: '$' },
-  { country: 'China', currency: 'CNY', symbol: '¥' },
-  { country: 'Switzerland', currency: 'CHF', symbol: 'CHF' },
-  { country: 'Russia', currency: 'RUB', symbol: '₽' },
-  { country: 'Brazil', currency: 'BRL', symbol: 'R$' },
-  { country: 'South Africa', currency: 'ZAR', symbol: 'R' },
-  { country: 'Mexico', currency: 'MXN', symbol: '$' },
-  { country: 'South Korea', currency: 'KRW', symbol: '₩' },
-  { country: 'Singapore', currency: 'SGD', symbol: '$' },
-  { country: 'Turkey', currency: 'TRY', symbol: '₺' },
-  { country: 'Saudi Arabia', currency: 'SAR', symbol: '﷼' },
-  { country: 'Nigeria', currency: 'NGN', symbol: '₦' },
-  { country: 'Argentina', currency: 'ARS', symbol: '$' },
-  { country: 'United Arab Emirates', currency: 'AED', symbol: 'د.إ' },
-];
+import useCurrencyStore, { countriesAndCurrencies } from '~/store';
 
 const CurrencyPicker = () => {
   const insets = useSafeAreaInsets();

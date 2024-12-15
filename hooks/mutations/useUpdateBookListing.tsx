@@ -5,41 +5,41 @@ import useCurrencyStore from '~/store';
 import { supabase } from '~/supabase';
 import { BookCondition } from '~/types';
 
-export const useListBookForSale = () => {
+export const useUpdateBookListing = () => {
   const queryClient = useQueryClient();
 
   const { convertToUSD } = useCurrencyStore();
 
-  const listBookForSale = async ({
-    bookId,
+  const updateBookListing = async ({
+    id,
     bookCondition,
     price,
     remarks,
   }: {
-    bookId: string;
+    id: number;
     bookCondition: BookCondition;
     price: string;
     remarks?: string;
   }) => {
     const { error } = await supabase
       .from('book_listing')
-      .insert([
-        {
-          book_id: bookId,
-          book_condition: bookCondition,
-          price: convertToUSD(Number(price)),
-          remarks,
-        },
-      ])
+      .update({ book_condition: bookCondition, price: convertToUSD(Number(price)), remarks })
+      .eq('id', id)
       .select();
 
     if (error) throw new Error(error.message);
   };
 
   return useMutation({
-    mutationFn: listBookForSale,
+    mutationFn: updateBookListing,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['myListedBooks'] });
+
+      Toast.show({
+        type: 'success',
+        text1: 'The book details have been updated.',
+        topOffset: 50,
+      });
     },
     onError: (error) => {
       Toast.show({
