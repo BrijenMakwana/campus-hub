@@ -17,14 +17,18 @@ export default function RootLayout() {
     <QueryClientProvider client={queryClient}>
       <StatusBar style="dark" />
 
-      <Stack initialRouteName="(onboarding)">
-        <Stack.Screen name="(onboarding)" options={{ headerShown: false }} />
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="book/[bookId]" options={{ headerShown: false }} />
-        <Stack.Screen name="book-seller/[userId]" options={{ headerShown: false }} />
-        <Stack.Screen name="sell-book/[bookId]" options={{ headerShown: false }} />
-        <Stack.Screen name="update-book-listing/[id]" options={{ headerShown: false }} />
-        <Stack.Screen name="app-info" options={{ headerShown: false }} />
+      <Stack
+        initialRouteName="(onboarding)"
+        screenOptions={{
+          headerShown: false,
+        }}>
+        <Stack.Screen name="(onboarding)" />
+        <Stack.Screen name="(tabs)" />
+        <Stack.Screen name="book/[bookId]" />
+        <Stack.Screen name="book-seller/[userId]" />
+        <Stack.Screen name="sell-book/[bookId]" />
+        <Stack.Screen name="update-book-listing" />
+        <Stack.Screen name="app-info" />
       </Stack>
 
       <Toast />

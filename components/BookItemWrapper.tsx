@@ -1,4 +1,4 @@
-import { Link } from 'expo-router';
+import { router } from 'expo-router';
 import { View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import ReanimatedSwipeable from 'react-native-gesture-handler/ReanimatedSwipeable';
@@ -28,6 +28,10 @@ const BookItemWrapper = (props: BookItemWrapperProps) => {
 
   if (!removeBook) return <BookItem {...book} {...rest} id={book_id} />;
 
+  const goToEditBook = () => {
+    router.push({ pathname: '/update-book-listing', params: { id, bookId: book_id } });
+  };
+
   return (
     <GestureHandlerRootView>
       <ReanimatedSwipeable
@@ -40,7 +44,7 @@ const BookItemWrapper = (props: BookItemWrapperProps) => {
             drag={drag}
             removeBook={removeBook}
             isEditable={'price' in props}
-            bookListingId={id}
+            editBook={goToEditBook}
           />
         )}>
         <BookItem {...book} {...rest} id={book_id} />
@@ -56,13 +60,13 @@ function RightAction({
   drag,
   removeBook,
   isEditable,
-  bookListingId,
+  editBook,
 }: {
   prog: SharedValue<number>;
   drag: SharedValue<number>;
   removeBook: () => void;
   isEditable: boolean;
-  bookListingId: number;
+  editBook: () => void;
 }) {
   const styleAnimation = useAnimatedStyle(() => {
     return {
@@ -78,11 +82,9 @@ function RightAction({
         }}
         className="flex h-full flex-row items-center justify-center gap-3">
         {isEditable && (
-          <Link href={`/update-book-listing/${bookListingId}`} asChild>
-            <Button variant="outline">
-              <Edit className="text-gray-800" size={20} strokeWidth={2} />
-            </Button>
-          </Link>
+          <Button variant="outline" onPress={editBook}>
+            <Edit className="text-gray-800" size={20} strokeWidth={2} />
+          </Button>
         )}
 
         <Button onPress={removeBook} variant="outline">
