@@ -5,7 +5,8 @@ import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import * as React from 'react';
 import Toast from 'react-native-toast-message';
-import TreeToast from '~/components/TreeToast';
+
+import { BookmarkToast, DeleteToast, TreeToast, UpdateToast } from '~/components/CustomToasts';
 
 const queryClient = new QueryClient();
 
@@ -35,6 +36,9 @@ export default function RootLayout() {
       <Toast
         config={{
           treeToast: () => <TreeToast />,
+          deleteToast: () => <DeleteToast />,
+          bookmarkToast: () => <BookmarkToast />,
+          updateToast: () => <UpdateToast />,
         }}
       />
       <PortalHost />

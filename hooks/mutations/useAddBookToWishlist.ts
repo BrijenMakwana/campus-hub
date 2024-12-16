@@ -21,8 +21,7 @@ export const useAddBookToWishlist = () => {
       queryClient.invalidateQueries({ queryKey: ['wishListedBooks'] });
 
       Toast.show({
-        type: 'success',
-        text1: 'Book successfully added to your wishlist!',
+        type: 'bookmarkToast',
         topOffset: 50,
       });
     },
