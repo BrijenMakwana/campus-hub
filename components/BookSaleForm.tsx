@@ -86,8 +86,8 @@ const BookSaleForm = (props: IBookSaleForm) => {
         }}
         render={({ field: { onChange, onBlur, value } }) => (
           <CustomInput
-            label="Price"
-            placeholder={currency.symbol}
+            label={`Price (${currency.symbol})`}
+            placeholder="e.g., 10"
             keyboardType="numeric"
             className="w-32"
             onBlur={onBlur}
