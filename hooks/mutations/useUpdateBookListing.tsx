@@ -39,8 +39,7 @@ export const useUpdateBookListing = () => {
       router.back();
 
       Toast.show({
-        type: 'success',
-        text1: 'The book details have been updated.',
+        type: 'updateToast',
         topOffset: 50,
       });
     },

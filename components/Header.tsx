@@ -1,12 +1,15 @@
 import { Link } from 'expo-router';
 import { View, TouchableOpacity } from 'react-native';
 
+import Institute from './Institute';
 import Loading from './Loading';
 import { Separator } from './ui/separator';
 import { Text } from './ui/text';
+import UniversityIcon from '../assets/university.svg';
 
 import { useCurrentUser } from '~/hooks';
 import { Info } from '~/lib/icons/Info';
+import { getInstitute } from '~/lib/utils';
 
 const Header = () => {
   const { data: user, isPending } = useCurrentUser();
@@ -21,6 +24,8 @@ const Header = () => {
             Hello {user?.user_metadata.full_name}
           </Text>
           <Text className="bg-background text-2xl">Explore, Connect, and Read!</Text>
+
+          <Institute email={user?.email} />
         </View>
 
         <Link href="/app-info" asChild>

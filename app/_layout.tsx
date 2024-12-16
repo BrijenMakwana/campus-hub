@@ -6,6 +6,8 @@ import { StatusBar } from 'expo-status-bar';
 import * as React from 'react';
 import Toast from 'react-native-toast-message';
 
+import { BookmarkToast, DeleteToast, TreeToast, UpdateToast } from '~/components/CustomToasts';
+
 const queryClient = new QueryClient();
 
 export const unstable_settings = {
@@ -31,7 +33,14 @@ export default function RootLayout() {
         <Stack.Screen name="app-info" />
       </Stack>
 
-      <Toast />
+      <Toast
+        config={{
+          treeToast: () => <TreeToast />,
+          deleteToast: () => <DeleteToast />,
+          bookmarkToast: () => <BookmarkToast />,
+          updateToast: () => <UpdateToast />,
+        }}
+      />
       <PortalHost />
     </QueryClientProvider>
   );

@@ -19,6 +19,11 @@ export const useAddBookToWishlist = () => {
     mutationFn: addBookToWishlist,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['wishListedBooks'] });
+
+      Toast.show({
+        type: 'bookmarkToast',
+        topOffset: 50,
+      });
     },
     onError: (error) => {
       Toast.show({

@@ -9,6 +9,7 @@ export * from './queries/useBookListingsByUser';
 export * from './queries/useCurrentUser';
 export * from './queries/useBookListingsWithUsers';
 export * from './queries/useBookListingById';
+export * from './queries/useIsBookInWishlist';
 
 export * from './mutations/useSignIn';
 export * from './mutations/useSignUp';

@@ -18,7 +18,7 @@ const TabBarIcon = ({ Icon }: { Icon: React.FC<SvgProps> }) => {
 
   return (
     <Animated.View style={animatedStyle}>
-      <Icon height={30} width={30} />
+      <Icon height={32} width={32} />
     </Animated.View>
   );
 };

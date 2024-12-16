@@ -26,7 +26,7 @@ const CurrencyPicker = () => {
 
   return (
     <DropdownMenu className="w-64">
-      <Label className="mb-2">Select Currency</Label>
+      <Label className="mb-3">Select Currency</Label>
 
       <DropdownMenuTrigger asChild>
         <Button variant="outline">

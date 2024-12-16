@@ -43,6 +43,11 @@ export const useListBookForSale = () => {
       queryClient.invalidateQueries({ queryKey: ['myListedBooks'] });
 
       router.back();
+
+      Toast.show({
+        type: 'treeToast',
+        topOffset: 50,
+      });
     },
     onError: (error) => {
       Toast.show({

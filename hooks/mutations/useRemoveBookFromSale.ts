@@ -16,6 +16,11 @@ export const useRemoveBookFromSale = () => {
     mutationFn: addBookToWishlist,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['myListedBooks'] });
+
+      Toast.show({
+        type: 'deleteToast',
+        topOffset: 50,
+      });
     },
     onError: (error) => {
       Toast.show({
