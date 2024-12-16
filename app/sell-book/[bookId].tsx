@@ -7,7 +7,7 @@ import BookSaleForm from '~/components/BookSaleForm';
 import Error from '~/components/Error';
 import GoBack from '~/components/GoBack';
 import Loader from '~/components/Loader';
-import SVG2 from '~/components/svgs/SVG2';
+import SVG5 from '~/components/svgs/SVG5';
 import { Label } from '~/components/ui/label';
 import { Separator } from '~/components/ui/separator';
 import { useBook, useListBookForSale } from '~/hooks';
@@ -33,7 +33,7 @@ const SellBookScreen = () => {
 
   return (
     <SafeAreaView className="flex-1 gap-2 bg-background p-5">
-      <SVG2 />
+      <SVG5 />
 
       <GoBack color="text-secondary" text="Back" />
 
