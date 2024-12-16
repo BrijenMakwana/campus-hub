@@ -6,21 +6,23 @@ import { Text } from './ui/text';
 
 import { useAI } from '~/hooks';
 import { THEME } from '~/lib/constants';
+import { cn } from '~/lib/utils';
 
 interface IAIView {
   text: string;
   prompt: string;
+  className?: string;
 }
 
 const AIView = (props: IAIView) => {
-  const { text, prompt } = props;
+  const { text, prompt, className } = props;
 
   const { data: answer, isFetching, error, refetch, isSuccess } = useAI(prompt);
 
   return (
     <LinearGradient
       colors={[THEME.light.secondary, THEME.light.accent, THEME.light.primary]}
-      className="absolute bottom-5 right-5 p-1"
+      className={cn('absolute bottom-5 right-5 p-1', className)}
       style={{
         borderRadius: 100,
       }}>

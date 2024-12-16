@@ -1,6 +1,7 @@
 import { useLocalSearchParams } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import AIView from '~/components/AIView';
 import BookItem from '~/components/BookItem';
 import BookSaleForm from '~/components/BookSaleForm';
 import Error from '~/components/Error';
@@ -22,7 +23,7 @@ const UpdateBookListingScreen = () => {
 
   const { mutate: updateBookListing, isPending: isMutating } = useUpdateBookListing();
 
-  const { getExchangeRate } = useCurrencyStore();
+  const { getExchangeRate, currency } = useCurrencyStore();
 
   if (isPending) return <Loader varient="loading" />;
 
@@ -53,6 +54,12 @@ const UpdateBookListingScreen = () => {
           remarks: bookListing?.remarks ?? '',
         }}
         buttonText="Update Book Listing"
+      />
+
+      <AIView
+        text="Unsure What to Charge? Ask AI!"
+        prompt={`Suggest a fair price for a second-hand book titled ${book?.volumeInfo.title} by ${book?.volumeInfo.authors.join(', ')}. The book is located in ${currency.country}, and the price should be in ${currency.currency}. Consider typical second-hand book pricing in this region and factor in the book’s used condition.Provide a one-line response with just the price suggestion.`}
+        className="bottom-24"
       />
     </SafeAreaView>
   );
