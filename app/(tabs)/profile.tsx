@@ -5,6 +5,7 @@ import StudentIcon from '../../assets/student.svg';
 
 import CurrencyPicker from '~/components/CurrencyPicker';
 import Error from '~/components/Error';
+import Institute from '~/components/Institute';
 import Loading from '~/components/Loading';
 import { Button } from '~/components/ui/button';
 import { Separator } from '~/components/ui/separator';
@@ -39,6 +40,8 @@ const ProfileScreen = () => {
           <Phone className="text-gray-500" size={20} strokeWidth={2} />
           <Text className="font-medium text-gray-500">{user?.user_metadata.phone}</Text>
         </View>
+
+        <Institute email={user?.email} />
       </View>
 
       <Separator />
