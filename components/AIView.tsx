@@ -25,7 +25,9 @@ const AIView = (props: IAIView) => {
       className={cn('absolute bottom-5 right-5 p-1', className)}
       style={{
         borderRadius: 100,
-      }}>
+      }}
+      start={[0, 0]}
+      end={[1, 0]}>
       <TouchableOpacity
         className="flex flex-row items-center justify-between rounded-full bg-background pr-3"
         onPress={() => refetch()}
