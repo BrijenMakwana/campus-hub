@@ -13,6 +13,7 @@ import { Text } from '~/components/ui/text';
 import { useCurrentUser, useLogout } from '~/hooks';
 import { Mail } from '~/lib/icons/Mail';
 import { Phone } from '~/lib/icons/Phone';
+import { TreeToast } from '~/components/CustomToasts';
 
 const ProfileScreen = () => {
   const { data: user, isPending, error, refetch } = useCurrentUser();
@@ -47,6 +48,8 @@ const ProfileScreen = () => {
       <Separator />
 
       <CurrencyPicker />
+
+      <TreeToast />
 
       <Button size="lg" className="mb-5 mt-auto" variant="destructive" onPress={() => logout()}>
         <Text>Logout</Text>

@@ -59,7 +59,7 @@ const CustomLottieView = (props: ICustomLottieView) => {
   const { source, text, size } = props;
 
   return (
-    <View className="items-center justify-center gap-5 rounded-xl bg-background p-5 shadow-md">
+    <View className="items-center justify-center gap-5 rounded-2xl bg-background p-5 shadow-md">
       <LottieView
         autoPlay
         loop
