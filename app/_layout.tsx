@@ -5,6 +5,7 @@ import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import * as React from 'react';
 import Toast from 'react-native-toast-message';
+import TreeToast from '~/components/TreeToast';
 
 const queryClient = new QueryClient();
 
@@ -31,7 +32,11 @@ export default function RootLayout() {
         <Stack.Screen name="app-info" />
       </Stack>
 
-      <Toast />
+      <Toast
+        config={{
+          treeToast: () => <TreeToast />,
+        }}
+      />
       <PortalHost />
     </QueryClientProvider>
   );
