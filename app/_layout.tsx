@@ -24,6 +24,7 @@ export default function RootLayout() {
         screenOptions={{
           headerShown: false,
         }}>
+        <Stack.Screen name="getting-started" />
         <Stack.Screen name="(onboarding)" />
         <Stack.Screen name="(tabs)" />
         <Stack.Screen name="book/[bookId]" />
