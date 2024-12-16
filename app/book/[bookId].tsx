@@ -37,7 +37,7 @@ const BookScreen = () => {
   return (
     <View className="flex-1 bg-background">
       <Animated.View
-        className="absolute top-0 z-10 flex w-full flex-row items-center justify-between gap-2 border-b border-b-border bg-background px-5 py-2 pt-16"
+        className="absolute z-10 flex w-full flex-row items-center justify-between gap-2 border-b border-b-border bg-background px-5 py-2 pt-16"
         style={animatedHeaderStyle}>
         <GoBack />
 
@@ -53,7 +53,10 @@ const BookScreen = () => {
         contentContainerClassName="gap-5 pb-28"
         ListHeaderComponent={() => (
           <>
-            <GoBack className="absolute left-4 top-10" text="Back" color="text-background" />
+            <View className="absolute top-12 flex w-full flex-row items-center justify-between px-5">
+              <GoBack color="text-background" text="Back" />
+              <AddToWishList bookId={bookId as string} />
+            </View>
 
             <Book />
 
@@ -69,9 +72,6 @@ const BookScreen = () => {
         onScroll={scrollHandler}
         scrollEventThrottle={16}
       />
-
-      {/* <AddToWishList bookId={bookId as string} />
-       */}
 
       <AIView
         text="Confused About Price? Ask AI!"

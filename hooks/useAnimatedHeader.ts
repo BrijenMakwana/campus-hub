@@ -7,22 +7,22 @@ import {
 
 export const useAnimatedHeader = () => {
   const scrollY = useSharedValue(0);
-  const headerOpacity = useSharedValue(0);
+  const headerPosition = useSharedValue(-200);
 
   const scrollHandler = useAnimatedScrollHandler({
     onScroll: (event) => {
       scrollY.value = event.contentOffset.y;
 
-      if (scrollY.value > 180) {
-        headerOpacity.value = withTiming(1, { duration: 300 });
+      if (scrollY.value > 110) {
+        headerPosition.value = withTiming(0, { duration: 300 });
       } else {
-        headerOpacity.value = withTiming(0, { duration: 300 });
+        headerPosition.value = withTiming(-200, { duration: 300 });
       }
     },
   });
 
   const animatedHeaderStyle = useAnimatedStyle(() => ({
-    opacity: headerOpacity.value,
+    top: headerPosition.value,
   }));
 
   return { scrollHandler, animatedHeaderStyle };

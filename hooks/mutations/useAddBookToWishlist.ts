@@ -19,6 +19,12 @@ export const useAddBookToWishlist = () => {
     mutationFn: addBookToWishlist,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['wishListedBooks'] });
+
+      Toast.show({
+        type: 'success',
+        text1: 'Book successfully added to your wishlist!',
+        topOffset: 50,
+      });
     },
     onError: (error) => {
       Toast.show({
