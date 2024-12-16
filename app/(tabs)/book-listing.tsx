@@ -25,10 +25,10 @@ const BookListingScreen = () => {
       <Tabs value={value} onValueChange={setValue}>
         <TabsList className="mt-5 w-3/4 flex-row self-center">
           <TabsTrigger value="wishlist" className="flex-1">
-            <Text>Wishlist</Text>
+            <Text>My Wishlist</Text>
           </TabsTrigger>
           <TabsTrigger value="for sale" className="flex-1">
-            <Text>For Sale</Text>
+            <Text>Books for Sale</Text>
           </TabsTrigger>
         </TabsList>
         <TabsContent value="wishlist">
