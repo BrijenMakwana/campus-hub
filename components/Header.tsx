@@ -17,7 +17,7 @@ const Header = () => {
   if (isPending) return <Loading />;
 
   return (
-    <LinearGradient colors={[THEME.light.secondary, 'transparent']}>
+    <LinearGradient colors={[THEME.light.secondary, THEME.light.background]}>
       <SafeAreaView className="flex flex-row justify-between gap-2 border-b border-input px-5 py-5">
         <View className="flex-1 gap-3">
           <Text className="text-neutral-60 text-lg font-medium">
