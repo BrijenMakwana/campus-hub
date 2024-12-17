@@ -22,7 +22,7 @@ export const useBookListing = (bookId: string) => {
   };
 
   return useQuery({
-    queryKey: [`bookListing ${bookId}`],
+    queryKey: ['bookListing', bookId],
     queryFn: getBookListing,
     enabled: !!bookId,
   });

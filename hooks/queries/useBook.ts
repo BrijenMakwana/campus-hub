@@ -15,7 +15,7 @@ export const useBook = (bookId: string) => {
   };
 
   return useQuery({
-    queryKey: [bookId],
+    queryKey: ['googleBook', bookId],
     queryFn: getBook,
     refetchOnWindowFocus: false,
     refetchOnMount: false,

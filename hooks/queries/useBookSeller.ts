@@ -10,7 +10,7 @@ export const useBookSeller = (userId: string) => {
   };
 
   return useQuery({
-    queryKey: [userId],
+    queryKey: ['bookSeller', userId],
     queryFn: getBookSeller,
     enabled: !!userId,
   });

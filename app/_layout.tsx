@@ -6,7 +6,13 @@ import { StatusBar } from 'expo-status-bar';
 import * as React from 'react';
 import Toast from 'react-native-toast-message';
 
-import { BookmarkToast, DeleteToast, TreeToast, UpdateToast } from '~/components/CustomToasts';
+import {
+  BookmarkToast,
+  DeleteToast,
+  MailToast,
+  TreeToast,
+  UpdateToast,
+} from '~/components/CustomToasts';
 
 const queryClient = new QueryClient();
 
@@ -36,6 +42,7 @@ export default function RootLayout() {
 
       <Toast
         config={{
+          mailToast: () => <MailToast />,
           treeToast: () => <TreeToast />,
           deleteToast: () => <DeleteToast />,
           bookmarkToast: () => <BookmarkToast />,
