@@ -17,7 +17,7 @@ const SVG4 = ({ width = 100, height = 200 }: ISVG4) => {
         position: 'absolute',
         right: 0,
         top: 30,
-        zIndex: -1,
+        zIndex: 1,
       }}>
       <Defs>
         <LinearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
