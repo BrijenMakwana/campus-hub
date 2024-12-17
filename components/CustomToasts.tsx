@@ -3,6 +3,16 @@ import { View } from 'react-native';
 
 import { Text } from './ui/text';
 
+export const MailToast = () => {
+  return (
+    <CustomLottieView
+      source={require('../assets/mail.zip')}
+      text="Verification email sent. Please check your inbox."
+      size={80}
+    />
+  );
+};
+
 export const TreeToast = () => {
   return (
     <CustomLottieView

@@ -33,6 +33,12 @@ export const useSignUp = () => {
 
   return useMutation({
     mutationFn: signUp,
+    onSuccess: () => {
+      Toast.show({
+        type: 'mailToast',
+        topOffset: 50,
+      });
+    },
     onError: (error) => {
       Toast.show({
         type: 'error',
