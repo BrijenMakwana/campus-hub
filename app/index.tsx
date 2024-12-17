@@ -2,6 +2,7 @@ import { Session } from '@supabase/supabase-js';
 import { Redirect } from 'expo-router';
 import { useState, useEffect } from 'react';
 
+import Loading from '~/components/Loading';
 import { useFirstLaunch } from '~/hooks';
 import { supabase } from '~/supabase';
 
@@ -30,7 +31,7 @@ const Index = () => {
     };
   }, []);
 
-  if (isPending) return null;
+  if (isPending) return <Loading />;
 
   if (error) return <Redirect href="/getting-started" />;
 
