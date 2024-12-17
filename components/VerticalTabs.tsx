@@ -6,9 +6,9 @@ import { cn } from '~/lib/utils';
 const TAB_HEIGHT = 100;
 
 const tabs = [
-  { id: 0, label: 'Newest' },
-  { id: 1, label: 'Mint' },
-  { id: 2, label: 'Deals' },
+  { id: 0, label: 'Latest' },
+  { id: 1, label: 'Like New' },
+  { id: 2, label: 'Best Deals' },
 ];
 
 interface IVerticalTabs {
