@@ -8,6 +8,7 @@ import { Badge } from './ui/badge';
 import { Text } from './ui/text';
 import StudentIcon from '../assets/student.svg';
 
+import { useCurrentUser } from '~/hooks';
 import { cn } from '~/lib/utils';
 import useCurrencyStore from '~/store';
 import { BookCondition, IBookSaleWithUser } from '~/types';
@@ -19,10 +20,16 @@ const SellerCard = (props: IBookSaleWithUser) => {
 
   const { full_name, phone } = users;
 
+  const { data: currentUser } = useCurrentUser();
+
   const { currency, getExchangeRate } = useCurrencyStore();
 
   return (
-    <View className="mx-5 flex flex-row items-center justify-between gap-5 rounded-2xl bg-secondary/20 p-5">
+    <View
+      className={cn(
+        'mx-5 flex flex-row items-center justify-between gap-5 rounded-2xl bg-secondary/20 p-5',
+        currentUser?.id === user_id && 'bg-accent/20'
+      )}>
       <View className="flex-1 gap-2">
         <Link href={`/book-seller/${user_id}`} asChild>
           <TouchableOpacity className="flex flex-row items-center gap-3">
@@ -57,7 +64,7 @@ const SellerCard = (props: IBookSaleWithUser) => {
           {getExchangeRate(price)}
         </Text>
 
-        <ConnectCall phone={phone} />
+        {currentUser?.id !== user_id && <ConnectCall phone={phone} />}
       </View>
     </View>
   );
