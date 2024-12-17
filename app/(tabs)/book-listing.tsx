@@ -1,11 +1,10 @@
 import { UseQueryResult, UseMutationResult } from '@tanstack/react-query';
-import LottieView from 'lottie-react-native';
 import { useState } from 'react';
-import { View } from 'react-native';
 import Animated, { LinearTransition } from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import BookItemWrapper from '~/components/BookItemWrapper';
+import EmptyData from '~/components/EmptyData';
 import Loading from '~/components/Loading';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '~/components/ui/tabs';
 import { Text } from '~/components/ui/text';
@@ -72,27 +71,10 @@ const BooksTab = ({
       )}
       keyExtractor={(item) => item.id.toString()}
       contentContainerClassName="gap-5 pb-52 px-5 mt-5"
-      ListEmptyComponent={Empty}
+      ListEmptyComponent={() => (
+        <EmptyData text="Seems a bit empty. Let’s fill it with some books!" />
+      )}
       itemLayoutAnimation={LinearTransition}
     />
-  );
-};
-
-const Empty = () => {
-  return (
-    <View className="items-center justify-center py-32">
-      <LottieView
-        autoPlay
-        loop
-        style={{
-          width: 250,
-          height: 250,
-        }}
-        source={require('../../assets/booklist.zip')}
-        speed={1}
-      />
-
-      <Text className="text-center">Seems a bit empty. Let’s fill it with some books!</Text>
-    </View>
   );
 };

@@ -4,6 +4,7 @@ import Animated, { LinearTransition } from 'react-native-reanimated';
 
 import BookCard from '~/components/BookCard';
 import BookItemWithUser from '~/components/BookItemWithUser';
+import EmptyData from '~/components/EmptyData';
 import Error from '~/components/Error';
 import Header from '~/components/Header';
 import Loading from '~/components/Loading';
@@ -37,6 +38,14 @@ const HomeScreen = () => {
   if (isPending) return <Loading />;
 
   if (error) return <Error refetch={refetch} />;
+
+  if (!books)
+    return (
+      <View className="flex-1 bg-background">
+        <Header />
+        <EmptyData text="Your institute has just joined Campus Hub! Start exploring by searching for books in the Search tab." />
+      </View>
+    );
 
   const isCreatedAt = activeTab === 0;
   const isBookCondition = activeTab === 1;
