@@ -74,6 +74,7 @@ const BooksTab = ({
       ListEmptyComponent={() => (
         <EmptyData text="Seems a bit empty. Let’s fill it with some books!" />
       )}
+      ListHeaderComponent={<Text className="font-medium">Total Books: {data?.length}</Text>}
       itemLayoutAnimation={LinearTransition}
     />
   );
