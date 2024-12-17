@@ -39,7 +39,7 @@ const HomeScreen = () => {
 
   if (error) return <Error refetch={refetch} />;
 
-  if (!books)
+  if (!books || books.length === 0)
     return (
       <View className="flex-1 bg-background">
         <Header />
