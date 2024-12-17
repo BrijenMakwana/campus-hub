@@ -22,7 +22,7 @@ const GithubCard = ({ repoUrl }: { repoUrl: string }) => {
   const { name, description, topics, html_url } = repo;
 
   return (
-    <View className="gap-4 rounded-xl border border-input p-5">
+    <View className="gap-4 rounded-2xl bg-secondary/20 p-5">
       <View className="flex flex-row items-center gap-5">
         <FontAwesome5 name="github" size={35} color={THEME.light.accent} />
         <Text className="text-2xl">{name}</Text>
@@ -55,7 +55,7 @@ const GithubCard = ({ repoUrl }: { repoUrl: string }) => {
 
       <Button
         onPress={() => Linking.openURL(html_url)}
-        className="flex flex-row items-center gap-3 self-end">
+        className="flex flex-row items-center gap-3 self-end bg-secondary">
         <Text>View Source Code</Text>
         <EvilIcons name="external-link" size={25} color="#fff" />
       </Button>
