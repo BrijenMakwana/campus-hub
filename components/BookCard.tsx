@@ -76,7 +76,7 @@ const BookCard = (props: IBookCard) => {
           )}
 
           {isCreatedAt && (
-            <Text className="text-sm text-neutral-500">Added {dayjs(created_at).fromNow()}</Text>
+            <Text className="text-xs text-neutral-500">Added {dayjs(created_at).fromNow()}</Text>
           )}
         </View>
       </TouchableOpacity>
