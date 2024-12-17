@@ -26,7 +26,7 @@ const HomeScreen = () => {
       case 0:
         return books
           ?.slice()
-          .sort((a, b) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime());
+          .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
       case 1:
         return books?.filter((book) => book.book_condition === BookCondition.GOOD);
       case 2:
@@ -39,6 +39,10 @@ const HomeScreen = () => {
   if (isPending) return <Loading />;
 
   if (error) return <Error refetch={refetch} />;
+
+  const isCreatedAt = activeTab === 0;
+  const isBookCondition = activeTab === 1;
+  const isPrice = activeTab === 2;
 
   return (
     <SafeAreaView className="flex-1 bg-background">
@@ -57,7 +61,14 @@ const HomeScreen = () => {
           <Animated.FlatList
             data={sortBooks}
             extraData={activeTab}
-            renderItem={({ item }) => <BookCard {...item} />}
+            renderItem={({ item }) => (
+              <BookCard
+                {...item}
+                isPrice={isPrice}
+                isBookCondition={isBookCondition}
+                isCreatedAt={isCreatedAt}
+              />
+            )}
             keyExtractor={(item) => item.id.toString()}
             contentContainerClassName="gap-7 pr-7 items-end"
             itemLayoutAnimation={LinearTransition}

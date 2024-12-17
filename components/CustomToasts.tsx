@@ -27,7 +27,7 @@ export const UpdateToast = () => {
   return (
     <CustomLottieView
       source={require('../assets/done.zip')}
-      text="Book Successfully Removed!"
+      text="Book Successfully Updated!"
       size={80}
     />
   );

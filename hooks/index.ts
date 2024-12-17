@@ -24,3 +24,4 @@ export * from './useAnimatedHeader';
 export * from './useAI';
 export * from './useGitRepo';
 export * from './useContributors';
+export * from './useFirstLaunch';
