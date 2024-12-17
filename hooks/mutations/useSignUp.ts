@@ -1,4 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
+import { router } from 'expo-router';
 import Toast from 'react-native-toast-message';
 
 import { supabase } from '~/supabase';
@@ -34,6 +35,7 @@ export const useSignUp = () => {
   return useMutation({
     mutationFn: signUp,
     onSuccess: () => {
+      router.back();
       Toast.show({
         type: 'mailToast',
         topOffset: 50,
