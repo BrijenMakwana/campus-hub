@@ -28,7 +28,6 @@ const Header = () => {
           <Institute email={user?.email} />
         </View>
 
-        {/* TODO: not visible */}
         <Link href="/app-info" asChild>
           <TouchableOpacity className="p-3">
             <Info className="text-foreground" size={23} strokeWidth={2} />
