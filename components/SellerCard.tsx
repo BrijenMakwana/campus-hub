@@ -64,7 +64,11 @@ const SellerCard = (props: IBookSaleWithUser) => {
           {getExchangeRate(price)}
         </Text>
 
-        {currentUser?.id !== user_id && <ConnectCall phone={phone} />}
+        {currentUser?.id !== user_id ? (
+          <ConnectCall phone={phone} />
+        ) : (
+          <Text className="font-medium text-accent">Your Listing</Text>
+        )}
       </View>
     </View>
   );

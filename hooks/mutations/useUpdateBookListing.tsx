@@ -35,6 +35,8 @@ export const useUpdateBookListing = () => {
     mutationFn: updateBookListing,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['myListedBooks'] });
+      queryClient.invalidateQueries({ queryKey: ['bookListings'] });
+      queryClient.invalidateQueries({ queryKey: ['bookListingsWithUsers'] });
 
       router.back();
 
