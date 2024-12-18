@@ -117,9 +117,22 @@ const SignInScreen = () => {
         {isPending ? (
           <Loading />
         ) : (
-          <Button size="lg" onPress={handleSubmit(onSubmit)} className="bg-primary">
-            <Text>Login</Text>
-          </Button>
+          <View>
+            <Button size="lg" onPress={handleSubmit(onSubmit)} className="bg-primary">
+              <Text>Login</Text>
+            </Button>
+
+            <Button
+              variant="link"
+              onPress={() =>
+                signIn({
+                  email: process.env.EXPO_PUBLIC_TEST_EMAIL ?? '',
+                  password: process.env.EXPO_PUBLIC_TEST_PASSWORD ?? '',
+                })
+              }>
+              <Text>Try as Test User</Text>
+            </Button>
+          </View>
         )}
 
         <View className="flex flex-row items-center justify-center">
