@@ -4,6 +4,7 @@ import { FlatList, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import BookItem from '~/components/BookItem';
+import Error from '~/components/Error';
 import Loader from '~/components/Loader';
 import SearchBar from '~/components/SearchBar';
 import { Text } from '~/components/ui/text';
@@ -12,13 +13,15 @@ import { useSearchBooks } from '~/hooks';
 const SearchBooksScreen = () => {
   const [bookTitle, setBookTitle] = useState('');
 
-  const { data: books, isFetching, refetch, isSuccess } = useSearchBooks(bookTitle);
+  const { data: books, isFetching, refetch, isSuccess, error } = useSearchBooks(bookTitle);
 
   return (
     <SafeAreaView className="flex-1 gap-5 bg-background pt-5">
       <SearchBar value={bookTitle} setValue={setBookTitle} onSearch={refetch} />
 
       {isFetching && <Loader varient="searching" />}
+
+      {error && <Error refetch={refetch} />}
 
       <FlatList
         data={books}

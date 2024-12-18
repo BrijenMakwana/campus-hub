@@ -38,7 +38,7 @@ const SearchBar = (props: ISearchBar) => {
 
       {!value && (
         <BarcodeScanner setValue={setValue}>
-          <Scan className="text-foreground" size={23} strokeWidth={1.25} />
+          <Scan className="text-primary" size={23} strokeWidth={1.5} />
         </BarcodeScanner>
       )}
     </View>

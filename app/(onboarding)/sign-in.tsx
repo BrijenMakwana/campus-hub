@@ -118,7 +118,7 @@ const SignInScreen = () => {
           <Loading />
         ) : (
           <Button size="lg" onPress={handleSubmit(onSubmit)} className="bg-primary">
-            <Text> {isPending ? 'Wait' : 'Login'}</Text>
+            <Text>Login</Text>
           </Button>
         )}
 

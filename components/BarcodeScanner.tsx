@@ -5,6 +5,7 @@ import { Modal, View, StyleSheet, TouchableOpacity } from 'react-native';
 
 import { Button } from './ui/button';
 import { Text } from './ui/text';
+import Loading from './Loading';
 
 interface IBarcodeScanner {
   setValue: React.Dispatch<SetStateAction<string>>;
@@ -41,7 +42,7 @@ const CameraViewer = (props: ICameraViewer) => {
 
   if (!permission) {
     // Camera permissions are still loading.
-    return <View />;
+    return <Loading />;
   }
 
   if (!permission.granted) {

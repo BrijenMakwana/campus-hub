@@ -44,12 +44,18 @@ const AIView = (props: IAIView) => {
         />
 
         {isFetching ? (
-          <Text className="text-sm">Just a moment, AI is working…</Text>
+          <Text className="text-sm text-gray-500">Just a moment, AI is working…</Text>
         ) : (
-          <Text className="text-sm">{answer ?? text}</Text>
+          <>
+            {error ? (
+              <Text className="text-sm text-red-500">
+                An error occurred, please try again later.
+              </Text>
+            ) : (
+              <Text className="text-sm text-gray-900">{answer ?? text}</Text>
+            )}
+          </>
         )}
-
-        {error && <Text className="text-red-400">{error.message}</Text>}
       </TouchableOpacity>
     </LinearGradient>
   );

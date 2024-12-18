@@ -5,6 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import BookItemWrapper from '~/components/BookItemWrapper';
 import EmptyData from '~/components/EmptyData';
+import Error from '~/components/Error';
 import Loading from '~/components/Loading';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '~/components/ui/tabs';
 import { Text } from '~/components/ui/text';
@@ -57,11 +58,13 @@ const BooksTab = ({
     unknown
   >;
 }) => {
-  const { data, isPending, error } = useBooks();
+  const { data, isPending, error, refetch } = useBooks();
 
   const { mutate: removeBook } = useRemoveBook();
 
   if (isPending) return <Loading />;
+
+  if (error) return <Error refetch={refetch} />;
 
   return (
     <Animated.FlatList

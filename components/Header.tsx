@@ -10,6 +10,7 @@ import { Text } from './ui/text';
 import { useCurrentUser } from '~/hooks';
 import { THEME } from '~/lib/constants';
 import { Info } from '~/lib/icons/Info';
+import { Separator } from './ui/separator';
 
 const Header = () => {
   const { data: user, isPending } = useCurrentUser();
@@ -18,21 +19,25 @@ const Header = () => {
 
   return (
     <LinearGradient colors={[THEME.light.secondary, THEME.light.background]}>
-      <SafeAreaView className="flex flex-row justify-between gap-2 border-b border-input px-5 py-5">
-        <View className="flex-1 gap-3">
-          <Text className="text-neutral-60 text-lg font-medium">
-            Hello {user?.user_metadata.full_name}
-          </Text>
-          <Text className="text-2xl">Explore, Connect, and Read!</Text>
+      <SafeAreaView className="px-5">
+        <View className="flex flex-row justify-between gap-2 py-5">
+          <View className="flex-1 gap-3">
+            <Text className="text-neutral-60 text-lg font-medium">
+              Hello {user?.user_metadata.full_name}
+            </Text>
+            <Text className="text-2xl">Explore, Connect, and Read!</Text>
 
-          <Institute email={user?.email} />
+            <Institute email={user?.email} />
+          </View>
+
+          <Link href="/app-info" asChild>
+            <TouchableOpacity className="p-3">
+              <Info className="text-foreground" size={23} strokeWidth={2} />
+            </TouchableOpacity>
+          </Link>
         </View>
 
-        <Link href="/app-info" asChild>
-          <TouchableOpacity className="p-3">
-            <Info className="text-foreground" size={23} strokeWidth={2} />
-          </TouchableOpacity>
-        </Link>
+        <Separator />
       </SafeAreaView>
     </LinearGradient>
   );

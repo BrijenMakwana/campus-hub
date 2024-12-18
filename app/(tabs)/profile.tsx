@@ -15,11 +15,11 @@ import { Mail } from '~/lib/icons/Mail';
 import { Phone } from '~/lib/icons/Phone';
 
 const ProfileScreen = () => {
-  const { data: user, isPending, error, refetch } = useCurrentUser();
+  const { data: user, isPending: isUserPending, error, refetch } = useCurrentUser();
 
-  const { mutate: logout } = useLogout();
+  const { mutate: logout, isPending: isLogoutPending } = useLogout();
 
-  if (isPending) return <Loading />;
+  if (isUserPending) return <Loading />;
 
   if (error) return <Error refetch={refetch} />;
 
@@ -48,9 +48,15 @@ const ProfileScreen = () => {
 
       <CurrencyPicker />
 
-      <Button size="lg" className="mt-auto" variant="destructive" onPress={() => logout()}>
-        <Text>Logout</Text>
-      </Button>
+      <View className="mt-auto">
+        {isLogoutPending ? (
+          <Loading />
+        ) : (
+          <Button size="lg" variant="destructive" onPress={() => logout()}>
+            <Text>Logout</Text>
+          </Button>
+        )}
+      </View>
     </SafeAreaView>
   );
 };
