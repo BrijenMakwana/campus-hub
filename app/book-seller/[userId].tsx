@@ -11,7 +11,7 @@ import GoBack from '~/components/GoBack';
 import Loading from '~/components/Loading';
 import { Separator } from '~/components/ui/separator';
 import { Text } from '~/components/ui/text';
-import { useBookListingsByUser, useBookSeller } from '~/hooks';
+import { useBookListingsByUser, useBookSeller, useCurrentUser } from '~/hooks';
 import { Mail } from '~/lib/icons/Mail';
 import { Phone } from '~/lib/icons/Phone';
 
@@ -21,6 +21,8 @@ const BookSellerScreen = () => {
   const { data: user, isPending, error, refetch } = useBookSeller(userId);
 
   const { data: books } = useBookListingsByUser(userId);
+
+  const { data: currentUser } = useCurrentUser();
 
   if (isPending) return <Loading />;
 
@@ -50,7 +52,7 @@ const BookSellerScreen = () => {
           </View>
         </View>
 
-        <ConnectCall phone={phone} />
+        {currentUser?.id !== userId && <ConnectCall phone={phone} />}
       </View>
 
       <Separator />

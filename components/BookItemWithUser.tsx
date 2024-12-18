@@ -10,17 +10,19 @@ import { Text } from './ui/text';
 import StudentIcon from '../assets/student.svg';
 import { Separator } from './ui/separator';
 
-import { useBook } from '~/hooks';
+import { useBook, useCurrentUser } from '~/hooks';
 import { cn } from '~/lib/utils';
 import useCurrencyStore from '~/store';
 import { BookCondition, IBookSaleWithUser } from '~/types';
 
 const BookItemWithUser = (props: IBookSaleWithUser) => {
-  const { book_id, book_condition, price, created_at, users } = props;
+  const { book_id, book_condition, price, created_at, users, user_id } = props;
 
   const { full_name, phone } = users;
 
   const { data: book, isPending, error } = useBook(book_id);
+
+  const { data: currentUser } = useCurrentUser();
 
   const { currency, getExchangeRate } = useCurrencyStore();
 
@@ -84,13 +86,19 @@ const BookItemWithUser = (props: IBookSaleWithUser) => {
 
       <View className="flex flex-row items-center justify-between">
         <View className="gap-2">
-          <View className="flex flex-row items-center gap-2">
-            <StudentIcon height={20} width={20} />
-            <Text numberOfLines={1}>{full_name}</Text>
-          </View>
+          <Link href={`/book-seller/${user_id}`} asChild>
+            <TouchableOpacity className="flex flex-row items-center gap-2">
+              <StudentIcon height={20} width={20} />
+              <Text numberOfLines={1}>{full_name}</Text>
+            </TouchableOpacity>
+          </Link>
           <Text className="text-sm text-neutral-500">Added {dayjs(created_at).fromNow()}</Text>
         </View>
-        <ConnectCall phone={phone} />
+        {currentUser?.id !== user_id ? (
+          <ConnectCall phone={phone} />
+        ) : (
+          <Text className="font-medium text-secondary">Your Listing</Text>
+        )}
       </View>
     </View>
   );
