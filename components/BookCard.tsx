@@ -22,11 +22,13 @@ const BookCard = (props: IBookCard) => {
   const { book_id, price, book_condition, created_at, isPrice, isCreatedAt, isBookCondition } =
     props;
 
-  const { data: book, isPending } = useBook(book_id);
+  const { data: book, isPending, error } = useBook(book_id);
 
   const { currency, getExchangeRate } = useCurrencyStore();
 
   if (isPending) return <Skeleton className="h-80 w-48 bg-neutral-300" />;
+
+  if (error) return;
 
   const { imageLinks, title, authors } = book!.volumeInfo;
 
@@ -47,7 +49,7 @@ const BookCard = (props: IBookCard) => {
             {title}
           </Text>
           <Text className="text-sm font-medium text-gray-500" numberOfLines={1}>
-            {authors.join(', ')}
+            {authors?.join(', ')}
           </Text>
         </View>
 

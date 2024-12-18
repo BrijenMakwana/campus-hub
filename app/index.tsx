@@ -4,10 +4,14 @@ import { useState, useEffect } from 'react';
 
 import Loading from '~/components/Loading';
 import { useFirstLaunch } from '~/hooks';
+import useCurrencyStore from '~/store';
 import { supabase } from '~/supabase';
 
 const Index = () => {
   const { data: isFirstLaunch, isPending, error } = useFirstLaunch();
+
+  const { loadCurrency } = useCurrencyStore();
+
   const [session, setSession] = useState<Session | null>(null);
 
   useEffect(() => {
@@ -25,6 +29,8 @@ const Index = () => {
     } = supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
     });
+
+    loadCurrency();
 
     return () => {
       subscription?.unsubscribe();

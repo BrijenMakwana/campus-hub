@@ -20,11 +20,13 @@ const BookItemWithUser = (props: IBookSaleWithUser) => {
 
   const { full_name, phone } = users;
 
-  const { data: book, isPending } = useBook(book_id);
+  const { data: book, isPending, error } = useBook(book_id);
 
   const { currency, getExchangeRate } = useCurrencyStore();
 
   if (isPending) return <Skeleton className="h-48 w-80 bg-neutral-300" />;
+
+  if (error) return;
 
   dayjs.extend(relativeTime);
 
@@ -48,7 +50,7 @@ const BookItemWithUser = (props: IBookSaleWithUser) => {
           </Text>
 
           <Text className="text-sm font-medium capitalize text-gray-500" numberOfLines={2}>
-            {book?.volumeInfo.authors.join(', ')}
+            {book?.volumeInfo.authors?.join(', ')}
           </Text>
 
           <View className="mt-2 flex flex-row items-center justify-start gap-3">

@@ -16,9 +16,19 @@ import { BookCondition } from '~/types';
 const HomeScreen = () => {
   const [activeTab, setActiveTab] = useState(0);
 
-  const { data: books, isPending, error, refetch } = useBookListings();
+  const {
+    data: books,
+    isPending: isBooksPending,
+    error: booksError,
+    refetch: refetchBooks,
+  } = useBookListings();
 
-  const { data: booksWithUsers } = useBookListingsWithUsers();
+  const {
+    data: booksWithUsers,
+    isPending: isBooksWithUsersPending,
+    error: booksWithUsersError,
+    refetch: refetchBooksWithUsers,
+  } = useBookListingsWithUsers();
 
   const sortBooks = useMemo(() => {
     switch (activeTab) {
@@ -35,9 +45,11 @@ const HomeScreen = () => {
     }
   }, [activeTab, books]);
 
-  if (isPending) return <Loading />;
+  if (isBooksPending || isBooksWithUsersPending) return <Loading />;
 
-  if (error) return <Error refetch={refetch} />;
+  if (booksError) return <Error refetch={refetchBooks} />;
+
+  if (booksWithUsersError) return <Error refetch={refetchBooksWithUsers} />;
 
   if (!books || books.length === 0)
     return (

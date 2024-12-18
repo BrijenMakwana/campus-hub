@@ -3,6 +3,7 @@ import LottieView from 'lottie-react-native';
 import React, { PropsWithChildren, SetStateAction, useState } from 'react';
 import { Modal, View, StyleSheet, TouchableOpacity } from 'react-native';
 
+import Loading from './Loading';
 import { Button } from './ui/button';
 import { Text } from './ui/text';
 
@@ -41,7 +42,7 @@ const CameraViewer = (props: ICameraViewer) => {
 
   if (!permission) {
     // Camera permissions are still loading.
-    return <View />;
+    return <Loading />;
   }
 
   if (!permission.granted) {

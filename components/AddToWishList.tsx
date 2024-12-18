@@ -7,7 +7,9 @@ import { BookmarkCheck } from '~/lib/icons/BookmarkCheck';
 const AddToWishList = ({ bookId }: { bookId: string }) => {
   const { mutate: addBookToWishlist, isSuccess } = useAddBookToWishlist();
 
-  const { data: isInWishlist } = useIsBookInWishlist(bookId);
+  const { data: isInWishlist, isPending, error } = useIsBookInWishlist(bookId);
+
+  if (isPending || error) return;
 
   const shouldShowCheckIcon = isInWishlist || isSuccess;
 

@@ -26,8 +26,9 @@ const GettingStarted = () => {
           {
             backgroundColor: THEME.light.background,
             image: <Slide1 height={ICON_SIZE} width={ICON_SIZE} />,
-            title: 'Buy and Sell Course Books with Students',
-            subtitle: 'Connect with university students to buy and sell your course books',
+            title: 'Buy and Sell Books with Fellow Students',
+            subtitle:
+              'Easily connect with students from your University to buy or sell course books directly within your campus community.',
           },
           {
             backgroundColor: THEME.light.background,
@@ -38,8 +39,9 @@ const GettingStarted = () => {
           {
             backgroundColor: THEME.light.background,
             image: <Slide3 height={ICON_SIZE} width={ICON_SIZE} />,
-            title: 'Your Campus Book Network',
-            subtitle: 'Safe trading with verified university students only',
+            title: 'Your Campus-Exclusive Book Network',
+            subtitle:
+              'Buy and sell books securely with verified students from your University only.',
           },
           {
             backgroundColor: THEME.light.background,
