@@ -48,7 +48,7 @@ const SignUpScreen = () => {
         <Text className="text-gray-400">Create an account to unlock your next reads</Text>
       </View>
 
-      <View className="mt-10 gap-5">
+      <View className="mt-7 gap-5">
         <Controller
           control={control}
           rules={{
@@ -57,7 +57,7 @@ const SignUpScreen = () => {
           render={({ field: { onChange, onBlur, value } }) => (
             <CustomInput
               label="full name"
-              placeholder="e.g., John Doe"
+              placeholder="e.g., Brijen Makwana"
               onBlur={onBlur}
               onChangeText={onChange}
               value={value}
@@ -75,11 +75,22 @@ const SignUpScreen = () => {
               value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
               message: 'Enter a valid email address.',
             },
+            validate: (value) => {
+              const publicDomains = [
+                'gmail.com',
+                'yahoo.com',
+                'outlook.com',
+                'hotmail.com',
+                'icloud.com',
+              ];
+              const domain = value.split('@')[1];
+              return !publicDomains.includes(domain) || 'Public email domains are not allowed.';
+            },
           }}
           render={({ field: { onChange, onBlur, value } }) => (
             <CustomInput
               label="email"
-              placeholder="e.g., johndoe@example.com"
+              placeholder="e.g., 201812010@daiict.ac.in"
               keyboardType="email-address"
               onBlur={onBlur}
               onChangeText={onChange}

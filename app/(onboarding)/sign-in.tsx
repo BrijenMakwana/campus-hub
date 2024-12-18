@@ -62,11 +62,22 @@ const SignInScreen = () => {
               value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
               message: 'Enter a valid email address.',
             },
+            validate: (value) => {
+              const publicDomains = [
+                'gmail.com',
+                'yahoo.com',
+                'outlook.com',
+                'hotmail.com',
+                'icloud.com',
+              ];
+              const domain = value.split('@')[1];
+              return !publicDomains.includes(domain) || 'Public email domains are not allowed.';
+            },
           }}
           render={({ field: { onChange, onBlur, value } }) => (
             <CustomInput
               label="email"
-              placeholder="e.g., johndoe@example.com"
+              placeholder="e.g., 201812010@daiict.ac.in"
               keyboardType="email-address"
               onBlur={onBlur}
               onChangeText={onChange}
