@@ -21,23 +21,23 @@ const AppInfoScreen = () => {
           <ExternalButton
             text="Source Code"
             icon={<FontAwesome5 name="github" size={25} color={THEME.light.accent} />}
-            url=""
+            url="https://github.com/BrijenMakwana/campus-hub"
           />
           <Separator />
           <ExternalButton
             text="Privacy Policy"
             icon={<MaterialIcons name="policy" size={25} color={THEME.light.accent} />}
-            url=""
+            url="https://campus-hub-policies.vercel.app/privacy-policy.html"
           />
           <Separator />
           <ExternalButton
             text="Terms and Condition"
             icon={<FontAwesome name="legal" size={25} color={THEME.light.accent} />}
-            url=""
+            url="https://campus-hub-policies.vercel.app/terms-and-conditions.html"
           />
         </View>
 
-        <GithubCard repoUrl="" />
+        <GithubCard repoUrl="https://api.github.com/repos/BrijenMakwana/campus-hub" />
       </ScrollView>
     </SafeAreaView>
   );
