@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { create } from 'zustand';
 
 export const countriesAndCurrencies = [
@@ -35,12 +36,31 @@ interface CurrencyStore {
   setCurrency: (newCurrency: Currency) => void;
   getExchangeRate: (price: number) => number;
   convertToUSD: (price: number) => number;
+  loadCurrency: () => Promise<void>;
 }
 
 const useCurrencyStore = create<CurrencyStore>((set, get) => ({
   currency: countriesAndCurrencies[0],
 
-  setCurrency: (newCurrency) => set({ currency: newCurrency }),
+  loadCurrency: async () => {
+    try {
+      const storedCurrency = await AsyncStorage.getItem('currency');
+      if (storedCurrency) {
+        set({ currency: JSON.parse(storedCurrency) });
+      }
+    } catch (error) {
+      console.log('Error loading currency from AsyncStorage:', error);
+    }
+  },
+
+  setCurrency: async (newCurrency) => {
+    try {
+      set({ currency: newCurrency });
+      await AsyncStorage.setItem('currency', JSON.stringify(newCurrency));
+    } catch (error) {
+      console.log('Error saving currency to AsyncStorage:', error);
+    }
+  },
   getExchangeRate: (price: number) => {
     const { exchangeRate } = get().currency;
     const convertedPrice = price * exchangeRate;

@@ -3,9 +3,9 @@ import LottieView from 'lottie-react-native';
 import React, { PropsWithChildren, SetStateAction, useState } from 'react';
 import { Modal, View, StyleSheet, TouchableOpacity } from 'react-native';
 
+import Loading from './Loading';
 import { Button } from './ui/button';
 import { Text } from './ui/text';
-import Loading from './Loading';
 
 interface IBarcodeScanner {
   setValue: React.Dispatch<SetStateAction<string>>;

@@ -5,12 +5,12 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import Institute from './Institute';
 import Loading from './Loading';
+import { Separator } from './ui/separator';
 import { Text } from './ui/text';
 
 import { useCurrentUser } from '~/hooks';
 import { THEME } from '~/lib/constants';
 import { Info } from '~/lib/icons/Info';
-import { Separator } from './ui/separator';
 
 const Header = () => {
   const { data: user, isPending } = useCurrentUser();
