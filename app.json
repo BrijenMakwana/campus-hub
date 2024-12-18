@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "campus-hub",
+    "name": "Campus Hub",
     "slug": "campus-hub",
     "version": "1.0.0",
     "newArchEnabled": true,
@@ -15,6 +15,7 @@
       [
         "expo-camera",
         {
+          "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera",
           "recordAudioAndroid": false
         }
       ]
