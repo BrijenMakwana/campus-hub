@@ -6,6 +6,7 @@ Campus Hub is a mobile app that allows university students to **buy, sell, and d
 
 - [Overview](#overview)
 - [Screenshots](#screenshots)
+- [Database Schema](#database-schema)
 - [Built With](#built-with)
 
 ## Overview
@@ -29,6 +30,8 @@ Campus Hub is a mobile app that allows university students to **buy, sell, and d
   - Use the **Google Books API** to search and autofill book details when listing books for sale.
   - Students can list books by adding the price, book condition (e.g., good, used, worn), and any remarks.
   - The feature supports multiple currency conversions, allowing students to list books in their preferred currency.
+  - Students can **edit** their book listings, including the price, condition, and remarks, at any time.
+  - Students can **delete** their book listings if they no longer wish to sell the book.
 
 - **AI-Powered Pricing**:
   - AI suggests buying or selling prices based on the book's condition and trends.
@@ -45,6 +48,21 @@ Campus Hub is a mobile app that allows university students to **buy, sell, and d
 
 
 ## Screenshots
+
+<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+<img src="https://i.imgur.com/JItL1ol.png" alt="screenshot 1" width="250"/>
+<img src="https://i.imgur.com/jXtiGpT.png" alt="screenshot 2" width="250"/>
+<img src="https://i.imgur.com/XPxCWpE.png" alt="screenshot 3" width="250"/>
+<img src="https://i.imgur.com/Cvh0kMU.png" alt="screenshot 4" width="250"/>
+<img src="https://i.imgur.com/YwtWAZS.png" alt="screenshot 5" width="250"/>
+<img src="https://i.imgur.com/GWEbjQs.png" alt="screenshot 6" width="250"/>
+<img src="https://i.imgur.com/u3pl57t.png" alt="screenshot 7" width="250"/>
+<img src="https://i.imgur.com/JMH2Gvv.png" alt="screenshot 8" width="250"/>
+</div>
+
+## Database Schema
+<img src="https://i.imgur.com/hQ3n0Rs.png" alt="database schema"/>
+
 
 ## Built With
 
