@@ -9,6 +9,7 @@ import { Text } from './ui/text';
 
 import { useGitRepo, useContributors } from '~/hooks';
 import { THEME } from '~/lib/constants';
+import { ensureHttps } from '~/lib/utils';
 
 const GithubCard = ({ repoUrl }: { repoUrl: string }) => {
   const { data: repo, isPending, error } = useGitRepo(repoUrl);
@@ -45,9 +46,13 @@ const GithubCard = ({ repoUrl }: { repoUrl: string }) => {
             onPress={() => Linking.openURL(contributor.html_url)}>
             <Image
               source={{
-                uri: contributor.avatar_url,
+                uri: ensureHttps(contributor.avatar_url),
               }}
-              className="aspect-square w-10 rounded-full"
+              style={{
+                width: 45,
+                borderRadius: 25,
+                aspectRatio: 1,
+              }}
             />
           </TouchableOpacity>
         ))}
