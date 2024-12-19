@@ -13,8 +13,5 @@ export const useWishListedBooks = () => {
   return useQuery({
     queryKey: ['wishListedBooks'],
     queryFn: wishListedBooks,
-    refetchOnWindowFocus: false,
-    refetchOnMount: false,
-    staleTime: Infinity,
   });
 };
