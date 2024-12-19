@@ -43,10 +43,7 @@
       },
       "softwareKeyboardLayoutMode": "pan",
       "permissions": ["android.permission.CAMERA"],
-      "package": "com.brijenmakwana.campushub",
-      "compileSdkVersion": 35,
-      "targetSdkVersion": 35,
-      "buildToolsVersion": "35.0.0"
+      "package": "com.brijenmakwana.campushub"
     },
     "extra": {
       "router": {
