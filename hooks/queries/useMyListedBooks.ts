@@ -17,8 +17,5 @@ export const useMyListedBooks = () => {
   return useQuery({
     queryKey: ['myListedBooks'],
     queryFn: myListedBooks,
-    refetchOnWindowFocus: false,
-    refetchOnMount: false,
-    staleTime: Infinity,
   });
 };
