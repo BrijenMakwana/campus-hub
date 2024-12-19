@@ -2,7 +2,7 @@
   "expo": {
     "name": "Campus Hub",
     "slug": "campus-hub",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "newArchEnabled": true,
     "scheme": "campus-hub",
     "web": {
