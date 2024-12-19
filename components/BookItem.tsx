@@ -33,9 +33,11 @@ const BookItem = (props: IBookItem) => {
         <TouchableOpacity>
           <Image
             source={{
-              uri: imageLinks?.thumbnail || 'https://via.placeholder.com/300x400',
+              uri:
+                imageLinks?.thumbnail ||
+                'https://images.unsplash.com/photo-1510172951991-856a654063f9?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             }}
-            className="aspect-[3/4] w-32 rounded-md shadow-md"
+            className="aspect-[3/4] w-32 rounded-md"
           />
         </TouchableOpacity>
       </Link>
