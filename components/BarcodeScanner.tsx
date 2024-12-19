@@ -84,6 +84,7 @@ const CameraViewer = (props: ICameraViewer) => {
           source={require('./../assets/scan.zip')}
           speed={1}
         />
+        <Text className="text-xl text-background">Scan Book Barcode</Text>
       </CameraView>
     </View>
   );
