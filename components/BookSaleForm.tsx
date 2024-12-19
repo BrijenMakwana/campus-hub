@@ -83,6 +83,10 @@ const BookSaleForm = (props: IBookSaleForm) => {
         control={control}
         rules={{
           required: 'Price is required.',
+          pattern: {
+            value: /^\d+(\.\d{1,2})?$/,
+            message: 'Enter a valid price.',
+          },
         }}
         render={({ field: { onChange, onBlur, value } }) => (
           <CustomInput
