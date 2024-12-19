@@ -1,8 +1,8 @@
 import { useLocalSearchParams } from 'expo-router';
 import LottieView from 'lottie-react-native';
-import { View } from 'react-native';
+import { View, Image } from 'react-native';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
-import Animated, { FlipInEasyY, Easing } from 'react-native-reanimated';
+import Animated from 'react-native-reanimated';
 
 import AIView from '~/components/AIView';
 import AddToWishList from '~/components/AddToWishList';
@@ -102,13 +102,15 @@ const Book = () => {
     <>
       <SVG3 />
 
-      <Animated.Image
+      <Image
         source={{
-          uri: imageLinks?.large || imageLinks?.thumbnail || 'https://via.placeholder.com/300x400',
+          uri:
+            imageLinks?.large ||
+            imageLinks?.thumbnail ||
+            'https://images.unsplash.com/photo-1510172951991-856a654063f9?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         }}
-        className="mt-32 aspect-[3/4] w-48 self-center rounded-md shadow-md"
+        className="mt-32 aspect-[3/4] w-48 self-center rounded-md"
         resizeMode="stretch"
-        entering={FlipInEasyY.delay(100).duration(300).easing(Easing.inOut(Easing.quad))}
       />
 
       <Text className="mt-3 text-center font-medium">{pageCount} pages</Text>

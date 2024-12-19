@@ -39,9 +39,11 @@ const BookCard = (props: IBookCard) => {
       <TouchableOpacity className="h-60 w-48 rounded-2xl bg-accent/20 p-7">
         <Image
           source={{
-            uri: imageLinks?.thumbnail || 'https://via.placeholder.com/300x400',
+            uri:
+              imageLinks?.thumbnail ||
+              'https://images.unsplash.com/photo-1510172951991-856a654063f9?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
           }}
-          className="absolute -top-16 aspect-[3/4] w-32 self-center rounded-xl shadow-md"
+          className="absolute -top-16 aspect-[3/4] w-32 self-center rounded-xl"
         />
 
         <View className="mt-24 gap-1">
