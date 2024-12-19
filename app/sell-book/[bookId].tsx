@@ -43,11 +43,13 @@ const SellBookScreen = () => {
 
       <Separator className="mt-2" />
 
-      <AIView
-        text="Unsure What to Charge? Ask AI!"
-        prompt={`Suggest a fair price for a second-hand book titled ${book.volumeInfo.title} by ${book.volumeInfo.authors.join(', ')}. The book is located in ${currency.country}, and the price should be in ${currency.currency}. Consider typical second-hand book pricing in this region and factor in the book’s used condition.Provide a one-line response with just the price suggestion.`}
-        className="bottom-24"
-      />
+      {!isMutating && (
+        <AIView
+          text="Unsure What to Charge? Ask AI!"
+          prompt={`Suggest a fair price for a second-hand book titled ${book.volumeInfo.title} by ${book.volumeInfo.authors.join(', ')}. The book is located in ${currency.country}, and the price should be in ${currency.currency}. Consider typical second-hand book pricing in this region and factor in the book’s used condition.Provide a one-line response with just the price suggestion.`}
+          className="bottom-24"
+        />
+      )}
 
       <BookSaleForm isPending={isMutating} onSubmit={onSubmit} buttonText="List Book for Sale" />
     </SafeAreaView>
