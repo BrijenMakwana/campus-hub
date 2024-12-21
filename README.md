@@ -5,7 +5,7 @@
 Campus Hub is a mobile app that allows university students to **buy, sell, and discover books** within their campus community. Simplified book management, AI-powered features, and a seamless user experience make Campus Hub the go-to platform for campus book trading.
 
 <a href="https://play.google.com/store/apps/details?id=com.brijenmakwana.campushub&pcampaignid=web_share" target="_blank">
-  <img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" width="200"/>
+  <img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" width="300"/>
 </a>
 
 ## Table of Contents
