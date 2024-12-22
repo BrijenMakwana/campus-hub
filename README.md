@@ -2,7 +2,13 @@
 
 # Campus Hub (Buy and Sell Books Among University Students)
 
-Campus Hub is a mobile app that allows university students to **buy, sell, and discover books** within their campus community. Simplified book management, AI-powered features, and a seamless user experience make Campus Hub the go-to platform for campus book trading.
+Campus Hub is a mobile app that allows university students to **buy, sell, and discover books** within their campus community.
+
+University books are often expensive, and Campus Hub bridges the gap by enabling juniors to buy second-hand books from seniors at reasonable prices.
+
+This not only makes education more affordable but also promotes sustainability by reusing books, reducing waste, and indirectly contributing to saving trees.
+
+With simplified book management, AI-powered features, and a seamless user experience, Campus Hub is the go-to platform for campus book trading.
 
 <a href="https://play.google.com/store/apps/details?id=com.brijenmakwana.campushub&pcampaignid=web_share" target="_blank">
   <img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" width="300"/>
@@ -56,14 +62,25 @@ Campus Hub is a mobile app that allows university students to **buy, sell, and d
 ## Screenshots
 
 <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
-<img src="https://i.imgur.com/Gdc2dCi.png" alt="screenshot 1" width="250"/>
-<img src="https://i.imgur.com/jXtiGpT.png" alt="screenshot 2" width="250"/>
-<img src="https://i.imgur.com/XPxCWpE.png" alt="screenshot 3" width="250"/>
-<img src="https://i.imgur.com/Cvh0kMU.png" alt="screenshot 4" width="250"/>
-<img src="https://i.imgur.com/YwtWAZS.png" alt="screenshot 5" width="250"/>
-<img src="https://i.imgur.com/GWEbjQs.png" alt="screenshot 6" width="250"/>
-<img src="https://i.imgur.com/u3pl57t.png" alt="screenshot 7" width="250"/>
-<img src="https://i.imgur.com/JMH2Gvv.png" alt="screenshot 8" width="250"/>
+    <img src="https://i.imgur.com/1DXYOGI.jpeg" alt="screenshot 1" width="250"/>
+    <img src="https://i.imgur.com/OoKJ9Vz.jpeg" alt="screenshot 2" width="250"/>
+    <img src="https://i.imgur.com/8e29hoP.jpeg" alt="screenshot 3" width="250"/>
+    <img src="https://i.imgur.com/TPlB0UN.jpeg" alt="screenshot 4" width="250"/>
+    <img src="https://i.imgur.com/v3l1p6O.jpeg" alt="screenshot 5" width="250"/>
+    <img src="https://i.imgur.com/JpO4nLz.jpeg" alt="screenshot 6" width="250"/>
+    <img src="https://i.imgur.com/zwLWqNi.jpeg" alt="screenshot 7" width="250"/>
+    <img src="https://i.imgur.com/amjQW84.jpeg" alt="screenshot 8" width="250"/>
+    <img src="https://i.imgur.com/KFTU3fs.jpeg" alt="screenshot 9" width="250"/>
+    <img src="https://i.imgur.com/8jDM2om.jpeg" alt="screenshot 10" width="250"/>
+    <img src="https://i.imgur.com/WANo9kU.jpeg" alt="screenshot 11" width="250"/>
+    <img src="https://i.imgur.com/oZWwFJn.jpeg" alt="screenshot 12" width="250"/>
+    <img src="https://i.imgur.com/dBLiCjC.jpeg" alt="screenshot 13" width="250"/>
+    <img src="https://i.imgur.com/qfk3lFs.jpeg" alt="screenshot 14" width="250"/>
+    <img src="https://i.imgur.com/0tHfVER.jpeg" alt="screenshot 15" width="250"/>
+    <img src="https://i.imgur.com/pTzBzhq.jpeg" alt="screenshot 16" width="250"/>
+    <img src="https://i.imgur.com/NtcS2qz.jpeg" alt="screenshot 17" width="250"/>
+    <img src="https://i.imgur.com/zJTyAO3.jpeg" alt="screenshot 18" width="250"/>
+    <img src="https://i.imgur.com/1GMcjo1.jpeg" alt="screenshot 19" width="250"/>
 </div>
 
 ## Database Schema
