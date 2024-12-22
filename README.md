@@ -98,3 +98,4 @@ With simplified book management, AI-powered features, and a seamless user experi
 - **TanStack Query** for efficient data fetching and caching
 - **Expo-Camera** for quick book searches via barcodes
 - **React Hook Form** for form handling and validation
+- **Zustand** for state management, including currency settings
