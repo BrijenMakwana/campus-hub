@@ -14,6 +14,15 @@ With simplified book management, AI-powered features, and a seamless user experi
   <img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" width="300"/>
 </a>
 
+## Watch the Demo Video
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=kcXzDxx9RU4" target="_blank">
+  <img src="http://img.youtube.com/vi/kcXzDxx9RU4/0.jpg"
+alt="Campus Hub YouTube Video" width="560" />
+</a>
+
+Click on the image to watch the video on YouTube.
+
 ## Table of Contents
 
 - [Overview](#overview)
