@@ -4,7 +4,7 @@
 
 Campus Hub is a mobile app that allows university students to **buy, sell, and discover books** within their campus community.
 
-University books are often expensive, and Campus Hub bridges the gap by enabling juniors to buy second-hand books from seniors at reasonable prices.
+University books are often expensive, and Campus Hub bridges the gap by enabling students to buy second-hand books from each other at reasonable prices.
 
 This not only makes education more affordable but also promotes sustainability by reusing books, reducing waste, and indirectly contributing to saving trees.
 
@@ -41,6 +41,7 @@ Click on the image to watch the video on YouTube.
   - **AI-powered price suggestions** help determine fair buying or selling prices.
   - Users can search for books, view available listings, and directly connect with other students.
   - Quickly search for books by scanning their barcodes.
+  - Support for multiple **currency settings**, allowing users to list and view prices in their preferred currency.
 
 ### Key Features
 
@@ -79,7 +80,7 @@ Welcome screen introducing Campus Hub and the app’s key features.
 
 ### Onboarding
 
-Students can sign up using their university-specific domain to create a campus-specific book network.
+Students can sign up using their university-specific email domain to create a campus-specific book network.
 
 <img src="https://i.imgur.com/TFaV3oD.png" alt="screenshot 3"/>
 
