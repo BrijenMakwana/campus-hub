@@ -70,27 +70,67 @@ Click on the image to watch the video on YouTube.
 
 ## Screenshots
 
-<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
-    <img src="https://i.imgur.com/1DXYOGI.jpeg" alt="screenshot 1" width="250"/>
-    <img src="https://i.imgur.com/OoKJ9Vz.jpeg" alt="screenshot 2" width="250"/>
-    <img src="https://i.imgur.com/8e29hoP.jpeg" alt="screenshot 3" width="250"/>
-    <img src="https://i.imgur.com/TPlB0UN.jpeg" alt="screenshot 4" width="250"/>
-    <img src="https://i.imgur.com/v3l1p6O.jpeg" alt="screenshot 5" width="250"/>
-    <img src="https://i.imgur.com/JpO4nLz.jpeg" alt="screenshot 6" width="250"/>
-    <img src="https://i.imgur.com/zwLWqNi.jpeg" alt="screenshot 7" width="250"/>
-    <img src="https://i.imgur.com/amjQW84.jpeg" alt="screenshot 8" width="250"/>
-    <img src="https://i.imgur.com/KFTU3fs.jpeg" alt="screenshot 9" width="250"/>
-    <img src="https://i.imgur.com/8jDM2om.jpeg" alt="screenshot 10" width="250"/>
-    <img src="https://i.imgur.com/WANo9kU.jpeg" alt="screenshot 11" width="250"/>
-    <img src="https://i.imgur.com/oZWwFJn.jpeg" alt="screenshot 12" width="250"/>
-    <img src="https://i.imgur.com/dBLiCjC.jpeg" alt="screenshot 13" width="250"/>
-    <img src="https://i.imgur.com/qfk3lFs.jpeg" alt="screenshot 14" width="250"/>
-    <img src="https://i.imgur.com/0tHfVER.jpeg" alt="screenshot 15" width="250"/>
-    <img src="https://i.imgur.com/pTzBzhq.jpeg" alt="screenshot 16" width="250"/>
-    <img src="https://i.imgur.com/NtcS2qz.jpeg" alt="screenshot 17" width="250"/>
-    <img src="https://i.imgur.com/zJTyAO3.jpeg" alt="screenshot 18" width="250"/>
-    <img src="https://i.imgur.com/1GMcjo1.jpeg" alt="screenshot 19" width="250"/>
-</div>
+### Getting Started
+
+Welcome screen introducing Campus Hub and the app’s key features.
+
+<img src="https://i.imgur.com/zOhl7y6.png" alt="screenshot 1"/>
+<img src="https://i.imgur.com/5dbDuaI.png" alt="screenshot 2"/>
+
+### Onboarding
+
+Students can sign up using their university-specific domain to create a campus-specific book network.
+
+<img src="https://i.imgur.com/TFaV3oD.png" alt="screenshot 3"/>
+
+### Home / Marketplace
+
+Browse available books and see listings from other students in your university.
+
+<img src="https://i.imgur.com/zf3qTp4.png" alt="screenshot 4"/>
+
+### Book Details
+
+View detailed information about a book, including its condition, price, and remarks.
+
+<img src="https://i.imgur.com/Kg5ITw7.png" alt="screenshot 5"/>
+
+### Search Books
+
+Search for the books you want to buy or sell, powered by Google Books.
+
+<img src="https://i.imgur.com/p0yAXf1.png" alt="screenshot 6"/>
+
+### Barcode Search
+
+Quickly search for books by scanning their barcodes.
+
+<img src="https://i.imgur.com/6BBHBvx.png" alt="screenshot 7"/>
+
+### Search and List Books for Sale
+
+Use the Google Books API to search and autofill book details when listing books for sale.
+
+<img src="https://i.imgur.com/KYR7lgb.png" alt="screenshot 8"/>
+
+### AI-Powered Price Suggestions
+
+AI suggests buying or selling prices based on the book's condition and trends.
+
+<img src="https://i.imgur.com/m7Jfnw3.png" alt="screenshot 9"/>
+
+### Books Management
+
+Manage your book listings, including editing details and removing items you no longer want to sell.
+
+<img src="https://i.imgur.com/8NPVrCb.png" alt="screenshot 10"/>
+
+### Currency Settings
+
+Set your preferred currency for book listings and price suggestions.
+
+<img src="https://i.imgur.com/ZoSeVMH.png" alt="screenshot 11"/>
+
 
 ## Database Schema
 <img src="https://i.imgur.com/hQ3n0Rs.png" alt="database schema"/>
