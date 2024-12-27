@@ -39,7 +39,7 @@ Click on the image to watch the video on YouTube.
   - Students can **buy, sell, and wishlist books** within their university.
   - Integration with **Google Books API** simplifies book details.
   - **AI-powered price suggestions** help determine fair buying or selling prices.
-  - Users can search for books, view available listings, and directly connect with other students.
+  - Students can search for books, view available listings, and directly connect with other students.
   - Quickly search for books by scanning their barcodes.
   - Support for multiple **currency settings**, allowing users to list and view prices in their preferred currency.
 
@@ -134,7 +134,7 @@ Set your preferred currency for book listings and price suggestions.
 
 
 ## Database Schema
-<img src="https://i.imgur.com/hQ3n0Rs.png" alt="database schema"/>
+<img src="https://i.imgur.com/xQik0uL.png" alt="database schema"/>
 
 
 ## Built With
