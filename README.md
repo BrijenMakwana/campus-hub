@@ -16,8 +16,8 @@ With simplified book management, AI-powered features, and a seamless user experi
 
 ## Watch the Demo Video
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=kcXzDxx9RU4" target="_blank">
-  <img src="http://img.youtube.com/vi/kcXzDxx9RU4/0.jpg"
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=3_jW_nPF2Jk" target="_blank">
+  <img src="http://img.youtube.com/vi/3_jW_nPF2Jk/0.jpg"
 alt="Campus Hub YouTube Video" width="560" />
 </a>
 
@@ -30,9 +30,11 @@ Click on the image to watch the video on YouTube.
 - [Database Schema](#database-schema)
 - [Built With](#built-with)
 
-## Overview
+## 🎯 Overview
 
-### About the App
+Campus Hub connects university students to buy and sell second-hand textbooks within their campus community. By enabling peer-to-peer book trading, we make education more affordable while promoting sustainability.
+
+### ✨ About the App
 
 - **Platform**: Mobile app built with `React Native` and `Expo`.
 - **Functionality**:
@@ -43,25 +45,25 @@ Click on the image to watch the video on YouTube.
   - Quickly search for books by scanning their barcodes.
   - Support for multiple **currency settings**, allowing users to list and view prices in their preferred currency.
 
-### Key Features
+### 🛠️ Key Features
 
-- **University-Exclusive Access**:
+- **🎓 University-Exclusive Access**:
   - Students register and log in using their **university domain email** for a secure and campus-specific environment.
 
-- **Simplified Book Listings**:
+- **📚 Simplified Book Listings**:
   - Use the **Google Books API** to search and autofill book details when listing books for sale.
   - Students can list books by adding the price, book condition (e.g., good, used, worn), and any remarks.
   - The feature supports multiple currency conversions, allowing students to list books in their preferred currency.
   - Students can **edit** their book listings, including the price, condition, and remarks, at any time.
   - Students can **delete** their book listings if they no longer wish to sell the book.
 
-- **AI-Powered Pricing**:
+- **🤖 AI-Powered Pricing**:
   - AI suggests buying or selling prices based on the book's condition and trends.
 
-- **Wishlist Management**:
+- **🔖 Wishlist Management**:
   - Save books you want to buy in a **wishlist** for easy tracking.
 
-- **Search and Connect**:
+- **🔍 Search and Connect**:
   - Search for books and view details, including:
     - Students' information
     - Book price and condition
@@ -69,7 +71,7 @@ Click on the image to watch the video on YouTube.
   - Scan book barcodes for quick and accurate searches.
 
 
-## Screenshots
+## 📱 Screenshots
 
 ### Getting Started
 
@@ -133,11 +135,11 @@ Set your preferred currency for book listings and price suggestions.
 <img src="https://i.imgur.com/ZoSeVMH.png" alt="screenshot 11"/>
 
 
-## Database Schema
+## 💾 Database Schema
 <img src="https://i.imgur.com/xQik0uL.png" alt="database schema"/>
 
 
-## Built With
+## 🚀 Built With
 
 - **React Native** (Expo)
 - **TypeScript**
