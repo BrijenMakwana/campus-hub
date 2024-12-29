@@ -14,10 +14,10 @@ With simplified book management, AI-powered features, and a seamless user experi
   <img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" width="300"/>
 </a>
 
-## Watch the Demo Video
+## Watch the App Demo Video
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=3_jW_nPF2Jk" target="_blank">
-  <img src="http://img.youtube.com/vi/3_jW_nPF2Jk/0.jpg"
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=Z2p56E1sIJ4" target="_blank">
+  <img src="https://i.imgur.com/pbJFpfE.png"
 alt="Campus Hub YouTube Video" width="560" />
 </a>
 
@@ -30,7 +30,7 @@ Click on the image to watch the video on YouTube.
 - [Database Schema](#database-schema)
 - [Built With](#built-with)
 
-## 🎯 Overview
+## Overview
 
 Campus Hub connects university students to buy and sell second-hand textbooks within their campus community. By enabling peer-to-peer book trading, we make education more affordable while promoting sustainability.
 
@@ -71,7 +71,7 @@ Campus Hub connects university students to buy and sell second-hand textbooks wi
   - Scan book barcodes for quick and accurate searches.
 
 
-## 📱 Screenshots
+## Screenshots
 
 ### Getting Started
 
@@ -98,48 +98,54 @@ View detailed information about a book, including its condition, price, and rema
 
 <img src="https://i.imgur.com/Kg5ITw7.png" alt="screenshot 5"/>
 
+### Connect with Students
+
+View student profiles, book details, and connect directly to buy or negotiate.
+
+<img src="https://i.imgur.com/kPpQ4ml.png" alt="screenshot 6"/>
+
 ### Search Books
 
 Search for the books you want to buy or sell, powered by Google Books.
 
-<img src="https://i.imgur.com/p0yAXf1.png" alt="screenshot 6"/>
+<img src="https://i.imgur.com/p0yAXf1.png" alt="screenshot 7"/>
 
 ### Barcode Search
 
 Quickly search for books by scanning their barcodes.
 
-<img src="https://i.imgur.com/6BBHBvx.png" alt="screenshot 7"/>
+<img src="https://i.imgur.com/6BBHBvx.png" alt="screenshot 8"/>
 
 ### Search and List Books for Sale
 
 Use the Google Books API to search and autofill book details when listing books for sale.
 
-<img src="https://i.imgur.com/KYR7lgb.png" alt="screenshot 8"/>
+<img src="https://i.imgur.com/KYR7lgb.png" alt="screenshot 9"/>
 
 ### AI-Powered Price Suggestions
 
 AI suggests buying or selling prices based on the book's condition and trends.
 
-<img src="https://i.imgur.com/m7Jfnw3.png" alt="screenshot 9"/>
+<img src="https://i.imgur.com/m7Jfnw3.png" alt="screenshot 10"/>
 
 ### Books Management
 
 Manage your book listings, including editing details and removing items you no longer want to sell.
 
-<img src="https://i.imgur.com/8NPVrCb.png" alt="screenshot 10"/>
+<img src="https://i.imgur.com/8NPVrCb.png" alt="screenshot 11"/>
 
 ### Currency Settings
 
 Set your preferred currency for book listings and price suggestions.
 
-<img src="https://i.imgur.com/ZoSeVMH.png" alt="screenshot 11"/>
+<img src="https://i.imgur.com/ZoSeVMH.png" alt="screenshot 12"/>
 
 
-## 💾 Database Schema
+## Database Schema
 <img src="https://i.imgur.com/xQik0uL.png" alt="database schema"/>
 
 
-## 🚀 Built With
+## Built With
 
 - **React Native** (Expo)
 - **TypeScript**
